@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /
+
+# Bloquer l'indexation des espaces privés / système
+Disallow: /admin/
+Disallow: /student/
+Disallow: /api/
+Disallow: /login
+Disallow: /logout
+Disallow: /password/
+
+# Lien absolu vers le Sitemap XML
+Sitemap: https://cabinformatique.com/sitemap.xml

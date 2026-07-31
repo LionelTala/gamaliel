@@ -1,0 +1,117 @@
+# .gitignore
+
+# ============================================
+# ENVIRONNEMENT
+# ============================================
+.env
+.env.*
+!.env.example
+.env.local
+.env.production
+
+# ============================================
+# LARAVEL
+# ============================================
+/storage/*.key
+/storage/*.log
+/storage/framework/*
+/storage/app/*
+!/storage/app/.gitkeep
+!/storage/framework/.gitkeep
+!/storage/logs/.gitkeep
+/storage/views/*
+/storage/backup/*
+
+vendor/
+bootstrap/cache/*.php
+bootstrap/cache/packages.php
+bootstrap/cache/services.php
+bootstrap/cache/config.php
+bootstrap/cache/routes-v7.php
+
+# ============================================
+# NODE / FRONTEND
+# ============================================
+node_modules/
+npm-debug.log
+yarn-error.log
+yarn.lock
+package-lock.json
+.pnpm-debug.log
+.pnpm-store
+
+# Vite - NE PAS IGNORER public/build (on le garde pour le déploiement)
+.vite
+.vite_ssr
+vite.config.js.timestamp-*
+vite.config.ts.timestamp-*
+
+# ============================================
+# IDE / ÉDITEURS
+# ============================================
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+.editorconfig
+*.sublime-*
+.ftpconfig
+.remote-sync.json
+
+# ============================================
+# PHP
+# ============================================
+*.log
+*.sqlite
+*.sqlite-journal
+.phpunit.result.cache
+.phpcs-cache
+.php-cs-fixer.cache
+.phpstorm.meta.php
+
+# ============================================
+# TESTS
+# ============================================
+coverage
+*.cov
+.nyc_output
+.junit
+
+# ============================================
+# PROJET SPÉCIFIQUE - CAB INFORMATIQUE
+# ============================================
+temp/
+tmp/
+*.tmp
+*.bak
+backups/
+
+# ============================================
+# MACOS
+# ============================================
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Desktop.ini
+
+# ============================================
+# LINUX
+# ============================================
+*~
+.nfs*
+
+# ============================================
+# WINDOWS
+# ============================================
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk

@@ -1,0 +1,8 @@
+{
+    "name": "CAB Informatique",
+    "short_name": "CAB",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#1a56db"
+}

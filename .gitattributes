@@ -1,0 +1,36 @@
+# .gitattributes
+* text=auto
+
+# PHP
+*.php diff=php
+
+# JS/TS
+*.js linguist-vendored
+*.ts linguist-vendored
+*.jsx linguist-vendored
+*.tsx linguist-vendored
+
+# CSS
+*.css linguist-vendored
+*.scss linguist-vendored
+
+# Images
+*.jpg binary
+*.jpeg binary
+*.png binary
+*.gif binary
+*.ico binary
+*.svg binary
+*.webp binary
+*.mp4 binary
+*.mov binary
+
+# Archives
+*.zip binary
+*.tar.gz binary
+*.rar binary
+
+# Database
+*.sqlite binary
+*.sqlite-journal binary
+*.db binary
