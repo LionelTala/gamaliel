@@ -1,9 +1,9 @@
 import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../../wayfinder'
 /**
 * @see \App\Http\Controllers\NotificationController::index
-* @see app/Http/Controllers/NotificationController.php:11
-* @route '/notifications'
-*/
+ * @see app/Http/Controllers/NotificationController.php:11
+ * @route '/notifications'
+ */
 export const index = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: index.url(options),
     method: 'get',
@@ -16,75 +16,72 @@ index.definition = {
 
 /**
 * @see \App\Http\Controllers\NotificationController::index
-* @see app/Http/Controllers/NotificationController.php:11
-* @route '/notifications'
-*/
+ * @see app/Http/Controllers/NotificationController.php:11
+ * @route '/notifications'
+ */
 index.url = (options?: RouteQueryOptions) => {
     return index.definition.url + queryParams(options)
 }
 
 /**
 * @see \App\Http\Controllers\NotificationController::index
-* @see app/Http/Controllers/NotificationController.php:11
-* @route '/notifications'
-*/
+ * @see app/Http/Controllers/NotificationController.php:11
+ * @route '/notifications'
+ */
 index.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: index.url(options),
     method: 'get',
 })
-
 /**
 * @see \App\Http\Controllers\NotificationController::index
-* @see app/Http/Controllers/NotificationController.php:11
-* @route '/notifications'
-*/
+ * @see app/Http/Controllers/NotificationController.php:11
+ * @route '/notifications'
+ */
 index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: index.url(options),
     method: 'head',
 })
 
-/**
+    /**
 * @see \App\Http\Controllers\NotificationController::index
-* @see app/Http/Controllers/NotificationController.php:11
-* @route '/notifications'
-*/
-const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: index.url(options),
-    method: 'get',
-})
+ * @see app/Http/Controllers/NotificationController.php:11
+ * @route '/notifications'
+ */
+    const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+        action: index.url(options),
+        method: 'get',
+    })
 
-/**
+            /**
 * @see \App\Http\Controllers\NotificationController::index
-* @see app/Http/Controllers/NotificationController.php:11
-* @route '/notifications'
-*/
-indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: index.url(options),
-    method: 'get',
-})
-
-/**
+ * @see app/Http/Controllers/NotificationController.php:11
+ * @route '/notifications'
+ */
+        indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+            action: index.url(options),
+            method: 'get',
+        })
+            /**
 * @see \App\Http\Controllers\NotificationController::index
-* @see app/Http/Controllers/NotificationController.php:11
-* @route '/notifications'
-*/
-indexForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: index.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-index.form = indexForm
-
+ * @see app/Http/Controllers/NotificationController.php:11
+ * @route '/notifications'
+ */
+        indexForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+            action: index.url({
+                        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+                            _method: 'HEAD',
+                            ...(options?.query ?? options?.mergeQuery ?? {}),
+                        }
+                    }),
+            method: 'get',
+        })
+    
+    index.form = indexForm
 /**
 * @see \App\Http\Controllers\NotificationController::markAsRead
-* @see app/Http/Controllers/NotificationController.php:32
-* @route '/notifications/{id}/read'
-*/
+ * @see app/Http/Controllers/NotificationController.php:32
+ * @route '/notifications/{id}/read'
+ */
 export const markAsRead = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: markAsRead.url(args, options),
     method: 'post',
@@ -97,25 +94,26 @@ markAsRead.definition = {
 
 /**
 * @see \App\Http\Controllers\NotificationController::markAsRead
-* @see app/Http/Controllers/NotificationController.php:32
-* @route '/notifications/{id}/read'
-*/
+ * @see app/Http/Controllers/NotificationController.php:32
+ * @route '/notifications/{id}/read'
+ */
 markAsRead.url = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { id: args }
     }
 
+    
     if (Array.isArray(args)) {
         args = {
-            id: args[0],
-        }
+                    id: args[0],
+                }
     }
 
     args = applyUrlDefaults(args)
 
     const parsedArgs = {
-        id: args.id,
-    }
+                        id: args.id,
+                }
 
     return markAsRead.definition.url
             .replace('{id}', parsedArgs.id.toString())
@@ -124,41 +122,40 @@ markAsRead.url = (args: { id: string | number } | [id: string | number ] | strin
 
 /**
 * @see \App\Http\Controllers\NotificationController::markAsRead
-* @see app/Http/Controllers/NotificationController.php:32
-* @route '/notifications/{id}/read'
-*/
+ * @see app/Http/Controllers/NotificationController.php:32
+ * @route '/notifications/{id}/read'
+ */
 markAsRead.post = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: markAsRead.url(args, options),
     method: 'post',
 })
 
-/**
+    /**
 * @see \App\Http\Controllers\NotificationController::markAsRead
-* @see app/Http/Controllers/NotificationController.php:32
-* @route '/notifications/{id}/read'
-*/
-const markAsReadForm = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: markAsRead.url(args, options),
-    method: 'post',
-})
+ * @see app/Http/Controllers/NotificationController.php:32
+ * @route '/notifications/{id}/read'
+ */
+    const markAsReadForm = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+        action: markAsRead.url(args, options),
+        method: 'post',
+    })
 
-/**
+            /**
 * @see \App\Http\Controllers\NotificationController::markAsRead
-* @see app/Http/Controllers/NotificationController.php:32
-* @route '/notifications/{id}/read'
-*/
-markAsReadForm.post = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: markAsRead.url(args, options),
-    method: 'post',
-})
-
-markAsRead.form = markAsReadForm
-
+ * @see app/Http/Controllers/NotificationController.php:32
+ * @route '/notifications/{id}/read'
+ */
+        markAsReadForm.post = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+            action: markAsRead.url(args, options),
+            method: 'post',
+        })
+    
+    markAsRead.form = markAsReadForm
 /**
 * @see \App\Http\Controllers\NotificationController::markAllAsRead
-* @see app/Http/Controllers/NotificationController.php:40
-* @route '/notifications/read-all'
-*/
+ * @see app/Http/Controllers/NotificationController.php:40
+ * @route '/notifications/read-all'
+ */
 export const markAllAsRead = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: markAllAsRead.url(options),
     method: 'post',
@@ -171,45 +168,44 @@ markAllAsRead.definition = {
 
 /**
 * @see \App\Http\Controllers\NotificationController::markAllAsRead
-* @see app/Http/Controllers/NotificationController.php:40
-* @route '/notifications/read-all'
-*/
+ * @see app/Http/Controllers/NotificationController.php:40
+ * @route '/notifications/read-all'
+ */
 markAllAsRead.url = (options?: RouteQueryOptions) => {
     return markAllAsRead.definition.url + queryParams(options)
 }
 
 /**
 * @see \App\Http\Controllers\NotificationController::markAllAsRead
-* @see app/Http/Controllers/NotificationController.php:40
-* @route '/notifications/read-all'
-*/
+ * @see app/Http/Controllers/NotificationController.php:40
+ * @route '/notifications/read-all'
+ */
 markAllAsRead.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: markAllAsRead.url(options),
     method: 'post',
 })
 
-/**
+    /**
 * @see \App\Http\Controllers\NotificationController::markAllAsRead
-* @see app/Http/Controllers/NotificationController.php:40
-* @route '/notifications/read-all'
-*/
-const markAllAsReadForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: markAllAsRead.url(options),
-    method: 'post',
-})
+ * @see app/Http/Controllers/NotificationController.php:40
+ * @route '/notifications/read-all'
+ */
+    const markAllAsReadForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+        action: markAllAsRead.url(options),
+        method: 'post',
+    })
 
-/**
+            /**
 * @see \App\Http\Controllers\NotificationController::markAllAsRead
-* @see app/Http/Controllers/NotificationController.php:40
-* @route '/notifications/read-all'
-*/
-markAllAsReadForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: markAllAsRead.url(options),
-    method: 'post',
-})
-
-markAllAsRead.form = markAllAsReadForm
-
+ * @see app/Http/Controllers/NotificationController.php:40
+ * @route '/notifications/read-all'
+ */
+        markAllAsReadForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+            action: markAllAsRead.url(options),
+            method: 'post',
+        })
+    
+    markAllAsRead.form = markAllAsReadForm
 const NotificationController = { index, markAsRead, markAllAsRead }
 
 export default NotificationController

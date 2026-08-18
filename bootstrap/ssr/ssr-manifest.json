@@ -1,16 +1,16 @@
 {
   "node_modules/laravel-vite-plugin/inertia-helpers/index.js": [],
   "resources/js/Components/Home/RevealSection.tsx": [
-    "/build/assets/Home-BzJ599j7.js"
+    "/build/assets/Home-7uuwQzWy.js"
   ],
   "resources/js/Components/Layouts/AdminLayout.tsx": [
-    "/build/assets/AdminLayout-CE8xoF2m.js"
+    "/build/assets/AdminLayout-CFl_wzPx.js"
   ],
   "resources/js/Components/Layouts/StudentLayout.tsx": [
-    "/build/assets/StudentLayout-MdC-2Al8.js"
+    "/build/assets/StudentLayout-C-WwU7Mx.js"
   ],
   "resources/js/Components/Loader.tsx": [
-    "/build/assets/Home-BzJ599j7.js"
+    "/build/assets/Home-7uuwQzWy.js"
   ],
   "resources/js/Components/Notifications/NotificationBell.tsx": [
     "/build/assets/ToastContainer-CdIokmOQ.js"
@@ -19,7 +19,7 @@
     "/build/assets/ToastContainer-CdIokmOQ.js"
   ],
   "resources/js/Components/PublicLayout.tsx": [
-    "/build/assets/PublicLayout-DbkKDi4M.js"
+    "/build/assets/PublicLayout-DhlCuZ4y.js"
   ],
   "resources/js/Components/UI/Pagination.tsx": [
     "/build/assets/Pagination-VbtBEDFD.js"
@@ -28,214 +28,214 @@
     "/build/assets/ToastContainer-CdIokmOQ.js"
   ],
   "resources/js/Pages/Admin/Activites/Create.tsx": [
-    "/build/assets/Create-BIobLISU.js"
+    "/build/assets/Create-CPb3u-Xs.js"
   ],
   "resources/js/Pages/Admin/Activites/Edit.tsx": [
-    "/build/assets/Edit-lWVD-rps.js"
+    "/build/assets/Edit-J546Dp0W.js"
   ],
   "resources/js/Pages/Admin/Activites/Index.tsx": [
-    "/build/assets/Index-B5huTzlx.js"
+    "/build/assets/Index-X-Pw31jS.js"
   ],
   "resources/js/Pages/Admin/Bibliotheque/Create.tsx": [
-    "/build/assets/Create-K9_yS9BW.js"
+    "/build/assets/Create-Dw3ngCwH.js"
   ],
   "resources/js/Pages/Admin/Bibliotheque/Edit.tsx": [
-    "/build/assets/Edit-BVjkecPl.js"
+    "/build/assets/Edit-BkB-6GJu.js"
   ],
   "resources/js/Pages/Admin/Bibliotheque/Index.tsx": [
-    "/build/assets/Index-_S3Ms5n_.js"
+    "/build/assets/Index-CDqul-06.js"
   ],
   "resources/js/Pages/Admin/Candidatures/Index.tsx": [
-    "/build/assets/Index-CjEv6eEc.js"
+    "/build/assets/Index-C78_FZ6R.js"
   ],
   "resources/js/Pages/Admin/Candidatures/Show.tsx": [
-    "/build/assets/Show-BfNNcAQ9.js"
+    "/build/assets/Show-cMLUB571.js"
   ],
   "resources/js/Pages/Admin/Certifications/Create.tsx": [
-    "/build/assets/Create-D4qQvQB3.js"
+    "/build/assets/Create-DQTBuOls.js"
   ],
   "resources/js/Pages/Admin/Certifications/Edit.tsx": [
-    "/build/assets/Edit-DND453RQ.js"
+    "/build/assets/Edit-BkXkXDhJ.js"
   ],
   "resources/js/Pages/Admin/Certifications/Index.tsx": [
-    "/build/assets/Index-DjyxIJt6.js"
+    "/build/assets/Index-CAE8QMh7.js"
   ],
   "resources/js/Pages/Admin/Cours/Create.tsx": [
-    "/build/assets/Create-DiLxWw3c.js"
+    "/build/assets/Create-Cber5RU1.js"
   ],
   "resources/js/Pages/Admin/Cours/Edit.tsx": [
-    "/build/assets/Edit-BdUQkHDn.js"
+    "/build/assets/Edit-C5cWTjww.js"
   ],
   "resources/js/Pages/Admin/Cours/EditLesson.tsx": [
-    "/build/assets/EditLesson-HvmME86C.js"
+    "/build/assets/EditLesson-DiosOrEs.js"
   ],
   "resources/js/Pages/Admin/Cours/Index.tsx": [
-    "/build/assets/Index-Bmu-KENV.js"
+    "/build/assets/Index-Dfk73LjH.js"
   ],
   "resources/js/Pages/Admin/Cours/Show.tsx": [
-    "/build/assets/Show-CqT-tmyX.js"
+    "/build/assets/Show-tkqUf7vj.js"
   ],
   "resources/js/Pages/Admin/Cours/ShowLesson.tsx": [
-    "/build/assets/ShowLesson-C3mXv9NP.js"
+    "/build/assets/ShowLesson-NevfpPGt.js"
   ],
   "resources/js/Pages/Admin/Dashboard.tsx": [
-    "/build/assets/Dashboard-CIrP_k57.js"
+    "/build/assets/Dashboard-Bwouyk86.js"
   ],
   "resources/js/Pages/Admin/Devoirs/Create.tsx": [
-    "/build/assets/Create-DvOtxBks.js"
+    "/build/assets/Create-s-aM7JaQ.js"
   ],
   "resources/js/Pages/Admin/Devoirs/Edit.tsx": [
-    "/build/assets/Edit-De4uRbTe.js"
+    "/build/assets/Edit-BCTtHqf8.js"
   ],
   "resources/js/Pages/Admin/Devoirs/Index.tsx": [
-    "/build/assets/Index-Dll4N8rj.js"
+    "/build/assets/Index-7MNWuoso.js"
   ],
   "resources/js/Pages/Admin/Devoirs/Show.tsx": [
-    "/build/assets/Show-BYxDje_M.js"
+    "/build/assets/Show-CY4yd94c.js"
   ],
   "resources/js/Pages/Admin/Evaluations/Create.tsx": [
-    "/build/assets/Create-B3k4Ydi7.js"
+    "/build/assets/Create-COcChZTf.js"
   ],
   "resources/js/Pages/Admin/Evaluations/Edit.tsx": [
-    "/build/assets/Edit-OJ7eFOhy.js"
+    "/build/assets/Edit-C363naSi.js"
   ],
   "resources/js/Pages/Admin/Evaluations/Index.tsx": [
-    "/build/assets/Index-1-NUIcR5.js"
+    "/build/assets/Index-B3lf-SPA.js"
   ],
   "resources/js/Pages/Admin/Evaluations/Show.tsx": [
-    "/build/assets/Show-CAHLOP6l.js"
+    "/build/assets/Show-Bq3OkDmI.js"
   ],
   "resources/js/Pages/Admin/Formations/Create.tsx": [
-    "/build/assets/Create-UR0lD1oV.js"
+    "/build/assets/Create-Bk8QAl32.js"
   ],
   "resources/js/Pages/Admin/Formations/CreatePresentiel.tsx": [
-    "/build/assets/CreatePresentiel-DVzE0ImG.js"
+    "/build/assets/CreatePresentiel-sLbeexh_.js"
   ],
   "resources/js/Pages/Admin/Formations/Edit.tsx": [
-    "/build/assets/Edit-UKIt8NK3.js"
+    "/build/assets/Edit-CxlS0h0e.js"
   ],
   "resources/js/Pages/Admin/Formations/EditPresentiel.tsx": [
-    "/build/assets/EditPresentiel-B49R0n4F.js"
+    "/build/assets/EditPresentiel-BvEgeDUf.js"
   ],
   "resources/js/Pages/Admin/Formations/Index.tsx": [
-    "/build/assets/Index-BcUbPr6f.js"
+    "/build/assets/Index-B3FH5rgH.js"
   ],
   "resources/js/Pages/Admin/Galerie/Create.tsx": [
-    "/build/assets/Create-DofGD3Kr.js"
+    "/build/assets/Create-Vlsnftbe.js"
   ],
   "resources/js/Pages/Admin/Galerie/Edit.tsx": [
-    "/build/assets/Edit-DOPU4FUG.js"
+    "/build/assets/Edit-TndltI4o.js"
   ],
   "resources/js/Pages/Admin/Galerie/Index.tsx": [
-    "/build/assets/Index-MFOfcmbM.js"
+    "/build/assets/Index-B3tJ9V-G.js"
   ],
   "resources/js/Pages/Admin/HeroSlides/Create.tsx": [
-    "/build/assets/Create-DFECOWFT.js"
+    "/build/assets/Create-BXzUt_eo.js"
   ],
   "resources/js/Pages/Admin/HeroSlides/Edit.tsx": [
-    "/build/assets/Edit-D79apRYz.js"
+    "/build/assets/Edit-DRk7Ff-h.js"
   ],
   "resources/js/Pages/Admin/HeroSlides/Index.tsx": [
-    "/build/assets/Index-CpOm7clm.js"
+    "/build/assets/Index-CnKjhJyQ.js"
   ],
   "resources/js/Pages/Admin/Paiements/Create.tsx": [
-    "/build/assets/Create-BONWmQiL2.js"
+    "/build/assets/Create-Dyin07Pe2.js"
   ],
   "resources/js/Pages/Admin/Paiements/Edit.tsx": [
-    "/build/assets/Edit-CQ_XYsnQ2.js"
+    "/build/assets/Edit-BcW3olyb2.js"
   ],
   "resources/js/Pages/Admin/Paiements/Index.tsx": [
-    "/build/assets/Index-Hm5JLkAq.js"
+    "/build/assets/Index-B3-Rjdas.js"
   ],
   "resources/js/Pages/Admin/PreInscriptions/Index.tsx": [
-    "/build/assets/Index-CByrh-HU2.js"
+    "/build/assets/Index-CtCZ-gn62.js"
   ],
   "resources/js/Pages/Admin/Students/Edit.tsx": [
-    "/build/assets/Edit-Be9TxMoN.js"
+    "/build/assets/Edit-8e97NU92.js"
   ],
   "resources/js/Pages/Admin/Students/Index.tsx": [
-    "/build/assets/Index-D0PNBqJg.js"
+    "/build/assets/Index-BsZ7pRUG.js"
   ],
   "resources/js/Pages/Admin/Students/Show.tsx": [
-    "/build/assets/Show-BQ2wf_8O.js"
+    "/build/assets/Show-D3J1uWNN.js"
   ],
   "resources/js/Pages/Admin/Tranches/Create.tsx": [
-    "/build/assets/Create-Bnpf2CCb2.js"
+    "/build/assets/Create-DOuLwCAE2.js"
   ],
   "resources/js/Pages/Admin/Tranches/Edit.tsx": [
-    "/build/assets/Edit-CPd_xxPU2.js"
+    "/build/assets/Edit-oD2IX1ov2.js"
   ],
   "resources/js/Pages/Admin/Tranches/Index.tsx": [
-    "/build/assets/Index-CgqFGeoC2.js"
+    "/build/assets/Index-BjQ0sAwu2.js"
   ],
   "resources/js/Pages/Admin/Users/Create.tsx": [
-    "/build/assets/Create-Bxm-xvVE.js"
+    "/build/assets/Create-ChjNpGJY.js"
   ],
   "resources/js/Pages/Admin/Users/Edit.tsx": [
-    "/build/assets/Edit-Ol4uGgGD.js"
+    "/build/assets/Edit-C6WvbWkF.js"
   ],
   "resources/js/Pages/Admin/Users/Index.tsx": [
-    "/build/assets/Index-DNGBaydS.js"
+    "/build/assets/Index-Cf157lnh.js"
   ],
   "resources/js/Pages/Admin/Vagues/Create.tsx": [
-    "/build/assets/Create-pA6i4vHg.js"
+    "/build/assets/Create-DOSK9st3.js"
   ],
   "resources/js/Pages/Admin/Vagues/Edit.tsx": [
-    "/build/assets/Edit-BgrJAAbM.js"
+    "/build/assets/Edit-WIXbfHgM.js"
   ],
   "resources/js/Pages/Admin/Vagues/Index.tsx": [
-    "/build/assets/Index-CgiFUzDs.js"
+    "/build/assets/Index-CynRw7LN.js"
   ],
   "resources/js/Pages/Admin/VisitStats.tsx": [
-    "/build/assets/VisitStats-BNr1mQOv.js"
+    "/build/assets/VisitStats-DoEBmfEG.js"
   ],
   "resources/js/Pages/Auth/Login.tsx": [
-    "/build/assets/Login-9T37YOrW.js"
+    "/build/assets/Login-J2Xl07UD.js"
   ],
   "resources/js/Pages/Profile/Index.tsx": [
-    "/build/assets/Index-CLffptdd2.js"
+    "/build/assets/Index-Dr2Gabjg2.js"
   ],
   "resources/js/Pages/Student/Cours/Index.tsx": [
-    "/build/assets/Index-DHWN8z6F.js"
+    "/build/assets/Index-BNGFFOp2.js"
   ],
   "resources/js/Pages/Student/Cours/Notifications.tsx": [
-    "/build/assets/Notifications-BuJhERMA.js"
+    "/build/assets/Notifications-srUZnT5G.js"
   ],
   "resources/js/Pages/Student/Cours/Show.tsx": [
-    "/build/assets/Show-BV3EQ8-p.js"
+    "/build/assets/Show-D6ibrf9D.js"
   ],
   "resources/js/Pages/Student/Cours/ShowLesson.tsx": [
-    "/build/assets/ShowLesson-D_ot3C-8.js"
+    "/build/assets/ShowLesson-tp2Rr-gk.js"
   ],
   "resources/js/Pages/Student/Dashboard.tsx": [
-    "/build/assets/Dashboard-DR6Drdot.js"
+    "/build/assets/Dashboard-B6vwtyvv.js"
   ],
   "resources/js/Pages/Student/Devoirs/Index.tsx": [
-    "/build/assets/Index-BwcrRBcn.js"
+    "/build/assets/Index-CbZoQY2-.js"
   ],
   "resources/js/Pages/Student/Devoirs/Show.tsx": [
-    "/build/assets/Show-Bf5vQa9-.js"
+    "/build/assets/Show-CUNUneVQ.js"
   ],
   "resources/js/Pages/Student/Evaluations/Index.tsx": [
-    "/build/assets/Index-B6oPywf8.js"
+    "/build/assets/Index-CgCJHWwr.js"
   ],
   "resources/js/Pages/Student/Evaluations/Show.tsx": [
-    "/build/assets/Show-Dtqa4DjQ.js"
+    "/build/assets/Show-DfydVe6D.js"
   ],
   "resources/js/Pages/public/Bibliotheque.tsx": [
-    "/build/assets/Bibliotheque-Cpywygup.js"
+    "/build/assets/Bibliotheque-tXCNMw0A.js"
   ],
   "resources/js/Pages/public/Bibliotheque/Index.tsx": [
-    "/build/assets/Index-rbJdjDP6.js"
+    "/build/assets/Index-BpR0Hwlo.js"
   ],
   "resources/js/Pages/public/Bibliotheque/Show.tsx": [
-    "/build/assets/Show-DS1DYRQ7.js"
+    "/build/assets/Show-Df3x6LuF.js"
   ],
   "resources/js/Pages/public/CandidatureSuccess.tsx": [
-    "/build/assets/CandidatureSuccess-DPFZ9dZC.js"
+    "/build/assets/CandidatureSuccess-Dz9ukxUn.js"
   ],
   "resources/js/Pages/public/Certification.tsx": [
-    "/build/assets/Certification-D3LP2kJX.js"
+    "/build/assets/Certification-Dg0I7ud2.js"
   ],
   "resources/js/Pages/public/Components/Hero/Hero.style.css": [
     "/build/assets/Hero-CJNAbeY2.js",
@@ -255,28 +255,28 @@
     "/build/assets/Navigation-DReaNRgM.js"
   ],
   "resources/js/Pages/public/Formations.tsx": [
-    "/build/assets/Formations-BkzHbHg6.js"
+    "/build/assets/Formations-DZdDJtdH.js"
   ],
   "resources/js/Pages/public/Galerie.tsx": [
-    "/build/assets/Galerie-CdzDNB3m.js"
+    "/build/assets/Galerie-DWF42cEJ.js"
   ],
   "resources/js/Pages/public/Home.tsx": [
-    "/build/assets/Home-BzJ599j7.js"
+    "/build/assets/Home-7uuwQzWy.js"
   ],
   "resources/js/Pages/public/Preinscription.tsx": [
-    "/build/assets/Preinscription-DYXIx4Em.js"
+    "/build/assets/Preinscription-v3nVBq9F.js"
   ],
   "resources/js/Pages/welcome.tsx": [
     "/build/assets/welcome-DuzSnRog.js"
   ],
   "resources/js/hooks/useCountUp.ts": [
-    "/build/assets/Home-BzJ599j7.js"
+    "/build/assets/Home-7uuwQzWy.js"
   ],
   "resources/js/hooks/useScroll.ts": [
     "/build/assets/Navigation-DReaNRgM.js"
   ],
   "resources/js/hooks/useScrollReveal.ts": [
-    "/build/assets/Home-BzJ599j7.js"
+    "/build/assets/Home-7uuwQzWy.js"
   ],
   "resources/js/lib/toast.ts": [
     "/build/assets/ToastContainer-CdIokmOQ.js"

@@ -1,9 +1,9 @@
 import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../wayfinder'
 /**
 * @see \App\Http\Controllers\Admin\CertificationController::index
-* @see app/Http/Controllers/Admin/CertificationController.php:17
-* @route '/admin/certifications'
-*/
+ * @see app/Http/Controllers/Admin/CertificationController.php:17
+ * @route '/admin/certifications'
+ */
 export const index = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: index.url(options),
     method: 'get',
@@ -16,75 +16,72 @@ index.definition = {
 
 /**
 * @see \App\Http\Controllers\Admin\CertificationController::index
-* @see app/Http/Controllers/Admin/CertificationController.php:17
-* @route '/admin/certifications'
-*/
+ * @see app/Http/Controllers/Admin/CertificationController.php:17
+ * @route '/admin/certifications'
+ */
 index.url = (options?: RouteQueryOptions) => {
     return index.definition.url + queryParams(options)
 }
 
 /**
 * @see \App\Http\Controllers\Admin\CertificationController::index
-* @see app/Http/Controllers/Admin/CertificationController.php:17
-* @route '/admin/certifications'
-*/
+ * @see app/Http/Controllers/Admin/CertificationController.php:17
+ * @route '/admin/certifications'
+ */
 index.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: index.url(options),
     method: 'get',
 })
-
 /**
 * @see \App\Http\Controllers\Admin\CertificationController::index
-* @see app/Http/Controllers/Admin/CertificationController.php:17
-* @route '/admin/certifications'
-*/
+ * @see app/Http/Controllers/Admin/CertificationController.php:17
+ * @route '/admin/certifications'
+ */
 index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: index.url(options),
     method: 'head',
 })
 
-/**
+    /**
 * @see \App\Http\Controllers\Admin\CertificationController::index
-* @see app/Http/Controllers/Admin/CertificationController.php:17
-* @route '/admin/certifications'
-*/
-const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: index.url(options),
-    method: 'get',
-})
+ * @see app/Http/Controllers/Admin/CertificationController.php:17
+ * @route '/admin/certifications'
+ */
+    const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+        action: index.url(options),
+        method: 'get',
+    })
 
-/**
+            /**
 * @see \App\Http\Controllers\Admin\CertificationController::index
-* @see app/Http/Controllers/Admin/CertificationController.php:17
-* @route '/admin/certifications'
-*/
-indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: index.url(options),
-    method: 'get',
-})
-
-/**
+ * @see app/Http/Controllers/Admin/CertificationController.php:17
+ * @route '/admin/certifications'
+ */
+        indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+            action: index.url(options),
+            method: 'get',
+        })
+            /**
 * @see \App\Http\Controllers\Admin\CertificationController::index
-* @see app/Http/Controllers/Admin/CertificationController.php:17
-* @route '/admin/certifications'
-*/
-indexForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: index.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-index.form = indexForm
-
+ * @see app/Http/Controllers/Admin/CertificationController.php:17
+ * @route '/admin/certifications'
+ */
+        indexForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+            action: index.url({
+                        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+                            _method: 'HEAD',
+                            ...(options?.query ?? options?.mergeQuery ?? {}),
+                        }
+                    }),
+            method: 'get',
+        })
+    
+    index.form = indexForm
 /**
 * @see \App\Http\Controllers\Admin\CertificationController::create
-* @see app/Http/Controllers/Admin/CertificationController.php:58
-* @route '/admin/certifications/create'
-*/
+ * @see app/Http/Controllers/Admin/CertificationController.php:58
+ * @route '/admin/certifications/create'
+ */
 export const create = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: create.url(options),
     method: 'get',
@@ -97,75 +94,72 @@ create.definition = {
 
 /**
 * @see \App\Http\Controllers\Admin\CertificationController::create
-* @see app/Http/Controllers/Admin/CertificationController.php:58
-* @route '/admin/certifications/create'
-*/
+ * @see app/Http/Controllers/Admin/CertificationController.php:58
+ * @route '/admin/certifications/create'
+ */
 create.url = (options?: RouteQueryOptions) => {
     return create.definition.url + queryParams(options)
 }
 
 /**
 * @see \App\Http\Controllers\Admin\CertificationController::create
-* @see app/Http/Controllers/Admin/CertificationController.php:58
-* @route '/admin/certifications/create'
-*/
+ * @see app/Http/Controllers/Admin/CertificationController.php:58
+ * @route '/admin/certifications/create'
+ */
 create.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: create.url(options),
     method: 'get',
 })
-
 /**
 * @see \App\Http\Controllers\Admin\CertificationController::create
-* @see app/Http/Controllers/Admin/CertificationController.php:58
-* @route '/admin/certifications/create'
-*/
+ * @see app/Http/Controllers/Admin/CertificationController.php:58
+ * @route '/admin/certifications/create'
+ */
 create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: create.url(options),
     method: 'head',
 })
 
-/**
+    /**
 * @see \App\Http\Controllers\Admin\CertificationController::create
-* @see app/Http/Controllers/Admin/CertificationController.php:58
-* @route '/admin/certifications/create'
-*/
-const createForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: create.url(options),
-    method: 'get',
-})
+ * @see app/Http/Controllers/Admin/CertificationController.php:58
+ * @route '/admin/certifications/create'
+ */
+    const createForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+        action: create.url(options),
+        method: 'get',
+    })
 
-/**
+            /**
 * @see \App\Http\Controllers\Admin\CertificationController::create
-* @see app/Http/Controllers/Admin/CertificationController.php:58
-* @route '/admin/certifications/create'
-*/
-createForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: create.url(options),
-    method: 'get',
-})
-
-/**
+ * @see app/Http/Controllers/Admin/CertificationController.php:58
+ * @route '/admin/certifications/create'
+ */
+        createForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+            action: create.url(options),
+            method: 'get',
+        })
+            /**
 * @see \App\Http\Controllers\Admin\CertificationController::create
-* @see app/Http/Controllers/Admin/CertificationController.php:58
-* @route '/admin/certifications/create'
-*/
-createForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: create.url({
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-create.form = createForm
-
+ * @see app/Http/Controllers/Admin/CertificationController.php:58
+ * @route '/admin/certifications/create'
+ */
+        createForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+            action: create.url({
+                        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+                            _method: 'HEAD',
+                            ...(options?.query ?? options?.mergeQuery ?? {}),
+                        }
+                    }),
+            method: 'get',
+        })
+    
+    create.form = createForm
 /**
 * @see \App\Http\Controllers\Admin\CertificationController::store
-* @see app/Http/Controllers/Admin/CertificationController.php:76
-* @route '/admin/certifications'
-*/
+ * @see app/Http/Controllers/Admin/CertificationController.php:76
+ * @route '/admin/certifications'
+ */
 export const store = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: store.url(options),
     method: 'post',
@@ -178,50 +172,49 @@ store.definition = {
 
 /**
 * @see \App\Http\Controllers\Admin\CertificationController::store
-* @see app/Http/Controllers/Admin/CertificationController.php:76
-* @route '/admin/certifications'
-*/
+ * @see app/Http/Controllers/Admin/CertificationController.php:76
+ * @route '/admin/certifications'
+ */
 store.url = (options?: RouteQueryOptions) => {
     return store.definition.url + queryParams(options)
 }
 
 /**
 * @see \App\Http\Controllers\Admin\CertificationController::store
-* @see app/Http/Controllers/Admin/CertificationController.php:76
-* @route '/admin/certifications'
-*/
+ * @see app/Http/Controllers/Admin/CertificationController.php:76
+ * @route '/admin/certifications'
+ */
 store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: store.url(options),
     method: 'post',
 })
 
-/**
+    /**
 * @see \App\Http\Controllers\Admin\CertificationController::store
-* @see app/Http/Controllers/Admin/CertificationController.php:76
-* @route '/admin/certifications'
-*/
-const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: store.url(options),
-    method: 'post',
-})
+ * @see app/Http/Controllers/Admin/CertificationController.php:76
+ * @route '/admin/certifications'
+ */
+    const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+        action: store.url(options),
+        method: 'post',
+    })
 
-/**
+            /**
 * @see \App\Http\Controllers\Admin\CertificationController::store
-* @see app/Http/Controllers/Admin/CertificationController.php:76
-* @route '/admin/certifications'
-*/
-storeForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: store.url(options),
-    method: 'post',
-})
-
-store.form = storeForm
-
+ * @see app/Http/Controllers/Admin/CertificationController.php:76
+ * @route '/admin/certifications'
+ */
+        storeForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+            action: store.url(options),
+            method: 'post',
+        })
+    
+    store.form = storeForm
 /**
 * @see \App\Http\Controllers\Admin\CertificationController::show
-* @see app/Http/Controllers/Admin/CertificationController.php:0
-* @route '/admin/certifications/{certification}'
-*/
+ * @see app/Http/Controllers/Admin/CertificationController.php:0
+ * @route '/admin/certifications/{certification}'
+ */
 export const show = (args: { certification: string | number } | [certification: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: show.url(args, options),
     method: 'get',
@@ -234,25 +227,26 @@ show.definition = {
 
 /**
 * @see \App\Http\Controllers\Admin\CertificationController::show
-* @see app/Http/Controllers/Admin/CertificationController.php:0
-* @route '/admin/certifications/{certification}'
-*/
+ * @see app/Http/Controllers/Admin/CertificationController.php:0
+ * @route '/admin/certifications/{certification}'
+ */
 show.url = (args: { certification: string | number } | [certification: string | number ] | string | number, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { certification: args }
     }
 
+    
     if (Array.isArray(args)) {
         args = {
-            certification: args[0],
-        }
+                    certification: args[0],
+                }
     }
 
     args = applyUrlDefaults(args)
 
     const parsedArgs = {
-        certification: args.certification,
-    }
+                        certification: args.certification,
+                }
 
     return show.definition.url
             .replace('{certification}', parsedArgs.certification.toString())
@@ -261,66 +255,63 @@ show.url = (args: { certification: string | number } | [certification: string | 
 
 /**
 * @see \App\Http\Controllers\Admin\CertificationController::show
-* @see app/Http/Controllers/Admin/CertificationController.php:0
-* @route '/admin/certifications/{certification}'
-*/
+ * @see app/Http/Controllers/Admin/CertificationController.php:0
+ * @route '/admin/certifications/{certification}'
+ */
 show.get = (args: { certification: string | number } | [certification: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: show.url(args, options),
     method: 'get',
 })
-
 /**
 * @see \App\Http\Controllers\Admin\CertificationController::show
-* @see app/Http/Controllers/Admin/CertificationController.php:0
-* @route '/admin/certifications/{certification}'
-*/
+ * @see app/Http/Controllers/Admin/CertificationController.php:0
+ * @route '/admin/certifications/{certification}'
+ */
 show.head = (args: { certification: string | number } | [certification: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: show.url(args, options),
     method: 'head',
 })
 
-/**
+    /**
 * @see \App\Http\Controllers\Admin\CertificationController::show
-* @see app/Http/Controllers/Admin/CertificationController.php:0
-* @route '/admin/certifications/{certification}'
-*/
-const showForm = (args: { certification: string | number } | [certification: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: show.url(args, options),
-    method: 'get',
-})
+ * @see app/Http/Controllers/Admin/CertificationController.php:0
+ * @route '/admin/certifications/{certification}'
+ */
+    const showForm = (args: { certification: string | number } | [certification: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+        action: show.url(args, options),
+        method: 'get',
+    })
 
-/**
+            /**
 * @see \App\Http\Controllers\Admin\CertificationController::show
-* @see app/Http/Controllers/Admin/CertificationController.php:0
-* @route '/admin/certifications/{certification}'
-*/
-showForm.get = (args: { certification: string | number } | [certification: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: show.url(args, options),
-    method: 'get',
-})
-
-/**
+ * @see app/Http/Controllers/Admin/CertificationController.php:0
+ * @route '/admin/certifications/{certification}'
+ */
+        showForm.get = (args: { certification: string | number } | [certification: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+            action: show.url(args, options),
+            method: 'get',
+        })
+            /**
 * @see \App\Http\Controllers\Admin\CertificationController::show
-* @see app/Http/Controllers/Admin/CertificationController.php:0
-* @route '/admin/certifications/{certification}'
-*/
-showForm.head = (args: { certification: string | number } | [certification: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: show.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-show.form = showForm
-
+ * @see app/Http/Controllers/Admin/CertificationController.php:0
+ * @route '/admin/certifications/{certification}'
+ */
+        showForm.head = (args: { certification: string | number } | [certification: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+            action: show.url(args, {
+                        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+                            _method: 'HEAD',
+                            ...(options?.query ?? options?.mergeQuery ?? {}),
+                        }
+                    }),
+            method: 'get',
+        })
+    
+    show.form = showForm
 /**
 * @see \App\Http\Controllers\Admin\CertificationController::edit
-* @see app/Http/Controllers/Admin/CertificationController.php:138
-* @route '/admin/certifications/{certification}/edit'
-*/
+ * @see app/Http/Controllers/Admin/CertificationController.php:138
+ * @route '/admin/certifications/{certification}/edit'
+ */
 export const edit = (args: { certification: number | { id: number } } | [certification: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: edit.url(args, options),
     method: 'get',
@@ -333,31 +324,31 @@ edit.definition = {
 
 /**
 * @see \App\Http\Controllers\Admin\CertificationController::edit
-* @see app/Http/Controllers/Admin/CertificationController.php:138
-* @route '/admin/certifications/{certification}/edit'
-*/
+ * @see app/Http/Controllers/Admin/CertificationController.php:138
+ * @route '/admin/certifications/{certification}/edit'
+ */
 edit.url = (args: { certification: number | { id: number } } | [certification: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { certification: args }
     }
 
-    if (typeof args === 'object' && !Array.isArray(args) && 'id' in args) {
-        args = { certification: args.id }
-    }
-
+            if (typeof args === 'object' && !Array.isArray(args) && 'id' in args) {
+            args = { certification: args.id }
+        }
+    
     if (Array.isArray(args)) {
         args = {
-            certification: args[0],
-        }
+                    certification: args[0],
+                }
     }
 
     args = applyUrlDefaults(args)
 
     const parsedArgs = {
-        certification: typeof args.certification === 'object'
-        ? args.certification.id
-        : args.certification,
-    }
+                        certification: typeof args.certification === 'object'
+                ? args.certification.id
+                : args.certification,
+                }
 
     return edit.definition.url
             .replace('{certification}', parsedArgs.certification.toString())
@@ -366,66 +357,63 @@ edit.url = (args: { certification: number | { id: number } } | [certification: n
 
 /**
 * @see \App\Http\Controllers\Admin\CertificationController::edit
-* @see app/Http/Controllers/Admin/CertificationController.php:138
-* @route '/admin/certifications/{certification}/edit'
-*/
+ * @see app/Http/Controllers/Admin/CertificationController.php:138
+ * @route '/admin/certifications/{certification}/edit'
+ */
 edit.get = (args: { certification: number | { id: number } } | [certification: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: edit.url(args, options),
     method: 'get',
 })
-
 /**
 * @see \App\Http\Controllers\Admin\CertificationController::edit
-* @see app/Http/Controllers/Admin/CertificationController.php:138
-* @route '/admin/certifications/{certification}/edit'
-*/
+ * @see app/Http/Controllers/Admin/CertificationController.php:138
+ * @route '/admin/certifications/{certification}/edit'
+ */
 edit.head = (args: { certification: number | { id: number } } | [certification: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: edit.url(args, options),
     method: 'head',
 })
 
-/**
+    /**
 * @see \App\Http\Controllers\Admin\CertificationController::edit
-* @see app/Http/Controllers/Admin/CertificationController.php:138
-* @route '/admin/certifications/{certification}/edit'
-*/
-const editForm = (args: { certification: number | { id: number } } | [certification: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: edit.url(args, options),
-    method: 'get',
-})
+ * @see app/Http/Controllers/Admin/CertificationController.php:138
+ * @route '/admin/certifications/{certification}/edit'
+ */
+    const editForm = (args: { certification: number | { id: number } } | [certification: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+        action: edit.url(args, options),
+        method: 'get',
+    })
 
-/**
+            /**
 * @see \App\Http\Controllers\Admin\CertificationController::edit
-* @see app/Http/Controllers/Admin/CertificationController.php:138
-* @route '/admin/certifications/{certification}/edit'
-*/
-editForm.get = (args: { certification: number | { id: number } } | [certification: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: edit.url(args, options),
-    method: 'get',
-})
-
-/**
+ * @see app/Http/Controllers/Admin/CertificationController.php:138
+ * @route '/admin/certifications/{certification}/edit'
+ */
+        editForm.get = (args: { certification: number | { id: number } } | [certification: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+            action: edit.url(args, options),
+            method: 'get',
+        })
+            /**
 * @see \App\Http\Controllers\Admin\CertificationController::edit
-* @see app/Http/Controllers/Admin/CertificationController.php:138
-* @route '/admin/certifications/{certification}/edit'
-*/
-editForm.head = (args: { certification: number | { id: number } } | [certification: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-    action: edit.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'HEAD',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'get',
-})
-
-edit.form = editForm
-
+ * @see app/Http/Controllers/Admin/CertificationController.php:138
+ * @route '/admin/certifications/{certification}/edit'
+ */
+        editForm.head = (args: { certification: number | { id: number } } | [certification: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+            action: edit.url(args, {
+                        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+                            _method: 'HEAD',
+                            ...(options?.query ?? options?.mergeQuery ?? {}),
+                        }
+                    }),
+            method: 'get',
+        })
+    
+    edit.form = editForm
 /**
 * @see \App\Http\Controllers\Admin\CertificationController::update
-* @see app/Http/Controllers/Admin/CertificationController.php:172
-* @route '/admin/certifications/{certification}'
-*/
+ * @see app/Http/Controllers/Admin/CertificationController.php:172
+ * @route '/admin/certifications/{certification}'
+ */
 export const update = (args: { certification: number | { id: number } } | [certification: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
     method: 'put',
@@ -438,31 +426,31 @@ update.definition = {
 
 /**
 * @see \App\Http\Controllers\Admin\CertificationController::update
-* @see app/Http/Controllers/Admin/CertificationController.php:172
-* @route '/admin/certifications/{certification}'
-*/
+ * @see app/Http/Controllers/Admin/CertificationController.php:172
+ * @route '/admin/certifications/{certification}'
+ */
 update.url = (args: { certification: number | { id: number } } | [certification: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { certification: args }
     }
 
-    if (typeof args === 'object' && !Array.isArray(args) && 'id' in args) {
-        args = { certification: args.id }
-    }
-
+            if (typeof args === 'object' && !Array.isArray(args) && 'id' in args) {
+            args = { certification: args.id }
+        }
+    
     if (Array.isArray(args)) {
         args = {
-            certification: args[0],
-        }
+                    certification: args[0],
+                }
     }
 
     args = applyUrlDefaults(args)
 
     const parsedArgs = {
-        certification: typeof args.certification === 'object'
-        ? args.certification.id
-        : args.certification,
-    }
+                        certification: typeof args.certification === 'object'
+                ? args.certification.id
+                : args.certification,
+                }
 
     return update.definition.url
             .replace('{certification}', parsedArgs.certification.toString())
@@ -471,76 +459,73 @@ update.url = (args: { certification: number | { id: number } } | [certification:
 
 /**
 * @see \App\Http\Controllers\Admin\CertificationController::update
-* @see app/Http/Controllers/Admin/CertificationController.php:172
-* @route '/admin/certifications/{certification}'
-*/
+ * @see app/Http/Controllers/Admin/CertificationController.php:172
+ * @route '/admin/certifications/{certification}'
+ */
 update.put = (args: { certification: number | { id: number } } | [certification: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
     method: 'put',
 })
-
 /**
 * @see \App\Http\Controllers\Admin\CertificationController::update
-* @see app/Http/Controllers/Admin/CertificationController.php:172
-* @route '/admin/certifications/{certification}'
-*/
+ * @see app/Http/Controllers/Admin/CertificationController.php:172
+ * @route '/admin/certifications/{certification}'
+ */
 update.patch = (args: { certification: number | { id: number } } | [certification: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'patch'> => ({
     url: update.url(args, options),
     method: 'patch',
 })
 
-/**
+    /**
 * @see \App\Http\Controllers\Admin\CertificationController::update
-* @see app/Http/Controllers/Admin/CertificationController.php:172
-* @route '/admin/certifications/{certification}'
-*/
-const updateForm = (args: { certification: number | { id: number } } | [certification: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: update.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PUT',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
+ * @see app/Http/Controllers/Admin/CertificationController.php:172
+ * @route '/admin/certifications/{certification}'
+ */
+    const updateForm = (args: { certification: number | { id: number } } | [certification: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+        action: update.url(args, {
+                    [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+                        _method: 'PUT',
+                        ...(options?.query ?? options?.mergeQuery ?? {}),
+                    }
+                }),
+        method: 'post',
+    })
 
-/**
+            /**
 * @see \App\Http\Controllers\Admin\CertificationController::update
-* @see app/Http/Controllers/Admin/CertificationController.php:172
-* @route '/admin/certifications/{certification}'
-*/
-updateForm.put = (args: { certification: number | { id: number } } | [certification: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: update.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PUT',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-/**
+ * @see app/Http/Controllers/Admin/CertificationController.php:172
+ * @route '/admin/certifications/{certification}'
+ */
+        updateForm.put = (args: { certification: number | { id: number } } | [certification: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+            action: update.url(args, {
+                        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+                            _method: 'PUT',
+                            ...(options?.query ?? options?.mergeQuery ?? {}),
+                        }
+                    }),
+            method: 'post',
+        })
+            /**
 * @see \App\Http\Controllers\Admin\CertificationController::update
-* @see app/Http/Controllers/Admin/CertificationController.php:172
-* @route '/admin/certifications/{certification}'
-*/
-updateForm.patch = (args: { certification: number | { id: number } } | [certification: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: update.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'PATCH',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-update.form = updateForm
-
+ * @see app/Http/Controllers/Admin/CertificationController.php:172
+ * @route '/admin/certifications/{certification}'
+ */
+        updateForm.patch = (args: { certification: number | { id: number } } | [certification: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+            action: update.url(args, {
+                        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+                            _method: 'PATCH',
+                            ...(options?.query ?? options?.mergeQuery ?? {}),
+                        }
+                    }),
+            method: 'post',
+        })
+    
+    update.form = updateForm
 /**
 * @see \App\Http\Controllers\Admin\CertificationController::destroy
-* @see app/Http/Controllers/Admin/CertificationController.php:236
-* @route '/admin/certifications/{certification}'
-*/
+ * @see app/Http/Controllers/Admin/CertificationController.php:236
+ * @route '/admin/certifications/{certification}'
+ */
 export const destroy = (args: { certification: number | { id: number } } | [certification: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
@@ -553,31 +538,31 @@ destroy.definition = {
 
 /**
 * @see \App\Http\Controllers\Admin\CertificationController::destroy
-* @see app/Http/Controllers/Admin/CertificationController.php:236
-* @route '/admin/certifications/{certification}'
-*/
+ * @see app/Http/Controllers/Admin/CertificationController.php:236
+ * @route '/admin/certifications/{certification}'
+ */
 destroy.url = (args: { certification: number | { id: number } } | [certification: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { certification: args }
     }
 
-    if (typeof args === 'object' && !Array.isArray(args) && 'id' in args) {
-        args = { certification: args.id }
-    }
-
+            if (typeof args === 'object' && !Array.isArray(args) && 'id' in args) {
+            args = { certification: args.id }
+        }
+    
     if (Array.isArray(args)) {
         args = {
-            certification: args[0],
-        }
+                    certification: args[0],
+                }
     }
 
     args = applyUrlDefaults(args)
 
     const parsedArgs = {
-        certification: typeof args.certification === 'object'
-        ? args.certification.id
-        : args.certification,
-    }
+                        certification: typeof args.certification === 'object'
+                ? args.certification.id
+                : args.certification,
+                }
 
     return destroy.definition.url
             .replace('{certification}', parsedArgs.certification.toString())
@@ -586,51 +571,50 @@ destroy.url = (args: { certification: number | { id: number } } | [certification
 
 /**
 * @see \App\Http\Controllers\Admin\CertificationController::destroy
-* @see app/Http/Controllers/Admin/CertificationController.php:236
-* @route '/admin/certifications/{certification}'
-*/
+ * @see app/Http/Controllers/Admin/CertificationController.php:236
+ * @route '/admin/certifications/{certification}'
+ */
 destroy.delete = (args: { certification: number | { id: number } } | [certification: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
 
-/**
+    /**
 * @see \App\Http\Controllers\Admin\CertificationController::destroy
-* @see app/Http/Controllers/Admin/CertificationController.php:236
-* @route '/admin/certifications/{certification}'
-*/
-const destroyForm = (args: { certification: number | { id: number } } | [certification: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: destroy.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'DELETE',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
+ * @see app/Http/Controllers/Admin/CertificationController.php:236
+ * @route '/admin/certifications/{certification}'
+ */
+    const destroyForm = (args: { certification: number | { id: number } } | [certification: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+        action: destroy.url(args, {
+                    [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+                        _method: 'DELETE',
+                        ...(options?.query ?? options?.mergeQuery ?? {}),
+                    }
+                }),
+        method: 'post',
+    })
 
-/**
+            /**
 * @see \App\Http\Controllers\Admin\CertificationController::destroy
-* @see app/Http/Controllers/Admin/CertificationController.php:236
-* @route '/admin/certifications/{certification}'
-*/
-destroyForm.delete = (args: { certification: number | { id: number } } | [certification: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: destroy.url(args, {
-        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-            _method: 'DELETE',
-            ...(options?.query ?? options?.mergeQuery ?? {}),
-        }
-    }),
-    method: 'post',
-})
-
-destroy.form = destroyForm
-
+ * @see app/Http/Controllers/Admin/CertificationController.php:236
+ * @route '/admin/certifications/{certification}'
+ */
+        destroyForm.delete = (args: { certification: number | { id: number } } | [certification: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+            action: destroy.url(args, {
+                        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+                            _method: 'DELETE',
+                            ...(options?.query ?? options?.mergeQuery ?? {}),
+                        }
+                    }),
+            method: 'post',
+        })
+    
+    destroy.form = destroyForm
 /**
 * @see \App\Http\Controllers\Admin\CertificationController::toggleActive
-* @see app/Http/Controllers/Admin/CertificationController.php:269
-* @route '/admin/certifications/{certification}/toggle-active'
-*/
+ * @see app/Http/Controllers/Admin/CertificationController.php:269
+ * @route '/admin/certifications/{certification}/toggle-active'
+ */
 export const toggleActive = (args: { certification: number | { id: number } } | [certification: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: toggleActive.url(args, options),
     method: 'post',
@@ -643,31 +627,31 @@ toggleActive.definition = {
 
 /**
 * @see \App\Http\Controllers\Admin\CertificationController::toggleActive
-* @see app/Http/Controllers/Admin/CertificationController.php:269
-* @route '/admin/certifications/{certification}/toggle-active'
-*/
+ * @see app/Http/Controllers/Admin/CertificationController.php:269
+ * @route '/admin/certifications/{certification}/toggle-active'
+ */
 toggleActive.url = (args: { certification: number | { id: number } } | [certification: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { certification: args }
     }
 
-    if (typeof args === 'object' && !Array.isArray(args) && 'id' in args) {
-        args = { certification: args.id }
-    }
-
+            if (typeof args === 'object' && !Array.isArray(args) && 'id' in args) {
+            args = { certification: args.id }
+        }
+    
     if (Array.isArray(args)) {
         args = {
-            certification: args[0],
-        }
+                    certification: args[0],
+                }
     }
 
     args = applyUrlDefaults(args)
 
     const parsedArgs = {
-        certification: typeof args.certification === 'object'
-        ? args.certification.id
-        : args.certification,
-    }
+                        certification: typeof args.certification === 'object'
+                ? args.certification.id
+                : args.certification,
+                }
 
     return toggleActive.definition.url
             .replace('{certification}', parsedArgs.certification.toString())
@@ -676,45 +660,44 @@ toggleActive.url = (args: { certification: number | { id: number } } | [certific
 
 /**
 * @see \App\Http\Controllers\Admin\CertificationController::toggleActive
-* @see app/Http/Controllers/Admin/CertificationController.php:269
-* @route '/admin/certifications/{certification}/toggle-active'
-*/
+ * @see app/Http/Controllers/Admin/CertificationController.php:269
+ * @route '/admin/certifications/{certification}/toggle-active'
+ */
 toggleActive.post = (args: { certification: number | { id: number } } | [certification: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: toggleActive.url(args, options),
     method: 'post',
 })
 
-/**
+    /**
 * @see \App\Http\Controllers\Admin\CertificationController::toggleActive
-* @see app/Http/Controllers/Admin/CertificationController.php:269
-* @route '/admin/certifications/{certification}/toggle-active'
-*/
-const toggleActiveForm = (args: { certification: number | { id: number } } | [certification: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: toggleActive.url(args, options),
-    method: 'post',
-})
+ * @see app/Http/Controllers/Admin/CertificationController.php:269
+ * @route '/admin/certifications/{certification}/toggle-active'
+ */
+    const toggleActiveForm = (args: { certification: number | { id: number } } | [certification: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+        action: toggleActive.url(args, options),
+        method: 'post',
+    })
 
-/**
+            /**
 * @see \App\Http\Controllers\Admin\CertificationController::toggleActive
-* @see app/Http/Controllers/Admin/CertificationController.php:269
-* @route '/admin/certifications/{certification}/toggle-active'
-*/
-toggleActiveForm.post = (args: { certification: number | { id: number } } | [certification: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
-    action: toggleActive.url(args, options),
-    method: 'post',
-})
-
-toggleActive.form = toggleActiveForm
-
+ * @see app/Http/Controllers/Admin/CertificationController.php:269
+ * @route '/admin/certifications/{certification}/toggle-active'
+ */
+        toggleActiveForm.post = (args: { certification: number | { id: number } } | [certification: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+            action: toggleActive.url(args, options),
+            method: 'post',
+        })
+    
+    toggleActive.form = toggleActiveForm
 const certifications = {
     index: Object.assign(index, index),
-    create: Object.assign(create, create),
-    store: Object.assign(store, store),
-    show: Object.assign(show, show),
-    edit: Object.assign(edit, edit),
-    update: Object.assign(update, update),
-    destroy: Object.assign(destroy, destroy),
-    toggleActive: Object.assign(toggleActive, toggleActive),
+create: Object.assign(create, create),
+store: Object.assign(store, store),
+show: Object.assign(show, show),
+edit: Object.assign(edit, edit),
+update: Object.assign(update, update),
+destroy: Object.assign(destroy, destroy),
+toggleActive: Object.assign(toggleActive, toggleActive),
 }
 
 export default certifications

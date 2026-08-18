@@ -17,27 +17,26 @@ import PaiementController from './PaiementController'
 import PreInscriptionController from './PreInscriptionController'
 import LessonController from './LessonController'
 import VideoStreamController from './VideoStreamController'
-
 const Admin = {
     VisitStatsController: Object.assign(VisitStatsController, VisitStatsController),
-    DashboardController: Object.assign(DashboardController, DashboardController),
-    UserController: Object.assign(UserController, UserController),
-    FormationController: Object.assign(FormationController, FormationController),
-    CertificationController: Object.assign(CertificationController, CertificationController),
-    VagueController: Object.assign(VagueController, VagueController),
-    CandidatureController: Object.assign(CandidatureController, CandidatureController),
-    StudentController: Object.assign(StudentController, StudentController),
-    CoursController: Object.assign(CoursController, CoursController),
-    DevoirController: Object.assign(DevoirController, DevoirController),
-    EvaluationController: Object.assign(EvaluationController, EvaluationController),
-    GalerieController: Object.assign(GalerieController, GalerieController),
-    ActiviteController: Object.assign(ActiviteController, ActiviteController),
-    LivreController: Object.assign(LivreController, LivreController),
-    TrancheController: Object.assign(TrancheController, TrancheController),
-    PaiementController: Object.assign(PaiementController, PaiementController),
-    PreInscriptionController: Object.assign(PreInscriptionController, PreInscriptionController),
-    LessonController: Object.assign(LessonController, LessonController),
-    VideoStreamController: Object.assign(VideoStreamController, VideoStreamController),
+DashboardController: Object.assign(DashboardController, DashboardController),
+UserController: Object.assign(UserController, UserController),
+FormationController: Object.assign(FormationController, FormationController),
+CertificationController: Object.assign(CertificationController, CertificationController),
+VagueController: Object.assign(VagueController, VagueController),
+CandidatureController: Object.assign(CandidatureController, CandidatureController),
+StudentController: Object.assign(StudentController, StudentController),
+CoursController: Object.assign(CoursController, CoursController),
+DevoirController: Object.assign(DevoirController, DevoirController),
+EvaluationController: Object.assign(EvaluationController, EvaluationController),
+GalerieController: Object.assign(GalerieController, GalerieController),
+ActiviteController: Object.assign(ActiviteController, ActiviteController),
+LivreController: Object.assign(LivreController, LivreController),
+TrancheController: Object.assign(TrancheController, TrancheController),
+PaiementController: Object.assign(PaiementController, PaiementController),
+PreInscriptionController: Object.assign(PreInscriptionController, PreInscriptionController),
+LessonController: Object.assign(LessonController, LessonController),
+VideoStreamController: Object.assign(VideoStreamController, VideoStreamController),
 }
 
 export default Admin
