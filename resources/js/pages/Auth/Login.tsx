@@ -3,6 +3,10 @@ import { EnvelopeIcon, LockClosedIcon, EyeIcon, EyeSlashIcon, PhoneIcon, ShieldC
 import { Head, Link, useForm } from '@inertiajs/react';
 import { useState } from 'react';
 
+// Couleur d'action unique du site — vert en primaire, aucun dégradé
+const ACTION_COLOR = '#6FA30E';       // gamaliel-green-deep
+const ACTION_COLOR_HOVER = '#5C8A0B';
+
 export default function Login() {
     const [showPassword, setShowPassword] = useState(false);
     const [loginType, setLoginType] = useState<'email' | 'phone'>('email');
@@ -36,8 +40,8 @@ export default function Login() {
                 {/* PANNEAU DE MARQUE — visible dès md, invisible sur mobile */}
                 {/* ============================================ */}
                 <div className="hidden lg:flex lg:w-[44%] relative overflow-hidden bg-gamaliel-navy-deep text-white flex-col justify-between p-12">
-                    <div className="pointer-events-none absolute -top-24 -left-16 w-80 h-80 rounded-full bg-gamaliel-green/20 blur-[100px]" />
-                    <div className="pointer-events-none absolute -bottom-28 -right-10 w-96 h-96 rounded-full bg-gamaliel-orange/20 blur-[110px]" />
+                    <div className="pointer-events-none absolute -top-24 -left-16 w-80 h-80 rounded-full bg-gamaliel-green/20 blur-[60px]" />
+                    <div className="pointer-events-none absolute -bottom-28 -right-10 w-96 h-96 rounded-full bg-gamaliel-green/10 blur-[60px]" />
 
                     <Link href="/" className="relative flex items-center gap-3">
                         <img
@@ -103,12 +107,12 @@ export default function Login() {
 
                         {/* Formulaire */}
                         <form className="space-y-6" onSubmit={handleSubmit}>
-                            {/* Sélecteur email / téléphone — indicateur glissant orange */}
+                            {/* Sélecteur email / téléphone — indicateur glissant vert plein */}
                             <div className="relative flex rounded-xl bg-white border border-gamaliel-navy/10 p-1">
                                 <div
                                     className="absolute top-1 bottom-1 rounded-lg transition-all duration-300 ease-out"
                                     style={{
-                                        background: 'linear-gradient(135deg, #FD7D0F 0%, #E13A4B 100%)',
+                                        backgroundColor: ACTION_COLOR,
                                         width: 'calc(50% - 4px)',
                                         left: loginType === 'email' ? '4px' : 'calc(50% + 0px)',
                                     }}
@@ -155,7 +159,7 @@ export default function Login() {
                                             type={getInputType()}
                                             value={data.login}
                                             onChange={(e) => setData('login', e.target.value)}
-                                            className={`appearance-none block w-full pl-10 pr-3 py-3 border rounded-xl placeholder-gamaliel-navy/30 text-gamaliel-navy-deep bg-white focus:outline-none focus:ring-2 focus:ring-gamaliel-orange focus:border-gamaliel-orange transition-colors ${
+                                            className={`appearance-none block w-full pl-10 pr-3 py-3 border rounded-xl placeholder-gamaliel-navy/30 text-gamaliel-navy-deep bg-white focus:outline-none focus:ring-2 focus:ring-gamaliel-green-deep focus:border-gamaliel-green-deep transition-colors ${
                                                 errors.login ? 'border-gamaliel-red' : 'border-gamaliel-navy/15'
                                             }`}
                                             placeholder={getInputPlaceholder()}
@@ -181,7 +185,7 @@ export default function Login() {
                                             type={showPassword ? 'text' : 'password'}
                                             value={data.password}
                                             onChange={(e) => setData('password', e.target.value)}
-                                            className={`appearance-none block w-full pl-10 pr-12 py-3 border rounded-xl placeholder-gamaliel-navy/30 text-gamaliel-navy-deep bg-white focus:outline-none focus:ring-2 focus:ring-gamaliel-orange focus:border-gamaliel-orange transition-colors ${
+                                            className={`appearance-none block w-full pl-10 pr-12 py-3 border rounded-xl placeholder-gamaliel-navy/30 text-gamaliel-navy-deep bg-white focus:outline-none focus:ring-2 focus:ring-gamaliel-green-deep focus:border-gamaliel-green-deep transition-colors ${
                                                 errors.password ? 'border-gamaliel-red' : 'border-gamaliel-navy/15'
                                             }`}
                                             placeholder="••••••••"
@@ -212,7 +216,7 @@ export default function Login() {
                                             type="checkbox"
                                             checked={data.remember}
                                             onChange={(e) => setData('remember', e.target.checked)}
-                                            className="h-4 w-4 text-gamaliel-orange focus:ring-gamaliel-orange border-gamaliel-navy/20 rounded"
+                                            className="h-4 w-4 text-gamaliel-green-deep focus:ring-gamaliel-green-deep border-gamaliel-navy/20 rounded"
                                         />
                                         <label htmlFor="remember" className="ml-2 block text-sm text-gamaliel-navy/70">
                                             Se souvenir de moi
@@ -220,22 +224,24 @@ export default function Login() {
                                     </div>
                                     <Link
                                         href="#"
-                                        className="text-sm font-semibold text-gamaliel-orange hover:text-gamaliel-red transition-colors"
+                                        className="text-sm font-semibold text-gamaliel-green-deep hover:text-gamaliel-navy transition-colors"
                                     >
                                         Mot de passe oublié ?
                                     </Link>
                                 </div>
                             </div>
 
-                            {/* Bouton */}
+                            {/* Bouton — vert plein, plus de dégradé */}
                             <button
                                 type="submit"
                                 disabled={processing}
                                 className="group relative w-full flex justify-center items-center py-3.5 px-4 text-sm font-semibold rounded-xl text-white transition-all disabled:opacity-50 disabled:cursor-not-allowed hover:-translate-y-0.5"
                                 style={{
-                                    background: 'linear-gradient(135deg, #FD7D0F 0%, #E13A4B 100%)',
-                                    boxShadow: '0 10px 20px -6px rgba(225,58,75,0.4)',
+                                    backgroundColor: ACTION_COLOR,
+                                    boxShadow: '0 10px 20px -6px rgba(111,163,14,0.4)',
                                 }}
+                                onMouseEnter={(e) => !processing && (e.currentTarget.style.backgroundColor = ACTION_COLOR_HOVER)}
+                                onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = ACTION_COLOR)}
                             >
                                 {processing ? (
                                     <span className="flex items-center gap-2">
@@ -255,7 +261,7 @@ export default function Login() {
                         <div className="text-center lg:text-left">
                             <Link
                                 href="/"
-                                className="inline-flex items-center gap-1.5 text-sm text-gamaliel-navy/50 hover:text-gamaliel-orange transition-colors"
+                                className="inline-flex items-center gap-1.5 text-sm text-gamaliel-navy/50 hover:text-gamaliel-green-deep transition-colors"
                             >
                                 <ArrowLeftIcon className="w-3.5 h-3.5" />
                                 Retour à l'accueil

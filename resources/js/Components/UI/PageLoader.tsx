@@ -25,11 +25,9 @@ const PageLoader = () => {
             setTimeout(() => setLoading(false), 300);
         };
 
-        // Écouteur de l'état d'upload personnalisé
         const handleUploadStateChange = (e: Event) => {
             const isUploading = (e as CustomEvent).detail;
             if (isUploading) {
-                // Si un upload commence, on force la fermeture immédiate du loader global
                 clearTimeout(timer);
                 setVisible(false);
                 setLoading(false);
@@ -55,19 +53,64 @@ const PageLoader = () => {
 
     return (
         <div
-            className={`fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-gray-900/60 backdrop-blur-md transition-opacity duration-300 ease-in-out ${
+            className={`fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-gamaliel-navy-deep/70 backdrop-blur-md transition-opacity duration-300 ease-in-out ${
                 visible ? 'opacity-100' : 'opacity-0'
             }`}
         >
-            <div className="relative flex flex-col items-center justify-center p-8 bg-white/90 rounded-3xl shadow-2xl border border-white/20 transform transition-transform duration-300 scale-100">
-                <div className="relative w-16 h-16 mb-4">
-                    <div className="absolute inset-0 rounded-full border-4 border-cab-blue/20"></div>
-                    <div className="absolute inset-0 rounded-full border-4 border-cab-blue border-t-transparent animate-spin"></div>
+            <div
+                className={`relative flex flex-col items-center justify-center px-9 py-8 bg-white rounded-[1.75rem] shadow-2xl border border-white/10 transition-all duration-300 ${
+                    visible ? 'scale-100' : 'scale-95'
+                }`}
+            >
+                {/* Anneau — deux tons de vert (pas un simple spin bleu uniforme) */}
+                <div className="relative w-16 h-16 mb-5">
+                    <div className="absolute inset-0 rounded-full border-4 border-gamaliel-green/15" />
+                    <div
+                        className="absolute inset-0 rounded-full border-4 border-transparent animate-spin"
+                        style={{
+                            borderTopColor: '#9FE515',   // gamaliel-green (vif)
+                            borderRightColor: '#6FA30E', // gamaliel-green-deep
+                            animationDuration: '0.9s',
+                        }}
+                    />
+                    {/* Logo miniature au centre de l'anneau */}
+                    <div className="absolute inset-[6px] rounded-full overflow-hidden bg-white flex items-center justify-center shadow-inner">
+                        <img
+                            src="/assets/images/logo.png"
+                            alt="Institut Gamaliel"
+                            className="w-full h-full object-cover"
+                        />
+                    </div>
                 </div>
-                <p className="text-sm font-semibold text-gray-800 tracking-wide animate-pulse">
-                    Chargement en cours...
+
+                <p className="font-display text-sm font-bold text-gamaliel-navy-deep tracking-wide">
+                    Chargement...
                 </p>
+                <p className="text-[11px] text-gamaliel-navy/45 mt-1 tracking-wide">
+                    Institut Gamaliel
+                </p>
+
+                {/* Trois points respirant en vert — remplace le simple "..." pulsé de CAB */}
+                <div className="flex items-center gap-1.5 mt-3">
+                    {[0, 1, 2].map((i) => (
+                        <span
+                            key={i}
+                            className="w-1.5 h-1.5 rounded-full bg-gamaliel-green-deep"
+                            style={{
+                                animation: 'gamaliel-loader-bounce 1s ease-in-out infinite',
+                                animationDelay: `${i * 0.15}s`,
+                            }}
+                        />
+                    ))}
+                </div>
             </div>
+
+            <style>{`
+                @keyframes gamaliel-loader-bounce {
+                    0%, 80%, 100% { transform: translateY(0); opacity: 0.35; }
+                    40% { transform: translateY(-4px); opacity: 1; }
+                }
+            `}</style>
         </div>
     );
 };

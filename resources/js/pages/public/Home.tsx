@@ -247,20 +247,20 @@ export default function Home({ activites, poles }: HomeProps) {
 
                                 <div className="flex flex-wrap items-center gap-4 mt-9">
                                     <Link
-                                        href="/preinscription"
+                                        href="/formations"
                                         className="group inline-flex items-center gap-2 px-7 py-4 rounded-full font-semibold text-white transition-all duration-300 hover:-translate-y-0.5"
                                         style={{ backgroundColor: ACTION_COLOR }}
                                         onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = ACTION_COLOR_HOVER)}
                                         onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = ACTION_COLOR)}
                                     >
-                                        Faire ma pré-inscription
+                                        Découvrir nos formations
                                         <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
                                     </Link>
                                     <Link
-                                        href="/formations"
+                                        href="/#activites"
                                         className="inline-flex items-center gap-2 px-7 py-4 rounded-full font-semibold text-white/90 border border-white/20 hover:bg-white/10 hover:border-white/40 transition-all duration-300"
                                     >
-                                        Découvrir nos formations
+                                        Voir nos événements
                                     </Link>
                                 </div>
 

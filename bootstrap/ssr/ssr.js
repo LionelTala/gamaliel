@@ -71,7 +71,7 @@ var renderPage = (page) => createInertiaApp({
 		"./Pages/Admin/Vagues/Edit.tsx": () => import("./assets/Edit-WIXbfHgM.js"),
 		"./Pages/Admin/Vagues/Index.tsx": () => import("./assets/Index-CynRw7LN.js"),
 		"./Pages/Admin/VisitStats.tsx": () => import("./assets/VisitStats-DoEBmfEG.js"),
-		"./Pages/Auth/Login.tsx": () => import("./assets/Login-J2Xl07UD.js"),
+		"./Pages/Auth/Login.tsx": () => import("./assets/Login-BYO4kGCt.js"),
 		"./Pages/Profile/Index.tsx": () => import("./assets/Index-Dr2Gabjg.js"),
 		"./Pages/Student/Cours/Index.tsx": () => import("./assets/Index-BNGFFOp2.js"),
 		"./Pages/Student/Cours/Notifications.tsx": () => import("./assets/Notifications-srUZnT5G.js"),
@@ -93,7 +93,7 @@ var renderPage = (page) => createInertiaApp({
 		"./Pages/public/Components/Navigation.tsx": () => import("./assets/Navigation-DReaNRgM.js"),
 		"./Pages/public/Formations.tsx": () => import("./assets/Formations-CpiC52xh.js"),
 		"./Pages/public/Galerie.tsx": () => import("./assets/Galerie-LE1QJ77U.js"),
-		"./Pages/public/Home.tsx": () => import("./assets/Home-ByDdeONt.js"),
+		"./Pages/public/Home.tsx": () => import("./assets/Home-DrXo902w.js"),
 		"./Pages/public/Preinscription.tsx": () => import("./assets/Preinscription-erfU2oel.js"),
 		"./Pages/welcome.tsx": () => import("./assets/welcome-DuzSnRog.js")
 	})),

@@ -122,5 +122,8 @@ return [
         'driver' => env('APP_MAINTENANCE_DRIVER', 'file'),
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
+    'super_admin_name' => env('SUPER_ADMIN_NAME', 'Super Administrateur'),
+'super_admin_email' => env('SUPER_ADMIN_EMAIL'),
+'super_admin_password' => env('SUPER_ADMIN_PASSWORD'),
 
 ];
