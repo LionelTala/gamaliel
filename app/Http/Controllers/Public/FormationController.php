@@ -13,6 +13,7 @@ class FormationController extends Controller
     {
         // ✅ Formations en ligne (table formations)
         $formationsEnLigne = Formation::where('is_active', true)
+            ->with('pole') // <- manquait : sans ça, $formation->pole est toujours null
             ->orderBy('order')
             ->get()
             ->map(function ($formation) {
@@ -29,11 +30,13 @@ class FormationController extends Controller
                     'image_url' => $formation->image_url,
                     'lien_externe' => $formation->lien_externe,
                     'lien_label' => $formation->lien_label,
+                    'pole' => $formation->pole?->slug, // <- LE FIX : slug exposé au front pour le filtrage
                 ];
             });
 
         // ✅ Formations présentiel (table formations_presentiel)
         $formationsPresentiel = FormationPresentiel::where('is_active', true)
+            ->with('pole') // <- même chose ici
             ->orderBy('ordre')
             ->get()
             ->map(function ($formation) {
@@ -42,6 +45,7 @@ class FormationController extends Controller
                     'title' => $formation->title,
                     'abbreviation' => $formation->abbreviation,
                     'description' => $formation->description,
+                    'niveau_requis' => $formation->niveau_requis,
                     'duration' => $formation->duration,
                     'diplome' => $formation->diplome,
                     'price' => $formation->price_formatted,
@@ -52,6 +56,7 @@ class FormationController extends Controller
                     'tags' => $formation->tags_array,
                     'debouches' => $formation->debouches_array,
                     'programme' => $formation->programme_array,
+                    'pole' => $formation->pole?->slug, // <- LE FIX
                 ];
             });
 

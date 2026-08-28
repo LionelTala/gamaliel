@@ -215,7 +215,7 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
  * @see app/Http/Controllers/Admin/TrancheController.php:86
  * @route '/admin/tranches/{tranche}/edit'
  */
-export const edit = (args: { tranche: string | number | { id: string | number } } | [tranche: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+export const edit = (args: { tranche: number | { id: number } } | [tranche: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: edit.url(args, options),
     method: 'get',
 })
@@ -230,7 +230,7 @@ edit.definition = {
  * @see app/Http/Controllers/Admin/TrancheController.php:86
  * @route '/admin/tranches/{tranche}/edit'
  */
-edit.url = (args: { tranche: string | number | { id: string | number } } | [tranche: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
+edit.url = (args: { tranche: number | { id: number } } | [tranche: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { tranche: args }
     }
@@ -263,7 +263,7 @@ edit.url = (args: { tranche: string | number | { id: string | number } } | [tran
  * @see app/Http/Controllers/Admin/TrancheController.php:86
  * @route '/admin/tranches/{tranche}/edit'
  */
-edit.get = (args: { tranche: string | number | { id: string | number } } | [tranche: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+edit.get = (args: { tranche: number | { id: number } } | [tranche: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: edit.url(args, options),
     method: 'get',
 })
@@ -272,7 +272,7 @@ edit.get = (args: { tranche: string | number | { id: string | number } } | [tran
  * @see app/Http/Controllers/Admin/TrancheController.php:86
  * @route '/admin/tranches/{tranche}/edit'
  */
-edit.head = (args: { tranche: string | number | { id: string | number } } | [tranche: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+edit.head = (args: { tranche: number | { id: number } } | [tranche: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: edit.url(args, options),
     method: 'head',
 })
@@ -282,7 +282,7 @@ edit.head = (args: { tranche: string | number | { id: string | number } } | [tra
  * @see app/Http/Controllers/Admin/TrancheController.php:86
  * @route '/admin/tranches/{tranche}/edit'
  */
-    const editForm = (args: { tranche: string | number | { id: string | number } } | [tranche: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    const editForm = (args: { tranche: number | { id: number } } | [tranche: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
         action: edit.url(args, options),
         method: 'get',
     })
@@ -292,7 +292,7 @@ edit.head = (args: { tranche: string | number | { id: string | number } } | [tra
  * @see app/Http/Controllers/Admin/TrancheController.php:86
  * @route '/admin/tranches/{tranche}/edit'
  */
-        editForm.get = (args: { tranche: string | number | { id: string | number } } | [tranche: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+        editForm.get = (args: { tranche: number | { id: number } } | [tranche: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
             action: edit.url(args, options),
             method: 'get',
         })
@@ -301,7 +301,7 @@ edit.head = (args: { tranche: string | number | { id: string | number } } | [tra
  * @see app/Http/Controllers/Admin/TrancheController.php:86
  * @route '/admin/tranches/{tranche}/edit'
  */
-        editForm.head = (args: { tranche: string | number | { id: string | number } } | [tranche: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+        editForm.head = (args: { tranche: number | { id: number } } | [tranche: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
             action: edit.url(args, {
                         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
                             _method: 'HEAD',
@@ -317,7 +317,7 @@ edit.head = (args: { tranche: string | number | { id: string | number } } | [tra
  * @see app/Http/Controllers/Admin/TrancheController.php:109
  * @route '/admin/tranches/{tranche}'
  */
-export const update = (args: { tranche: string | number | { id: string | number } } | [tranche: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+export const update = (args: { tranche: number | { id: number } } | [tranche: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
     method: 'put',
 })
@@ -332,7 +332,7 @@ update.definition = {
  * @see app/Http/Controllers/Admin/TrancheController.php:109
  * @route '/admin/tranches/{tranche}'
  */
-update.url = (args: { tranche: string | number | { id: string | number } } | [tranche: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
+update.url = (args: { tranche: number | { id: number } } | [tranche: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { tranche: args }
     }
@@ -365,7 +365,7 @@ update.url = (args: { tranche: string | number | { id: string | number } } | [tr
  * @see app/Http/Controllers/Admin/TrancheController.php:109
  * @route '/admin/tranches/{tranche}'
  */
-update.put = (args: { tranche: string | number | { id: string | number } } | [tranche: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+update.put = (args: { tranche: number | { id: number } } | [tranche: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
     method: 'put',
 })
@@ -375,7 +375,7 @@ update.put = (args: { tranche: string | number | { id: string | number } } | [tr
  * @see app/Http/Controllers/Admin/TrancheController.php:109
  * @route '/admin/tranches/{tranche}'
  */
-    const updateForm = (args: { tranche: string | number | { id: string | number } } | [tranche: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    const updateForm = (args: { tranche: number | { id: number } } | [tranche: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
         action: update.url(args, {
                     [options?.mergeQuery ? 'mergeQuery' : 'query']: {
                         _method: 'PUT',
@@ -390,7 +390,7 @@ update.put = (args: { tranche: string | number | { id: string | number } } | [tr
  * @see app/Http/Controllers/Admin/TrancheController.php:109
  * @route '/admin/tranches/{tranche}'
  */
-        updateForm.put = (args: { tranche: string | number | { id: string | number } } | [tranche: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+        updateForm.put = (args: { tranche: number | { id: number } } | [tranche: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
             action: update.url(args, {
                         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
                             _method: 'PUT',
@@ -406,7 +406,7 @@ update.put = (args: { tranche: string | number | { id: string | number } } | [tr
  * @see app/Http/Controllers/Admin/TrancheController.php:126
  * @route '/admin/tranches/{tranche}'
  */
-export const destroy = (args: { tranche: string | number | { id: string | number } } | [tranche: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+export const destroy = (args: { tranche: number | { id: number } } | [tranche: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
@@ -421,7 +421,7 @@ destroy.definition = {
  * @see app/Http/Controllers/Admin/TrancheController.php:126
  * @route '/admin/tranches/{tranche}'
  */
-destroy.url = (args: { tranche: string | number | { id: string | number } } | [tranche: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
+destroy.url = (args: { tranche: number | { id: number } } | [tranche: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { tranche: args }
     }
@@ -454,7 +454,7 @@ destroy.url = (args: { tranche: string | number | { id: string | number } } | [t
  * @see app/Http/Controllers/Admin/TrancheController.php:126
  * @route '/admin/tranches/{tranche}'
  */
-destroy.delete = (args: { tranche: string | number | { id: string | number } } | [tranche: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+destroy.delete = (args: { tranche: number | { id: number } } | [tranche: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
@@ -464,7 +464,7 @@ destroy.delete = (args: { tranche: string | number | { id: string | number } } |
  * @see app/Http/Controllers/Admin/TrancheController.php:126
  * @route '/admin/tranches/{tranche}'
  */
-    const destroyForm = (args: { tranche: string | number | { id: string | number } } | [tranche: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    const destroyForm = (args: { tranche: number | { id: number } } | [tranche: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
         action: destroy.url(args, {
                     [options?.mergeQuery ? 'mergeQuery' : 'query']: {
                         _method: 'DELETE',
@@ -479,7 +479,7 @@ destroy.delete = (args: { tranche: string | number | { id: string | number } } |
  * @see app/Http/Controllers/Admin/TrancheController.php:126
  * @route '/admin/tranches/{tranche}'
  */
-        destroyForm.delete = (args: { tranche: string | number | { id: string | number } } | [tranche: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+        destroyForm.delete = (args: { tranche: number | { id: number } } | [tranche: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
             action: destroy.url(args, {
                         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
                             _method: 'DELETE',

@@ -19,8 +19,9 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             UserSeeder::class,
-            FormationPresentielSeeder::class,
             PoleSeeder::class,
+            FormationPresentielSeeder::class,
+            
         ]);
     }
 }

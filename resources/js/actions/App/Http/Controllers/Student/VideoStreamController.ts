@@ -106,7 +106,7 @@ streamCours.head = (args: { cours: number | { id: number } } | [cours: number | 
  * @see app/Http/Controllers/Student/VideoStreamController.php:26
  * @route '/stream/lesson/{lesson}'
  */
-export const streamLesson = (args: { lesson: string | number | { id: string | number } } | [lesson: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+export const streamLesson = (args: { lesson: number | { id: number } } | [lesson: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: streamLesson.url(args, options),
     method: 'get',
 })
@@ -121,7 +121,7 @@ streamLesson.definition = {
  * @see app/Http/Controllers/Student/VideoStreamController.php:26
  * @route '/stream/lesson/{lesson}'
  */
-streamLesson.url = (args: { lesson: string | number | { id: string | number } } | [lesson: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
+streamLesson.url = (args: { lesson: number | { id: number } } | [lesson: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { lesson: args }
     }
@@ -154,7 +154,7 @@ streamLesson.url = (args: { lesson: string | number | { id: string | number } } 
  * @see app/Http/Controllers/Student/VideoStreamController.php:26
  * @route '/stream/lesson/{lesson}'
  */
-streamLesson.get = (args: { lesson: string | number | { id: string | number } } | [lesson: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+streamLesson.get = (args: { lesson: number | { id: number } } | [lesson: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: streamLesson.url(args, options),
     method: 'get',
 })
@@ -163,7 +163,7 @@ streamLesson.get = (args: { lesson: string | number | { id: string | number } } 
  * @see app/Http/Controllers/Student/VideoStreamController.php:26
  * @route '/stream/lesson/{lesson}'
  */
-streamLesson.head = (args: { lesson: string | number | { id: string | number } } | [lesson: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+streamLesson.head = (args: { lesson: number | { id: number } } | [lesson: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: streamLesson.url(args, options),
     method: 'head',
 })
@@ -173,7 +173,7 @@ streamLesson.head = (args: { lesson: string | number | { id: string | number } }
  * @see app/Http/Controllers/Student/VideoStreamController.php:26
  * @route '/stream/lesson/{lesson}'
  */
-    const streamLessonForm = (args: { lesson: string | number | { id: string | number } } | [lesson: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    const streamLessonForm = (args: { lesson: number | { id: number } } | [lesson: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
         action: streamLesson.url(args, options),
         method: 'get',
     })
@@ -183,7 +183,7 @@ streamLesson.head = (args: { lesson: string | number | { id: string | number } }
  * @see app/Http/Controllers/Student/VideoStreamController.php:26
  * @route '/stream/lesson/{lesson}'
  */
-        streamLessonForm.get = (args: { lesson: string | number | { id: string | number } } | [lesson: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+        streamLessonForm.get = (args: { lesson: number | { id: number } } | [lesson: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
             action: streamLesson.url(args, options),
             method: 'get',
         })
@@ -192,7 +192,7 @@ streamLesson.head = (args: { lesson: string | number | { id: string | number } }
  * @see app/Http/Controllers/Student/VideoStreamController.php:26
  * @route '/stream/lesson/{lesson}'
  */
-        streamLessonForm.head = (args: { lesson: string | number | { id: string | number } } | [lesson: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+        streamLessonForm.head = (args: { lesson: number | { id: number } } | [lesson: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
             action: streamLesson.url(args, {
                         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
                             _method: 'HEAD',

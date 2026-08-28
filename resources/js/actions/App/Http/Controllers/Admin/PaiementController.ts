@@ -215,7 +215,7 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
  * @see app/Http/Controllers/Admin/PaiementController.php:169
  * @route '/admin/paiements/{paiement}/edit'
  */
-export const edit = (args: { paiement: string | number | { id: string | number } } | [paiement: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+export const edit = (args: { paiement: number | { id: number } } | [paiement: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: edit.url(args, options),
     method: 'get',
 })
@@ -230,7 +230,7 @@ edit.definition = {
  * @see app/Http/Controllers/Admin/PaiementController.php:169
  * @route '/admin/paiements/{paiement}/edit'
  */
-edit.url = (args: { paiement: string | number | { id: string | number } } | [paiement: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
+edit.url = (args: { paiement: number | { id: number } } | [paiement: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { paiement: args }
     }
@@ -263,7 +263,7 @@ edit.url = (args: { paiement: string | number | { id: string | number } } | [pai
  * @see app/Http/Controllers/Admin/PaiementController.php:169
  * @route '/admin/paiements/{paiement}/edit'
  */
-edit.get = (args: { paiement: string | number | { id: string | number } } | [paiement: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+edit.get = (args: { paiement: number | { id: number } } | [paiement: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: edit.url(args, options),
     method: 'get',
 })
@@ -272,7 +272,7 @@ edit.get = (args: { paiement: string | number | { id: string | number } } | [pai
  * @see app/Http/Controllers/Admin/PaiementController.php:169
  * @route '/admin/paiements/{paiement}/edit'
  */
-edit.head = (args: { paiement: string | number | { id: string | number } } | [paiement: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+edit.head = (args: { paiement: number | { id: number } } | [paiement: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: edit.url(args, options),
     method: 'head',
 })
@@ -282,7 +282,7 @@ edit.head = (args: { paiement: string | number | { id: string | number } } | [pa
  * @see app/Http/Controllers/Admin/PaiementController.php:169
  * @route '/admin/paiements/{paiement}/edit'
  */
-    const editForm = (args: { paiement: string | number | { id: string | number } } | [paiement: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    const editForm = (args: { paiement: number | { id: number } } | [paiement: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
         action: edit.url(args, options),
         method: 'get',
     })
@@ -292,7 +292,7 @@ edit.head = (args: { paiement: string | number | { id: string | number } } | [pa
  * @see app/Http/Controllers/Admin/PaiementController.php:169
  * @route '/admin/paiements/{paiement}/edit'
  */
-        editForm.get = (args: { paiement: string | number | { id: string | number } } | [paiement: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+        editForm.get = (args: { paiement: number | { id: number } } | [paiement: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
             action: edit.url(args, options),
             method: 'get',
         })
@@ -301,7 +301,7 @@ edit.head = (args: { paiement: string | number | { id: string | number } } | [pa
  * @see app/Http/Controllers/Admin/PaiementController.php:169
  * @route '/admin/paiements/{paiement}/edit'
  */
-        editForm.head = (args: { paiement: string | number | { id: string | number } } | [paiement: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+        editForm.head = (args: { paiement: number | { id: number } } | [paiement: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
             action: edit.url(args, {
                         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
                             _method: 'HEAD',
@@ -317,7 +317,7 @@ edit.head = (args: { paiement: string | number | { id: string | number } } | [pa
  * @see app/Http/Controllers/Admin/PaiementController.php:179
  * @route '/admin/paiements/{paiement}'
  */
-export const update = (args: { paiement: string | number | { id: string | number } } | [paiement: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+export const update = (args: { paiement: number | { id: number } } | [paiement: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
     method: 'put',
 })
@@ -332,7 +332,7 @@ update.definition = {
  * @see app/Http/Controllers/Admin/PaiementController.php:179
  * @route '/admin/paiements/{paiement}'
  */
-update.url = (args: { paiement: string | number | { id: string | number } } | [paiement: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
+update.url = (args: { paiement: number | { id: number } } | [paiement: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { paiement: args }
     }
@@ -365,7 +365,7 @@ update.url = (args: { paiement: string | number | { id: string | number } } | [p
  * @see app/Http/Controllers/Admin/PaiementController.php:179
  * @route '/admin/paiements/{paiement}'
  */
-update.put = (args: { paiement: string | number | { id: string | number } } | [paiement: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+update.put = (args: { paiement: number | { id: number } } | [paiement: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
     method: 'put',
 })
@@ -375,7 +375,7 @@ update.put = (args: { paiement: string | number | { id: string | number } } | [p
  * @see app/Http/Controllers/Admin/PaiementController.php:179
  * @route '/admin/paiements/{paiement}'
  */
-    const updateForm = (args: { paiement: string | number | { id: string | number } } | [paiement: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    const updateForm = (args: { paiement: number | { id: number } } | [paiement: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
         action: update.url(args, {
                     [options?.mergeQuery ? 'mergeQuery' : 'query']: {
                         _method: 'PUT',
@@ -390,7 +390,7 @@ update.put = (args: { paiement: string | number | { id: string | number } } | [p
  * @see app/Http/Controllers/Admin/PaiementController.php:179
  * @route '/admin/paiements/{paiement}'
  */
-        updateForm.put = (args: { paiement: string | number | { id: string | number } } | [paiement: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+        updateForm.put = (args: { paiement: number | { id: number } } | [paiement: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
             action: update.url(args, {
                         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
                             _method: 'PUT',
@@ -406,7 +406,7 @@ update.put = (args: { paiement: string | number | { id: string | number } } | [p
  * @see app/Http/Controllers/Admin/PaiementController.php:72
  * @route '/admin/paiements/{student}/{tranche}/confirmer'
  */
-export const confirmer = (args: { student: number | { id: number }, tranche: string | number | { id: string | number } } | [student: number | { id: number }, tranche: string | number | { id: string | number } ], options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+export const confirmer = (args: { student: number | { id: number }, tranche: number | { id: number } } | [student: number | { id: number }, tranche: number | { id: number } ], options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: confirmer.url(args, options),
     method: 'post',
 })
@@ -421,7 +421,7 @@ confirmer.definition = {
  * @see app/Http/Controllers/Admin/PaiementController.php:72
  * @route '/admin/paiements/{student}/{tranche}/confirmer'
  */
-confirmer.url = (args: { student: number | { id: number }, tranche: string | number | { id: string | number } } | [student: number | { id: number }, tranche: string | number | { id: string | number } ], options?: RouteQueryOptions) => {
+confirmer.url = (args: { student: number | { id: number }, tranche: number | { id: number } } | [student: number | { id: number }, tranche: number | { id: number } ], options?: RouteQueryOptions) => {
     if (Array.isArray(args)) {
         args = {
                     student: args[0],
@@ -451,7 +451,7 @@ confirmer.url = (args: { student: number | { id: number }, tranche: string | num
  * @see app/Http/Controllers/Admin/PaiementController.php:72
  * @route '/admin/paiements/{student}/{tranche}/confirmer'
  */
-confirmer.post = (args: { student: number | { id: number }, tranche: string | number | { id: string | number } } | [student: number | { id: number }, tranche: string | number | { id: string | number } ], options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+confirmer.post = (args: { student: number | { id: number }, tranche: number | { id: number } } | [student: number | { id: number }, tranche: number | { id: number } ], options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: confirmer.url(args, options),
     method: 'post',
 })
@@ -461,7 +461,7 @@ confirmer.post = (args: { student: number | { id: number }, tranche: string | nu
  * @see app/Http/Controllers/Admin/PaiementController.php:72
  * @route '/admin/paiements/{student}/{tranche}/confirmer'
  */
-    const confirmerForm = (args: { student: number | { id: number }, tranche: string | number | { id: string | number } } | [student: number | { id: number }, tranche: string | number | { id: string | number } ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    const confirmerForm = (args: { student: number | { id: number }, tranche: number | { id: number } } | [student: number | { id: number }, tranche: number | { id: number } ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
         action: confirmer.url(args, options),
         method: 'post',
     })
@@ -471,7 +471,7 @@ confirmer.post = (args: { student: number | { id: number }, tranche: string | nu
  * @see app/Http/Controllers/Admin/PaiementController.php:72
  * @route '/admin/paiements/{student}/{tranche}/confirmer'
  */
-        confirmerForm.post = (args: { student: number | { id: number }, tranche: string | number | { id: string | number } } | [student: number | { id: number }, tranche: string | number | { id: string | number } ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+        confirmerForm.post = (args: { student: number | { id: number }, tranche: number | { id: number } } | [student: number | { id: number }, tranche: number | { id: number } ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
             action: confirmer.url(args, options),
             method: 'post',
         })
@@ -482,7 +482,7 @@ confirmer.post = (args: { student: number | { id: number }, tranche: string | nu
  * @see app/Http/Controllers/Admin/PaiementController.php:91
  * @route '/admin/paiements/{student}/{tranche}/annuler'
  */
-export const annuler = (args: { student: number | { id: number }, tranche: string | number | { id: string | number } } | [student: number | { id: number }, tranche: string | number | { id: string | number } ], options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+export const annuler = (args: { student: number | { id: number }, tranche: number | { id: number } } | [student: number | { id: number }, tranche: number | { id: number } ], options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: annuler.url(args, options),
     method: 'delete',
 })
@@ -497,7 +497,7 @@ annuler.definition = {
  * @see app/Http/Controllers/Admin/PaiementController.php:91
  * @route '/admin/paiements/{student}/{tranche}/annuler'
  */
-annuler.url = (args: { student: number | { id: number }, tranche: string | number | { id: string | number } } | [student: number | { id: number }, tranche: string | number | { id: string | number } ], options?: RouteQueryOptions) => {
+annuler.url = (args: { student: number | { id: number }, tranche: number | { id: number } } | [student: number | { id: number }, tranche: number | { id: number } ], options?: RouteQueryOptions) => {
     if (Array.isArray(args)) {
         args = {
                     student: args[0],
@@ -527,7 +527,7 @@ annuler.url = (args: { student: number | { id: number }, tranche: string | numbe
  * @see app/Http/Controllers/Admin/PaiementController.php:91
  * @route '/admin/paiements/{student}/{tranche}/annuler'
  */
-annuler.delete = (args: { student: number | { id: number }, tranche: string | number | { id: string | number } } | [student: number | { id: number }, tranche: string | number | { id: string | number } ], options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+annuler.delete = (args: { student: number | { id: number }, tranche: number | { id: number } } | [student: number | { id: number }, tranche: number | { id: number } ], options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: annuler.url(args, options),
     method: 'delete',
 })
@@ -537,7 +537,7 @@ annuler.delete = (args: { student: number | { id: number }, tranche: string | nu
  * @see app/Http/Controllers/Admin/PaiementController.php:91
  * @route '/admin/paiements/{student}/{tranche}/annuler'
  */
-    const annulerForm = (args: { student: number | { id: number }, tranche: string | number | { id: string | number } } | [student: number | { id: number }, tranche: string | number | { id: string | number } ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    const annulerForm = (args: { student: number | { id: number }, tranche: number | { id: number } } | [student: number | { id: number }, tranche: number | { id: number } ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
         action: annuler.url(args, {
                     [options?.mergeQuery ? 'mergeQuery' : 'query']: {
                         _method: 'DELETE',
@@ -552,7 +552,7 @@ annuler.delete = (args: { student: number | { id: number }, tranche: string | nu
  * @see app/Http/Controllers/Admin/PaiementController.php:91
  * @route '/admin/paiements/{student}/{tranche}/annuler'
  */
-        annulerForm.delete = (args: { student: number | { id: number }, tranche: string | number | { id: string | number } } | [student: number | { id: number }, tranche: string | number | { id: string | number } ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+        annulerForm.delete = (args: { student: number | { id: number }, tranche: number | { id: number } } | [student: number | { id: number }, tranche: number | { id: number } ], options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
             action: annuler.url(args, {
                         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
                             _method: 'DELETE',

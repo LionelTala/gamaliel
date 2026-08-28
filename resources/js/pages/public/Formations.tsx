@@ -16,6 +16,7 @@ import {
     CakeIcon,
     Squares2X2Icon,
     SignalIcon,
+    TruckIcon,
 } from '@heroicons/react/24/outline';
 import { Head, Link, usePage } from '@inertiajs/react';
 import { useState, useEffect, useMemo } from 'react';
@@ -60,10 +61,11 @@ interface Props {
 }
 
 const poles = [
+    { slug: 'gestion', label: 'Techniques Admin. & Comptables', icon: BriefcaseIcon, color: '#153B62' },
     { slug: 'paramedical', label: 'Paramédical & Santé', icon: HeartIcon, color: '#E13A4B' },
-    { slug: 'informatique', label: 'Informatique & Digital', icon: ComputerDesktopIcon, color: '#165DF3' },
-    { slug: 'gestion', label: 'Gestion & Management', icon: BriefcaseIcon, color: '#153B62' },
-    { slug: 'hotellerie', label: 'Hôtellerie & Métiers de bouche', icon: CakeIcon, color: '#FD7D0F' },
+    { slug: 'informatique', label: 'Génie Informatique', icon: ComputerDesktopIcon, color: '#165DF3' },
+    { slug: 'logistique', label: 'Logistique & Transport', icon: TruckIcon, color: '#6FA30E' },
+    { slug: 'hotellerie', label: 'Hôtellerie & Restauration', icon: CakeIcon, color: '#FD7D0F' },
 ] as const;
 
 // Couleur d'action par défaut du site — remplace le bleu CAB partout où il n'y a pas
@@ -353,7 +355,7 @@ export default function Formations({ formationsEnLigne, formationsPresentiel }: 
                         <div className="text-center animate-fade-in" style={{ animationDelay: '0ms' }}>
                             <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/15 bg-white/[0.06] text-[12px] font-semibold tracking-[0.14em] uppercase text-white/85">
                                 <AcademicCapIcon className="w-4 h-4 text-gamaliel-green" />
-                                4 pôles · CQP · DQP · BTS
+                                5 pôles · CQP · DQP · BTS
                             </span>
 
                             <h1 className="font-display font-bold text-4xl md:text-5xl mt-6 tracking-tight">

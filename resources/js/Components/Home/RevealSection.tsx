@@ -1,18 +1,21 @@
 // resources/js/Components/Home/RevealSection.tsx
+import { ElementType, ReactNode } from 'react';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
-import { ReactNode } from 'react';
 
-
-interface Props {
+interface RevealSectionProps {
     children: ReactNode;
-    delay?: number;
+    as?: ElementType;
     className?: string;
-    as?: 'div' | 'section';
+    delay?: number;
 }
 
-const RevealSection = ({ children, delay = 0, className = '', as = 'div' }: Props) => {
-    const { ref, isRevealed } = useScrollReveal<HTMLDivElement>();
-    const Tag = as as any;
+export default function RevealSection({
+    children,
+    as: Tag = 'div',
+    className = '',
+    delay = 0,
+}: RevealSectionProps) {
+    const { ref, isRevealed } = useScrollReveal<HTMLDivElement>(0.15);
 
     return (
         <Tag
@@ -20,13 +23,12 @@ const RevealSection = ({ children, delay = 0, className = '', as = 'div' }: Prop
             className={className}
             style={{
                 opacity: isRevealed ? 1 : 0,
-                transform: isRevealed ? 'translateY(0)' : 'translateY(28px)',
-                transition: `opacity 0.7s cubic-bezier(0.16,1,0.3,1) ${delay}ms, transform 0.7s cubic-bezier(0.16,1,0.3,1) ${delay}ms`,
+                transform: isRevealed ? 'translateY(0)' : 'translateY(16px)',
+                transition: `opacity 0.6s ease-out ${delay}ms, transform 0.6s ease-out ${delay}ms`,
+                willChange: 'opacity, transform',
             }}
         >
             {children}
         </Tag>
     );
-};
-
-export default RevealSection;
+}

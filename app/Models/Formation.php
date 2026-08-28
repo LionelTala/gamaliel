@@ -82,4 +82,5 @@ class Formation extends Model
     {
         return $this->belongsTo(Pole::class);
     }
+ 
 }

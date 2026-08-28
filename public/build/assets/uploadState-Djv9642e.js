@@ -1,1 +1,0 @@
-var e={active:!1,setActive(e){this.active=e,window.dispatchEvent(new CustomEvent(`upload-state-change`,{detail:e}))}};export{e as t};

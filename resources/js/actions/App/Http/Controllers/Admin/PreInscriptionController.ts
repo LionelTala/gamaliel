@@ -82,7 +82,7 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
  * @see app/Http/Controllers/Admin/PreInscriptionController.php:86
  * @route '/admin/pre-inscriptions/{preInscription}'
  */
-export const update = (args: { preInscription: string | number | { id: string | number } } | [preInscription: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+export const update = (args: { preInscription: number | { id: number } } | [preInscription: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
     method: 'put',
 })
@@ -97,7 +97,7 @@ update.definition = {
  * @see app/Http/Controllers/Admin/PreInscriptionController.php:86
  * @route '/admin/pre-inscriptions/{preInscription}'
  */
-update.url = (args: { preInscription: string | number | { id: string | number } } | [preInscription: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
+update.url = (args: { preInscription: number | { id: number } } | [preInscription: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { preInscription: args }
     }
@@ -130,7 +130,7 @@ update.url = (args: { preInscription: string | number | { id: string | number } 
  * @see app/Http/Controllers/Admin/PreInscriptionController.php:86
  * @route '/admin/pre-inscriptions/{preInscription}'
  */
-update.put = (args: { preInscription: string | number | { id: string | number } } | [preInscription: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+update.put = (args: { preInscription: number | { id: number } } | [preInscription: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
     method: 'put',
 })
@@ -140,7 +140,7 @@ update.put = (args: { preInscription: string | number | { id: string | number } 
  * @see app/Http/Controllers/Admin/PreInscriptionController.php:86
  * @route '/admin/pre-inscriptions/{preInscription}'
  */
-    const updateForm = (args: { preInscription: string | number | { id: string | number } } | [preInscription: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    const updateForm = (args: { preInscription: number | { id: number } } | [preInscription: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
         action: update.url(args, {
                     [options?.mergeQuery ? 'mergeQuery' : 'query']: {
                         _method: 'PUT',
@@ -155,7 +155,7 @@ update.put = (args: { preInscription: string | number | { id: string | number } 
  * @see app/Http/Controllers/Admin/PreInscriptionController.php:86
  * @route '/admin/pre-inscriptions/{preInscription}'
  */
-        updateForm.put = (args: { preInscription: string | number | { id: string | number } } | [preInscription: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+        updateForm.put = (args: { preInscription: number | { id: number } } | [preInscription: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
             action: update.url(args, {
                         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
                             _method: 'PUT',
@@ -171,7 +171,7 @@ update.put = (args: { preInscription: string | number | { id: string | number } 
  * @see app/Http/Controllers/Admin/PreInscriptionController.php:102
  * @route '/admin/pre-inscriptions/{preInscription}'
  */
-export const destroy = (args: { preInscription: string | number | { id: string | number } } | [preInscription: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+export const destroy = (args: { preInscription: number | { id: number } } | [preInscription: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
@@ -186,7 +186,7 @@ destroy.definition = {
  * @see app/Http/Controllers/Admin/PreInscriptionController.php:102
  * @route '/admin/pre-inscriptions/{preInscription}'
  */
-destroy.url = (args: { preInscription: string | number | { id: string | number } } | [preInscription: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
+destroy.url = (args: { preInscription: number | { id: number } } | [preInscription: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { preInscription: args }
     }
@@ -219,7 +219,7 @@ destroy.url = (args: { preInscription: string | number | { id: string | number }
  * @see app/Http/Controllers/Admin/PreInscriptionController.php:102
  * @route '/admin/pre-inscriptions/{preInscription}'
  */
-destroy.delete = (args: { preInscription: string | number | { id: string | number } } | [preInscription: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+destroy.delete = (args: { preInscription: number | { id: number } } | [preInscription: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
@@ -229,7 +229,7 @@ destroy.delete = (args: { preInscription: string | number | { id: string | numbe
  * @see app/Http/Controllers/Admin/PreInscriptionController.php:102
  * @route '/admin/pre-inscriptions/{preInscription}'
  */
-    const destroyForm = (args: { preInscription: string | number | { id: string | number } } | [preInscription: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    const destroyForm = (args: { preInscription: number | { id: number } } | [preInscription: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
         action: destroy.url(args, {
                     [options?.mergeQuery ? 'mergeQuery' : 'query']: {
                         _method: 'DELETE',
@@ -244,7 +244,7 @@ destroy.delete = (args: { preInscription: string | number | { id: string | numbe
  * @see app/Http/Controllers/Admin/PreInscriptionController.php:102
  * @route '/admin/pre-inscriptions/{preInscription}'
  */
-        destroyForm.delete = (args: { preInscription: string | number | { id: string | number } } | [preInscription: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+        destroyForm.delete = (args: { preInscription: number | { id: number } } | [preInscription: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
             action: destroy.url(args, {
                         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
                             _method: 'DELETE',

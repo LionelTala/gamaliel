@@ -184,7 +184,7 @@ show.head = (args: { cours: number | { id: number } } | [cours: number | { id: n
  * @see app/Http/Controllers/Student/CoursController.php:268
  * @route '/student/cours/lesson/{lesson}'
  */
-export const showLesson = (args: { lesson: string | number | { id: string | number } } | [lesson: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+export const showLesson = (args: { lesson: number | { id: number } } | [lesson: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: showLesson.url(args, options),
     method: 'get',
 })
@@ -199,7 +199,7 @@ showLesson.definition = {
  * @see app/Http/Controllers/Student/CoursController.php:268
  * @route '/student/cours/lesson/{lesson}'
  */
-showLesson.url = (args: { lesson: string | number | { id: string | number } } | [lesson: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
+showLesson.url = (args: { lesson: number | { id: number } } | [lesson: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { lesson: args }
     }
@@ -232,7 +232,7 @@ showLesson.url = (args: { lesson: string | number | { id: string | number } } | 
  * @see app/Http/Controllers/Student/CoursController.php:268
  * @route '/student/cours/lesson/{lesson}'
  */
-showLesson.get = (args: { lesson: string | number | { id: string | number } } | [lesson: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+showLesson.get = (args: { lesson: number | { id: number } } | [lesson: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: showLesson.url(args, options),
     method: 'get',
 })
@@ -241,7 +241,7 @@ showLesson.get = (args: { lesson: string | number | { id: string | number } } | 
  * @see app/Http/Controllers/Student/CoursController.php:268
  * @route '/student/cours/lesson/{lesson}'
  */
-showLesson.head = (args: { lesson: string | number | { id: string | number } } | [lesson: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+showLesson.head = (args: { lesson: number | { id: number } } | [lesson: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: showLesson.url(args, options),
     method: 'head',
 })
@@ -251,7 +251,7 @@ showLesson.head = (args: { lesson: string | number | { id: string | number } } |
  * @see app/Http/Controllers/Student/CoursController.php:268
  * @route '/student/cours/lesson/{lesson}'
  */
-    const showLessonForm = (args: { lesson: string | number | { id: string | number } } | [lesson: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    const showLessonForm = (args: { lesson: number | { id: number } } | [lesson: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
         action: showLesson.url(args, options),
         method: 'get',
     })
@@ -261,7 +261,7 @@ showLesson.head = (args: { lesson: string | number | { id: string | number } } |
  * @see app/Http/Controllers/Student/CoursController.php:268
  * @route '/student/cours/lesson/{lesson}'
  */
-        showLessonForm.get = (args: { lesson: string | number | { id: string | number } } | [lesson: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+        showLessonForm.get = (args: { lesson: number | { id: number } } | [lesson: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
             action: showLesson.url(args, options),
             method: 'get',
         })
@@ -270,7 +270,7 @@ showLesson.head = (args: { lesson: string | number | { id: string | number } } |
  * @see app/Http/Controllers/Student/CoursController.php:268
  * @route '/student/cours/lesson/{lesson}'
  */
-        showLessonForm.head = (args: { lesson: string | number | { id: string | number } } | [lesson: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+        showLessonForm.head = (args: { lesson: number | { id: number } } | [lesson: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
             action: showLesson.url(args, {
                         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
                             _method: 'HEAD',
@@ -286,7 +286,7 @@ showLesson.head = (args: { lesson: string | number | { id: string | number } } |
  * @see app/Http/Controllers/Student/CoursController.php:357
  * @route '/student/cours/lesson/{lesson}/view'
  */
-export const markLessonAsViewed = (args: { lesson: string | number | { id: string | number } } | [lesson: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+export const markLessonAsViewed = (args: { lesson: number | { id: number } } | [lesson: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: markLessonAsViewed.url(args, options),
     method: 'post',
 })
@@ -301,7 +301,7 @@ markLessonAsViewed.definition = {
  * @see app/Http/Controllers/Student/CoursController.php:357
  * @route '/student/cours/lesson/{lesson}/view'
  */
-markLessonAsViewed.url = (args: { lesson: string | number | { id: string | number } } | [lesson: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
+markLessonAsViewed.url = (args: { lesson: number | { id: number } } | [lesson: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { lesson: args }
     }
@@ -334,7 +334,7 @@ markLessonAsViewed.url = (args: { lesson: string | number | { id: string | numbe
  * @see app/Http/Controllers/Student/CoursController.php:357
  * @route '/student/cours/lesson/{lesson}/view'
  */
-markLessonAsViewed.post = (args: { lesson: string | number | { id: string | number } } | [lesson: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+markLessonAsViewed.post = (args: { lesson: number | { id: number } } | [lesson: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: markLessonAsViewed.url(args, options),
     method: 'post',
 })
@@ -344,7 +344,7 @@ markLessonAsViewed.post = (args: { lesson: string | number | { id: string | numb
  * @see app/Http/Controllers/Student/CoursController.php:357
  * @route '/student/cours/lesson/{lesson}/view'
  */
-    const markLessonAsViewedForm = (args: { lesson: string | number | { id: string | number } } | [lesson: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    const markLessonAsViewedForm = (args: { lesson: number | { id: number } } | [lesson: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
         action: markLessonAsViewed.url(args, options),
         method: 'post',
     })
@@ -354,7 +354,7 @@ markLessonAsViewed.post = (args: { lesson: string | number | { id: string | numb
  * @see app/Http/Controllers/Student/CoursController.php:357
  * @route '/student/cours/lesson/{lesson}/view'
  */
-        markLessonAsViewedForm.post = (args: { lesson: string | number | { id: string | number } } | [lesson: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+        markLessonAsViewedForm.post = (args: { lesson: number | { id: number } } | [lesson: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
             action: markLessonAsViewed.url(args, options),
             method: 'post',
         })

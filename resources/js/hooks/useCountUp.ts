@@ -1,25 +1,40 @@
 // resources/js/hooks/useCountUp.ts
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
-export function useCountUp(target: number, isActive: boolean, duration = 1500) {
+/**
+ * Anime un nombre de 0 à `target` en douceur (requestAnimationFrame + easing),
+ * une seule fois. Protégé contre les déclenchements multiples de `start`
+ * (ex: IntersectionObserver imprécis) grâce à `hasRunRef`.
+ */
+export function useCountUp(target: number, start: boolean, duration: number = 1400): number {
     const [value, setValue] = useState(0);
+    const hasRunRef = useRef(false);
+    const frameRef = useRef<number | null>(null);
 
     useEffect(() => {
-        if (!isActive) return;
+        if (!start || hasRunRef.current) return;
+        hasRunRef.current = true;
 
-        let start: number | null = null;
-        const ease = (t: number) => 1 - Math.pow(1 - t, 3);
+        const startTime = performance.now();
+        const easeOutCubic = (t: number) => 1 - Math.pow(1 - t, 3);
 
-        const step = (timestamp: number) => {
-            if (start === null) start = timestamp;
-            const progress = Math.min((timestamp - start) / duration, 1);
-            setValue(Math.floor(ease(progress) * target));
-            if (progress < 1) requestAnimationFrame(step);
-            else setValue(target);
+        const tick = (now: number) => {
+            const elapsed = now - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            setValue(Math.round(easeOutCubic(progress) * target));
+
+            if (progress < 1) {
+                frameRef.current = requestAnimationFrame(tick);
+            } else {
+                setValue(target);
+            }
         };
 
-        requestAnimationFrame(step);
-    }, [isActive, target, duration]);
+        frameRef.current = requestAnimationFrame(tick);
+        return () => {
+            if (frameRef.current) cancelAnimationFrame(frameRef.current);
+        };
+    }, [start, target, duration]);
 
     return value;
 }

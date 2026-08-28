@@ -1,7 +1,7 @@
 {
   "node_modules/laravel-vite-plugin/inertia-helpers/index.js": [],
   "resources/js/Components/Home/RevealSection.tsx": [
-    "/build/assets/Home-7uuwQzWy.js"
+    "/build/assets/Home-CnbgZ6iQ.js"
   ],
   "resources/js/Components/Layouts/AdminLayout.tsx": [
     "/build/assets/AdminLayout-CFl_wzPx.js"
@@ -10,7 +10,7 @@
     "/build/assets/StudentLayout-C-WwU7Mx.js"
   ],
   "resources/js/Components/Loader.tsx": [
-    "/build/assets/Home-7uuwQzWy.js"
+    "/build/assets/Home-CnbgZ6iQ.js"
   ],
   "resources/js/Components/Notifications/NotificationBell.tsx": [
     "/build/assets/ToastContainer-CdIokmOQ.js"
@@ -139,16 +139,16 @@
     "/build/assets/Index-CnKjhJyQ.js"
   ],
   "resources/js/Pages/Admin/Paiements/Create.tsx": [
-    "/build/assets/Create-Dyin07Pe2.js"
+    "/build/assets/Create-Dyin07Pe.js"
   ],
   "resources/js/Pages/Admin/Paiements/Edit.tsx": [
-    "/build/assets/Edit-BcW3olyb2.js"
+    "/build/assets/Edit-BcW3olyb.js"
   ],
   "resources/js/Pages/Admin/Paiements/Index.tsx": [
     "/build/assets/Index-B3-Rjdas.js"
   ],
   "resources/js/Pages/Admin/PreInscriptions/Index.tsx": [
-    "/build/assets/Index-CtCZ-gn62.js"
+    "/build/assets/Index-CtCZ-gn6.js"
   ],
   "resources/js/Pages/Admin/Students/Edit.tsx": [
     "/build/assets/Edit-8e97NU92.js"
@@ -160,13 +160,13 @@
     "/build/assets/Show-D3J1uWNN.js"
   ],
   "resources/js/Pages/Admin/Tranches/Create.tsx": [
-    "/build/assets/Create-DOuLwCAE2.js"
+    "/build/assets/Create-DOuLwCAE.js"
   ],
   "resources/js/Pages/Admin/Tranches/Edit.tsx": [
-    "/build/assets/Edit-oD2IX1ov2.js"
+    "/build/assets/Edit-oD2IX1ov.js"
   ],
   "resources/js/Pages/Admin/Tranches/Index.tsx": [
-    "/build/assets/Index-BjQ0sAwu2.js"
+    "/build/assets/Index-BjQ0sAwu.js"
   ],
   "resources/js/Pages/Admin/Users/Create.tsx": [
     "/build/assets/Create-ChjNpGJY.js"
@@ -193,7 +193,7 @@
     "/build/assets/Login-J2Xl07UD.js"
   ],
   "resources/js/Pages/Profile/Index.tsx": [
-    "/build/assets/Index-Dr2Gabjg2.js"
+    "/build/assets/Index-Dr2Gabjg.js"
   ],
   "resources/js/Pages/Student/Cours/Index.tsx": [
     "/build/assets/Index-BNGFFOp2.js"
@@ -255,13 +255,13 @@
     "/build/assets/Navigation-DReaNRgM.js"
   ],
   "resources/js/Pages/public/Formations.tsx": [
-    "/build/assets/Formations-DZdDJtdH.js"
+    "/build/assets/Formations-zWZoxNlk.js"
   ],
   "resources/js/Pages/public/Galerie.tsx": [
     "/build/assets/Galerie-DWF42cEJ.js"
   ],
   "resources/js/Pages/public/Home.tsx": [
-    "/build/assets/Home-7uuwQzWy.js"
+    "/build/assets/Home-CnbgZ6iQ.js"
   ],
   "resources/js/Pages/public/Preinscription.tsx": [
     "/build/assets/Preinscription-v3nVBq9F.js"
@@ -270,13 +270,13 @@
     "/build/assets/welcome-DuzSnRog.js"
   ],
   "resources/js/hooks/useCountUp.ts": [
-    "/build/assets/Home-7uuwQzWy.js"
+    "/build/assets/Home-CnbgZ6iQ.js"
   ],
   "resources/js/hooks/useScroll.ts": [
     "/build/assets/Navigation-DReaNRgM.js"
   ],
   "resources/js/hooks/useScrollReveal.ts": [
-    "/build/assets/Home-7uuwQzWy.js"
+    "/build/assets/Home-CnbgZ6iQ.js"
   ],
   "resources/js/lib/toast.ts": [
     "/build/assets/ToastContainer-CdIokmOQ.js"

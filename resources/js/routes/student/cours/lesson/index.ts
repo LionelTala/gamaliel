@@ -4,7 +4,7 @@ import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFo
  * @see app/Http/Controllers/Student/CoursController.php:268
  * @route '/student/cours/lesson/{lesson}'
  */
-export const show = (args: { lesson: string | number | { id: string | number } } | [lesson: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+export const show = (args: { lesson: number | { id: number } } | [lesson: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: show.url(args, options),
     method: 'get',
 })
@@ -19,7 +19,7 @@ show.definition = {
  * @see app/Http/Controllers/Student/CoursController.php:268
  * @route '/student/cours/lesson/{lesson}'
  */
-show.url = (args: { lesson: string | number | { id: string | number } } | [lesson: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
+show.url = (args: { lesson: number | { id: number } } | [lesson: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { lesson: args }
     }
@@ -52,7 +52,7 @@ show.url = (args: { lesson: string | number | { id: string | number } } | [lesso
  * @see app/Http/Controllers/Student/CoursController.php:268
  * @route '/student/cours/lesson/{lesson}'
  */
-show.get = (args: { lesson: string | number | { id: string | number } } | [lesson: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+show.get = (args: { lesson: number | { id: number } } | [lesson: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: show.url(args, options),
     method: 'get',
 })
@@ -61,7 +61,7 @@ show.get = (args: { lesson: string | number | { id: string | number } } | [lesso
  * @see app/Http/Controllers/Student/CoursController.php:268
  * @route '/student/cours/lesson/{lesson}'
  */
-show.head = (args: { lesson: string | number | { id: string | number } } | [lesson: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+show.head = (args: { lesson: number | { id: number } } | [lesson: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: show.url(args, options),
     method: 'head',
 })
@@ -71,7 +71,7 @@ show.head = (args: { lesson: string | number | { id: string | number } } | [less
  * @see app/Http/Controllers/Student/CoursController.php:268
  * @route '/student/cours/lesson/{lesson}'
  */
-    const showForm = (args: { lesson: string | number | { id: string | number } } | [lesson: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+    const showForm = (args: { lesson: number | { id: number } } | [lesson: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
         action: show.url(args, options),
         method: 'get',
     })
@@ -81,7 +81,7 @@ show.head = (args: { lesson: string | number | { id: string | number } } | [less
  * @see app/Http/Controllers/Student/CoursController.php:268
  * @route '/student/cours/lesson/{lesson}'
  */
-        showForm.get = (args: { lesson: string | number | { id: string | number } } | [lesson: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+        showForm.get = (args: { lesson: number | { id: number } } | [lesson: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
             action: show.url(args, options),
             method: 'get',
         })
@@ -90,7 +90,7 @@ show.head = (args: { lesson: string | number | { id: string | number } } | [less
  * @see app/Http/Controllers/Student/CoursController.php:268
  * @route '/student/cours/lesson/{lesson}'
  */
-        showForm.head = (args: { lesson: string | number | { id: string | number } } | [lesson: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
+        showForm.head = (args: { lesson: number | { id: number } } | [lesson: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
             action: show.url(args, {
                         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
                             _method: 'HEAD',
@@ -106,7 +106,7 @@ show.head = (args: { lesson: string | number | { id: string | number } } | [less
  * @see app/Http/Controllers/Student/CoursController.php:357
  * @route '/student/cours/lesson/{lesson}/view'
  */
-export const view = (args: { lesson: string | number | { id: string | number } } | [lesson: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+export const view = (args: { lesson: number | { id: number } } | [lesson: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: view.url(args, options),
     method: 'post',
 })
@@ -121,7 +121,7 @@ view.definition = {
  * @see app/Http/Controllers/Student/CoursController.php:357
  * @route '/student/cours/lesson/{lesson}/view'
  */
-view.url = (args: { lesson: string | number | { id: string | number } } | [lesson: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
+view.url = (args: { lesson: number | { id: number } } | [lesson: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { lesson: args }
     }
@@ -154,7 +154,7 @@ view.url = (args: { lesson: string | number | { id: string | number } } | [lesso
  * @see app/Http/Controllers/Student/CoursController.php:357
  * @route '/student/cours/lesson/{lesson}/view'
  */
-view.post = (args: { lesson: string | number | { id: string | number } } | [lesson: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+view.post = (args: { lesson: number | { id: number } } | [lesson: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: view.url(args, options),
     method: 'post',
 })
@@ -164,7 +164,7 @@ view.post = (args: { lesson: string | number | { id: string | number } } | [less
  * @see app/Http/Controllers/Student/CoursController.php:357
  * @route '/student/cours/lesson/{lesson}/view'
  */
-    const viewForm = (args: { lesson: string | number | { id: string | number } } | [lesson: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    const viewForm = (args: { lesson: number | { id: number } } | [lesson: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
         action: view.url(args, options),
         method: 'post',
     })
@@ -174,7 +174,7 @@ view.post = (args: { lesson: string | number | { id: string | number } } | [less
  * @see app/Http/Controllers/Student/CoursController.php:357
  * @route '/student/cours/lesson/{lesson}/view'
  */
-        viewForm.post = (args: { lesson: string | number | { id: string | number } } | [lesson: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+        viewForm.post = (args: { lesson: number | { id: number } } | [lesson: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
             action: view.url(args, options),
             method: 'post',
         })
