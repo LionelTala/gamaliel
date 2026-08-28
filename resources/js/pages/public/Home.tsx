@@ -78,7 +78,7 @@ const avantages = [
 ];
 
 const centre = {
-    nom: 'Centre de Logpom',
+    nom: 'Campus de Logpom',
     adresse: 'Carrefour Andem, Logpom — Douala',
     tel: '+237 6 96 08 40 48',
     horaires: 'Lundi — Samedi, 06h00 – 22h00',
@@ -864,7 +864,7 @@ export default function Home({ activites, poles }: HomeProps) {
                             {poles?.length || 5} pôles de formation, un institut agréé, un accompagnement de terrain.
                         </p>
                         <Link
-                            href="/preinscription"
+                            href="/formations"
                             className="inline-flex items-center gap-2 mt-8 px-10 py-4 bg-white text-gamaliel-green-deep rounded-full font-bold text-lg hover:bg-gamaliel-navy-deep hover:text-white hover:-translate-y-0.5 hover:shadow-2xl transition-all duration-300"
                         >
                             Faire ma pré-inscription

@@ -20,13 +20,17 @@ interface Props {
     children: ReactNode;
 }
 
+// Couleur d'action unique du site — vert en primaire, aucun dégradé
+const ACTION_COLOR = '#6FA30E';       // gamaliel-green-deep
+const ACTION_COLOR_HOVER = '#5C8A0B';
+
 // Contact & Bibliothèque -> retirés du menu. "Contact" reste en placeholder,
 // la page /contact sera implémentée plus tard.
 const navLinks = [
     { label: 'Accueil', href: '/', icon: <HomeIcon className="w-[18px] h-[18px]" /> },
     { label: 'Formations', href: '/formations', icon: <AcademicCapIcon className="w-[18px] h-[18px]" /> },
     { label: 'Galerie', href: '/galerie', icon: <PhotoIcon className="w-[18px] h-[18px]" /> },
-    { label: 'Contact', href: '/contact', icon: <ChatBubbleLeftRightIcon className="w-[18px] h-[18px]" /> },
+    // { label: 'Contact', href: '/contact', icon: <ChatBubbleLeftRightIcon className="w-[18px] h-[18px]" /> },
 ];
 
 const PublicLayout = ({ children }: Props) => {
@@ -50,7 +54,7 @@ const PublicLayout = ({ children }: Props) => {
 
             <a
                 href="#contenu-principal"
-                className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[9999] focus:bg-white focus:p-4 focus:rounded-xl focus:shadow-lg focus:text-gamaliel-blue"
+                className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[9999] focus:bg-white focus:p-4 focus:rounded-xl focus:shadow-lg focus:text-gamaliel-green-deep"
             >
                 Aller au contenu principal
             </a>
@@ -85,9 +89,7 @@ const PublicLayout = ({ children }: Props) => {
                     isScrolled ? 'py-2' : 'py-4'
                 }`}
             >
-                <div
-                    className={`max-w-7xl mx-auto px-3 transition-all duration-300`}
-                >
+                <div className="max-w-7xl mx-auto px-3 transition-all duration-300">
                     <div
                         className={`flex items-center justify-between rounded-full border transition-all duration-300 px-4 sm:px-5 ${
                             isScrolled
@@ -95,18 +97,18 @@ const PublicLayout = ({ children }: Props) => {
                                 : 'bg-white border-gamaliel-navy/5 shadow-[0_4px_16px_-6px_rgba(21,59,98,0.12)] h-16'
                         }`}
                     >
-                        {/* Logo */}
-                        <Link href="/" className="flex items-center gap-2.5 shrink-0">
+                        {/* Logo + nom — visible dès mobile, plus de "hidden sm:flex" */}
+                        <Link href="/" className="flex items-center gap-2 sm:gap-2.5 shrink-0 min-w-0">
                             <img
                                 src="/assets/images/logo.png"
                                 alt="Institut Gamaliel"
-                                className="h-9 w-9 rounded-xl object-cover"
+                                className="h-8 w-8 sm:h-9 sm:w-9 rounded-xl object-cover shrink-0"
                             />
-                            <span className="hidden sm:flex flex-col leading-none">
-                                <span className="font-display font-bold text-[15px] tracking-tight text-gamaliel-navy">
+                            <span className="flex flex-col leading-none min-w-0">
+                                <span className="font-display font-bold text-[13px] sm:text-[15px] tracking-tight text-gamaliel-navy truncate">
                                     Institut Gamaliel
                                 </span>
-                                <span className="text-[10px] font-semibold tracking-[1.5px] text-gamaliel-blue uppercase">
+                                <span className="hidden sm:block text-[10px] font-semibold tracking-[1.5px] text-gamaliel-green-deep uppercase">
                                     Formation Professionnelle
                                 </span>
                             </span>
@@ -134,7 +136,7 @@ const PublicLayout = ({ children }: Props) => {
                             })}
                         </ul>
 
-                        <div className="flex items-center gap-2">
+                        <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
                             {/* Connexion */}
                             <Link
                                 href="/login"
@@ -144,16 +146,15 @@ const PublicLayout = ({ children }: Props) => {
                                 Connexion
                             </Link>
 
-                            {/* CTA principal */}
+                            {/* CTA principal — vert plein, pas de dégradé */}
                             <Link
-                                href="/preinscription"
+                                href="/formations"
                                 className="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-[13.5px] font-bold text-white transition-all duration-300 hover:-translate-y-0.5"
-                                style={{
-                                    background: 'linear-gradient(135deg, #FD7D0F 0%, #E13A4B 100%)',
-                                    boxShadow: '0 10px 20px -6px rgba(225,58,75,0.45)',
-                                }}
+                                style={{ backgroundColor: ACTION_COLOR }}
+                                onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = ACTION_COLOR_HOVER)}
+                                onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = ACTION_COLOR)}
                             >
-                                Pré-inscription
+                                Nos Formations
                             </Link>
 
                             {/* Hamburger */}
@@ -172,7 +173,7 @@ const PublicLayout = ({ children }: Props) => {
                     </div>
                 </div>
 
-                {/* Mobile Menu — panneau plein marine, distinct du style CAB */}
+                {/* Mobile Menu */}
                 {isMobileMenuOpen && (
                     <div className="md:hidden mx-3 mt-2 rounded-3xl overflow-hidden bg-gamaliel-navy-deep shadow-2xl">
                         <ul className="flex flex-col p-3 space-y-1">
@@ -209,9 +210,7 @@ const PublicLayout = ({ children }: Props) => {
                                 <Link
                                     href="/preinscription"
                                     className="flex items-center justify-center gap-2 w-full px-4 py-3.5 text-white rounded-2xl text-sm font-bold transition-all duration-300"
-                                    style={{
-                                        background: 'linear-gradient(135deg, #FD7D0F 0%, #E13A4B 100%)',
-                                    }}
+                                    style={{ backgroundColor: ACTION_COLOR }}
                                 >
                                     Faire ma pré-inscription
                                 </Link>
@@ -225,7 +224,9 @@ const PublicLayout = ({ children }: Props) => {
 
             <main className="flex-1">{children}</main>
 
- 
+            {/* ============================================ */}
+            {/* FOOTER */}
+            {/* ============================================ */}
             <footer
                 className="text-white/70 pt-16 pb-8"
                 style={{
@@ -256,16 +257,17 @@ const PublicLayout = ({ children }: Props) => {
                             </p>
                         </div>
 
-                        {/* Filières */}
+                        {/* Filières — 5 pôles, slugs alignés sur le back */}
                         <div>
                             <h4 className="text-white font-display font-semibold mb-4 text-sm tracking-wide">
                                 Nos filières
                             </h4>
                             <ul className="space-y-2.5 text-sm">
+                                <li><Link href="/formations?pole=gestion" className="hover:text-white transition-colors">Techniques Admin. & Comptables</Link></li>
                                 <li><Link href="/formations?pole=paramedical" className="hover:text-white transition-colors">Paramédical & Santé</Link></li>
-                                <li><Link href="/formations?pole=informatique" className="hover:text-white transition-colors">Informatique & Digital</Link></li>
-                                <li><Link href="/formations?pole=gestion" className="hover:text-white transition-colors">Gestion & Management</Link></li>
-                                <li><Link href="/formations?pole=hotellerie" className="hover:text-white transition-colors">Hôtellerie & Métiers de bouche</Link></li>
+                                <li><Link href="/formations?pole=informatique" className="hover:text-white transition-colors">Génie Informatique</Link></li>
+                                <li><Link href="/formations?pole=logistique" className="hover:text-white transition-colors">Logistique & Transport</Link></li>
+                                <li><Link href="/formations?pole=hotellerie" className="hover:text-white transition-colors">Hôtellerie & Restauration</Link></li>
                             </ul>
                         </div>
 
@@ -313,19 +315,19 @@ const PublicLayout = ({ children }: Props) => {
                                     Suivez-nous
                                 </h4>
                                 <div className="flex gap-2.5">
-                                    <a
-                                        href="https://www.instagram.com/institutgamaliel/"
+                                    
+                                    <a    href="https://www.instagram.com/institutgamaliel/"
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center text-white/70 hover:bg-gamaliel-red hover:text-white transition-colors"
+                                        className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center text-white/70 hover:bg-gamaliel-green-deep hover:text-white transition-colors"
                                         aria-label="Instagram"
                                     >
                                         <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                                             <path d="M12 2.16c3.2 0 3.58.01 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.15 3.23-1.66 4.77-4.92 4.92-1.27.06-1.64.07-4.85.07s-3.58-.01-4.85-.07c-3.26-.15-4.77-1.7-4.92-4.92-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85C2.34 3.9 3.86 2.35 7.12 2.2 8.4 2.17 8.77 2.16 12 2.16zM12 0C8.74 0 8.33.01 7.05.07c-4.35.2-6.78 2.62-6.98 6.98C.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.2 4.36 2.62 6.78 6.98 6.98C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c4.35-.2 6.78-2.62 6.98-6.98.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.2-4.35-2.62-6.78-6.98-6.98C15.67.01 15.26 0 12 0zm0 5.84A6.16 6.16 0 1 0 18.16 12 6.16 6.16 0 0 0 12 5.84zM12 16a4 4 0 1 1 4-4 4 4 0 0 1-4 4zm6.41-10.85a1.44 1.44 0 1 0 1.44 1.44 1.44 1.44 0 0 0-1.44-1.44z"/>
                                         </svg>
                                     </a>
-                                    <a
-                                        href="https://wa.me/237696084048"
+                                    
+                                    <a    href="https://wa.me/237696084048"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center text-white/70 hover:bg-gamaliel-green hover:text-gamaliel-navy-deep transition-colors"
@@ -335,8 +337,8 @@ const PublicLayout = ({ children }: Props) => {
                                             <path d="M17.6 6.32A8.86 8.86 0 0 0 12.05 4a8.94 8.94 0 0 0-7.63 13.49L3 21l3.65-1.36a8.9 8.9 0 0 0 4.34 1.13h.01c4.94 0 9.09-4.15 9.09-9.09 0-2.42-1.06-4.7-2.49-5.36zM12.05 19.1a7.5 7.5 0 0 1-3.83-1.06l-.27-.16-2.66 1 .95-2.6-.18-.28a7.4 7.4 0 0 1-1.14-3.97 7.5 7.5 0 1 1 7.13 7.07z"/>
                                         </svg>
                                     </a>
-                                    <a
-                                        href="https://cm.linkedin.com/jobs/view/manager-de-communaut%C3%A9-at-institut-de-formation-professionnelle-gamaliel-4106520802"
+                                    
+                                    <a    href="https://cm.linkedin.com/jobs/view/manager-de-communaut%C3%A9-at-institut-de-formation-professionnelle-gamaliel-4106520802"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center text-white/70 hover:bg-gamaliel-blue hover:text-white transition-colors"

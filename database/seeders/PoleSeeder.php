@@ -45,7 +45,7 @@ class PoleSeeder extends Seeder
                 'slug' => 'logistique',
                 'description' => "Le pôle Logistique & Transport forme aux métiers de la douane et du transit : opérations douanières, réglementation du commerce international et déclaration en douane. Une filière stratégique pour les futurs professionnels du port et de la chaîne logistique camerounaise.",
                 'description_courte' => 'Douane et transit, déclaration en douane.',
-                'image' => '/assets/images/poles/logistique.jpg',
+                'image' => '/assets/images/poles/logistique.webp',
                 'couleur' => '#6FA30E',
                 'icone' => 'TruckIcon',
                 'ordre' => 4,

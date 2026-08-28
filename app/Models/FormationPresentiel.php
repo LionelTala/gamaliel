@@ -56,7 +56,7 @@ class FormationPresentiel extends Model
     public function getImageUrlAttribute()
     {
         if ($this->image) {
-            return asset('storage/formations_presentiel/' . $this->image);
+            return asset('assets/images/formations_presentiel/' . $this->image);
         }
         return asset('assets/images/placeholder.jpg');
     }

@@ -161,8 +161,8 @@ export default function Galerie({ medias }: Props) {
                 {/* HEADER */}
                 {/* ============================================ */}
                 <section className="relative overflow-hidden bg-gamaliel-navy-deep text-white pt-32 pb-14">
-                    <div className="pointer-events-none absolute -top-24 -right-16 w-96 h-96 rounded-full bg-gamaliel-blue/20 blur-[100px]" />
-                    <div className="pointer-events-none absolute -bottom-28 -left-16 w-80 h-80 rounded-full bg-gamaliel-green/15 blur-[100px]" />
+                    <div className="hidden md:block pointer-events-none absolute -top-24 -right-16 w-96 h-96 rounded-full bg-gamaliel-green/15 blur-[60px]" />
+                    <div className="hidden md:block pointer-events-none absolute -bottom-28 -left-16 w-80 h-80 rounded-full bg-gamaliel-blue/10 blur-[60px]" />
 
                     <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                         <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/15 bg-white/[0.06] text-[12px] font-semibold tracking-[0.14em] uppercase text-white/85">
@@ -171,13 +171,7 @@ export default function Galerie({ medias }: Props) {
                         </span>
 
                         <h1 className="font-display font-bold text-4xl md:text-5xl mt-6 tracking-tight">
-                            Notre{' '}
-                            <span
-                                className="bg-clip-text text-transparent"
-                                style={{ backgroundImage: 'linear-gradient(100deg, #FD7D0F, #E13A4B)' }}
-                            >
-                                Galerie
-                            </span>
+                            Notre <span className="text-gamaliel-green">Galerie</span>
                         </h1>
                         <p className="mt-4 text-lg text-white/70 max-w-2xl mx-auto">
                             Ateliers pratiques, événements et remises de diplômes au centre de Logpom, en images.
@@ -196,10 +190,10 @@ export default function Galerie({ medias }: Props) {
                                         style={
                                             active
                                                 ? {
-                                                      backgroundColor: style ? style.color : '#fff',
-                                                      borderColor: style ? style.color : '#fff',
-                                                      color: style ? '#fff' : '#153B62',
-                                                  }
+                                                    backgroundColor: style ? style.color : '#fff',
+                                                    borderColor: style ? style.color : '#fff',
+                                                    color: style ? '#fff' : '#153B62',
+                                                }
                                                 : { borderColor: 'rgba(255,255,255,0.2)', color: 'rgba(255,255,255,0.7)' }
                                         }
                                     >

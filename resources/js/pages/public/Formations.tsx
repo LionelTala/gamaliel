@@ -70,8 +70,8 @@ const poles = [
 
 // Couleur d'action par défaut du site — remplace le bleu CAB partout où il n'y a pas
 // de pôle spécifique à représenter (CTA, focus, puces, badges génériques).
-const ACTION_COLOR = '#FD7D0F'; // gamaliel-orange
-const ACTION_GRADIENT = 'linear-gradient(135deg, #FD7D0F 0%, #E13A4B 100%)';
+const ACTION_COLOR = '#6FA30E';       // et pas '#FD7D0F'
+const ACTION_COLOR_HOVER = '#5C8A0B';
 
 export default function Formations({ formationsEnLigne, formationsPresentiel }: Props) {
     const { url } = usePage();
@@ -348,8 +348,8 @@ export default function Formations({ formationsEnLigne, formationsPresentiel }: 
                 {/* HEADER */}
                 {/* ============================================ */}
                 <section className="relative overflow-hidden bg-gamaliel-navy-deep text-white pt-32 pb-14">
-                    <div className="pointer-events-none absolute -top-24 -left-20 w-96 h-96 rounded-full bg-gamaliel-green/15 blur-[100px]" />
-                    <div className="pointer-events-none absolute -bottom-32 -right-10 w-[26rem] h-[26rem] rounded-full bg-gamaliel-orange/20 blur-[110px]" />
+                    <div className="hidden md:block pointer-events-none absolute -top-24 -left-20 w-96 h-96 rounded-full bg-gamaliel-green/15 blur-[60px]" />
+                    <div className="hidden md:block pointer-events-none absolute -bottom-32 -right-10 w-96 h-96 rounded-full bg-gamaliel-green/10 blur-[60px]" />
 
                     <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                         <div className="text-center animate-fade-in" style={{ animationDelay: '0ms' }}>
@@ -359,29 +359,24 @@ export default function Formations({ formationsEnLigne, formationsPresentiel }: 
                             </span>
 
                             <h1 className="font-display font-bold text-4xl md:text-5xl mt-6 tracking-tight">
-                                Nos{' '}
-                                <span
-                                    className="bg-clip-text text-transparent"
-                                    style={{ backgroundImage: ACTION_GRADIENT }}
-                                >
-                                    Formations
-                                </span>
+                                Nos <span className="text-gamaliel-green">Formations</span>
                             </h1>
                             <p className="mt-4 text-lg text-white/70 max-w-2xl mx-auto">
                                 Choisissez votre filière, en présentiel au centre de Logpom (Douala) ou en ligne, à votre rythme.
                             </p>
 
-                            {/* Tabs présentiel / en ligne — indicateur glissant orange */}
+                            {/* Tabs présentiel / en ligne — indicateur glissant vert plein */}
                             <div className="relative mt-9 inline-flex rounded-full p-1 bg-white/[0.08] border border-white/10">
                                 <div
                                     className="absolute top-1 bottom-1 rounded-full transition-all duration-300 ease-out"
                                     style={{
-                                        background: ACTION_GRADIENT,
+                                        backgroundColor: ACTION_COLOR,
                                         width: 'calc(50% - 4px)',
                                         left: activeTab === 'presentiel' ? '4px' : 'calc(50% + 0px)',
                                     }}
                                 />
 
+                                
                                 <a    href="#presentiel"
                                     onClick={(e) => {
                                         e.preventDefault();
@@ -394,7 +389,8 @@ export default function Formations({ formationsEnLigne, formationsPresentiel }: 
                                     En présentiel
                                 </a>
 
-                                 <a   href="#enligne"
+                                
+                                <a    href="#enligne"
                                     onClick={(e) => {
                                         e.preventDefault();
                                         handleTabChange('enligne');
@@ -408,7 +404,7 @@ export default function Formations({ formationsEnLigne, formationsPresentiel }: 
                             </div>
                         </div>
 
-                        {/* Filtres par pôle */}
+                        {/* Filtres par pôle — couleurs par pôle conservées (identité, pas thème UI) */}
                         <div className="mt-8 flex flex-wrap justify-center gap-2.5">
                             <button
                                 onClick={() => setActivePole('tous')}
@@ -452,7 +448,7 @@ export default function Formations({ formationsEnLigne, formationsPresentiel }: 
                         {activeTab === 'presentiel' ? (
                             <div id="presentiel">
                                 <h2 className="font-display text-2xl font-bold text-gamaliel-navy-deep mb-8 text-center sm:text-left">
-                                    Formations en présentiel — Centre de Logpom, Douala
+                                    Formations en présentiel —  Douala
                                 </h2>
                                 {!hasPresentiel ? (
                                     <EmptyState label="Aucune formation en présentiel disponible pour ce filtre." />
@@ -644,7 +640,7 @@ export default function Formations({ formationsEnLigne, formationsPresentiel }: 
                         >
                             <div className="sticky top-0 bg-white border-b border-gamaliel-navy/5 px-6 py-4 rounded-t-3xl flex items-center justify-between z-10">
                                 <div className="flex items-center gap-3">
-                                    <div className="w-12 h-12 rounded-xl bg-gamaliel-orange/10 text-gamaliel-orange flex items-center justify-center text-2xl">
+                                    <div className="w-12 h-12 rounded-xl bg-gamaliel-green/15 text-gamaliel-green-deep flex items-center justify-center text-2xl">
                                         {selectedFormation.icon || '📚'}
                                     </div>
                                     <h2 className="text-xl font-bold text-gamaliel-navy-deep notranslate">
@@ -674,21 +670,21 @@ export default function Formations({ formationsEnLigne, formationsPresentiel }: 
 
                                 <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                                     <div className="bg-gamaliel-paper rounded-xl p-3 text-center notranslate">
-                                        <ClockIcon className="w-5 h-5 text-gamaliel-orange mx-auto mb-1" />
+                                        <ClockIcon className="w-5 h-5 text-gamaliel-green-deep mx-auto mb-1" />
                                         <p className="text-xs text-gamaliel-navy/50">Durée</p>
                                         <p className="text-sm font-semibold text-gamaliel-navy-deep">
                                             {selectedFormation.duration || 'Non définie'}
                                         </p>
                                     </div>
                                     <div className="bg-gamaliel-paper rounded-xl p-3 text-center notranslate">
-                                        <AcademicCapIcon className="w-5 h-5 text-gamaliel-orange mx-auto mb-1" />
+                                        <AcademicCapIcon className="w-5 h-5 text-gamaliel-green-deep mx-auto mb-1" />
                                         <p className="text-xs text-gamaliel-navy/50">Diplôme</p>
                                         <p className="text-sm font-semibold text-gamaliel-navy-deep">
                                             {selectedFormation.diplome || 'Non défini'}
                                         </p>
                                     </div>
                                     <div className="bg-gamaliel-paper rounded-xl p-3 text-center notranslate">
-                                        <CurrencyDollarIcon className="w-5 h-5 text-gamaliel-orange mx-auto mb-1" />
+                                        <CurrencyDollarIcon className="w-5 h-5 text-gamaliel-green-deep mx-auto mb-1" />
                                         <p className="text-xs text-gamaliel-navy/50">Frais</p>
                                         <p className="text-sm font-semibold text-gamaliel-navy-deep">
                                             {selectedFormation.price || selectedFormation.frais_formatted || '0 FCFA'}
@@ -710,7 +706,7 @@ export default function Formations({ formationsEnLigne, formationsPresentiel }: 
                                             <ul className="grid grid-cols-1 gap-1.5">
                                                 {selectedFormation.programme.map((item: string, index: number) => (
                                                     <li key={index} className="flex items-start gap-2 text-sm text-gamaliel-navy/70">
-                                                        <span className="text-gamaliel-orange mt-0.5">▸</span>
+                                                        <span className="text-gamaliel-green-deep mt-0.5">▸</span>
                                                         {item}
                                                     </li>
                                                 ))}
@@ -747,8 +743,8 @@ export default function Formations({ formationsEnLigne, formationsPresentiel }: 
 
                                 <div className="flex flex-col sm:flex-row gap-3 pt-4 border-t border-gamaliel-navy/5">
                                     {selectedFormation.lien_externe && selectedFormation.lien_label && (
-
-                                         <a   href={selectedFormation.lien_externe}
+                                        
+                                        <a    href={selectedFormation.lien_externe}
                                             target="_blank"
                                             rel="noopener noreferrer"
                                             className="flex-1 text-center px-6 py-3 bg-gamaliel-navy/5 text-gamaliel-navy rounded-xl font-semibold hover:bg-gamaliel-navy/10 transition-colors notranslate"
@@ -762,9 +758,11 @@ export default function Formations({ formationsEnLigne, formationsPresentiel }: 
                                             onClick={() => openInscriptionModal(selectedFormation)}
                                             className="flex-1 text-center px-6 py-3 text-white rounded-xl font-semibold transition-all duration-300 notranslate flex items-center justify-center gap-2"
                                             style={{
-                                                background: ACTION_GRADIENT,
-                                                boxShadow: '0 10px 20px -6px rgba(225,58,75,0.4)',
+                                                backgroundColor: ACTION_COLOR,
+                                                boxShadow: '0 10px 20px -6px rgba(111,163,14,0.4)',
                                             }}
+                                            onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = ACTION_COLOR_HOVER)}
+                                            onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = ACTION_COLOR)}
                                         >
                                             <UserPlusIcon className="w-5 h-5" />
                                             Je m'inscris
@@ -774,9 +772,11 @@ export default function Formations({ formationsEnLigne, formationsPresentiel }: 
                                             href={`/preinscription?formation=${selectedFormation.id}&type=formation`}
                                             className="flex-1 text-center px-6 py-3 text-white rounded-xl font-semibold transition-all duration-300 notranslate flex items-center justify-center gap-2"
                                             style={{
-                                                background: ACTION_GRADIENT,
-                                                boxShadow: '0 10px 20px -6px rgba(225,58,75,0.4)',
+                                                backgroundColor: ACTION_COLOR,
+                                                boxShadow: '0 10px 20px -6px rgba(111,163,14,0.4)',
                                             }}
+                                            onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = ACTION_COLOR_HOVER)}
+                                            onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = ACTION_COLOR)}
                                         >
                                             <UserPlusIcon className="w-5 h-5" />
                                             Me pré-inscrire
@@ -857,7 +857,7 @@ export default function Formations({ formationsEnLigne, formationsPresentiel }: 
                                                     type="text"
                                                     value={formData.nom_complet}
                                                     onChange={(e) => setFormData({ ...formData, nom_complet: e.target.value })}
-                                                    className="w-full pl-10 pr-4 py-2.5 border border-gamaliel-navy/15 rounded-xl focus:ring-2 focus:ring-gamaliel-orange focus:border-gamaliel-orange transition-colors"
+                                                    className="w-full pl-10 pr-4 py-2.5 border border-gamaliel-navy/15 rounded-xl focus:ring-2 focus:ring-gamaliel-green-deep focus:border-gamaliel-green-deep transition-colors"
                                                     placeholder="Votre nom et prénom"
                                                     required
                                                 />
@@ -876,7 +876,7 @@ export default function Formations({ formationsEnLigne, formationsPresentiel }: 
                                                     type="email"
                                                     value={formData.email}
                                                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                                                    className="w-full pl-10 pr-4 py-2.5 border border-gamaliel-navy/15 rounded-xl focus:ring-2 focus:ring-gamaliel-orange focus:border-gamaliel-orange transition-colors"
+                                                    className="w-full pl-10 pr-4 py-2.5 border border-gamaliel-navy/15 rounded-xl focus:ring-2 focus:ring-gamaliel-green-deep focus:border-gamaliel-green-deep transition-colors"
                                                     placeholder="votre@email.com"
                                                 />
                                             </div>
@@ -894,7 +894,7 @@ export default function Formations({ formationsEnLigne, formationsPresentiel }: 
                                                     type="tel"
                                                     value={formData.telephone}
                                                     onChange={(e) => setFormData({ ...formData, telephone: e.target.value })}
-                                                    className="w-full pl-10 pr-4 py-2.5 border border-gamaliel-navy/15 rounded-xl focus:ring-2 focus:ring-gamaliel-orange focus:border-gamaliel-orange transition-colors"
+                                                    className="w-full pl-10 pr-4 py-2.5 border border-gamaliel-navy/15 rounded-xl focus:ring-2 focus:ring-gamaliel-green-deep focus:border-gamaliel-green-deep transition-colors"
                                                     placeholder="6XX XXX XXX"
                                                     required
                                                 />
@@ -913,7 +913,7 @@ export default function Formations({ formationsEnLigne, formationsPresentiel }: 
                                                     type="text"
                                                     value={formData.ville}
                                                     onChange={(e) => setFormData({ ...formData, ville: e.target.value })}
-                                                    className="w-full pl-10 pr-4 py-2.5 border border-gamaliel-navy/15 rounded-xl focus:ring-2 focus:ring-gamaliel-orange focus:border-gamaliel-orange transition-colors"
+                                                    className="w-full pl-10 pr-4 py-2.5 border border-gamaliel-navy/15 rounded-xl focus:ring-2 focus:ring-gamaliel-green-deep focus:border-gamaliel-green-deep transition-colors"
                                                     placeholder="Douala, Yaoundé, Bafoussam..."
                                                 />
                                             </div>
@@ -930,9 +930,11 @@ export default function Formations({ formationsEnLigne, formationsPresentiel }: 
                                             disabled={isSubmitting}
                                             className="w-full flex items-center justify-center gap-2 py-3 px-4 text-white rounded-xl font-semibold transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
                                             style={{
-                                                background: ACTION_GRADIENT,
-                                                boxShadow: '0 10px 20px -6px rgba(225,58,75,0.4)',
+                                                backgroundColor: ACTION_COLOR,
+                                                boxShadow: '0 10px 20px -6px rgba(111,163,14,0.4)',
                                             }}
+                                            onMouseEnter={(e) => !isSubmitting && (e.currentTarget.style.backgroundColor = ACTION_COLOR_HOVER)}
+                                            onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = ACTION_COLOR)}
                                         >
                                             {isSubmitting ? (
                                                 <>

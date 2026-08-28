@@ -15,8 +15,7 @@
 /storage/*.key
 /storage/*.log
 /storage/framework/*
-/storage/app/*
-!/storage/app/.gitkeep
+ 
 !/storage/framework/.gitkeep
 !/storage/logs/.gitkeep
 /storage/views/*

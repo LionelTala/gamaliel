@@ -5,6 +5,8 @@ namespace Database\Seeders;
 use App\Models\FormationPresentiel;
 use App\Models\Pole;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
+
 
 class FormationPresentielSeeder extends Seeder
 {
@@ -610,6 +612,9 @@ class FormationPresentielSeeder extends Seeder
 
             $data['pole_id'] = $poles[$poleSlug];
             unset($data['pole']);
+
+            // Génère le slug à partir du titre — ex: "Secrétariat Bureautique" -> "secretariat-bureautique"
+            $data['slug'] = Str::slug($data['title']);
 
             FormationPresentiel::create($data);
         }
