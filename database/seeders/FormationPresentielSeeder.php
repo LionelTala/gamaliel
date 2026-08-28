@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use App\Models\FormationPresentiel;
 use App\Models\Pole;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Str;
+use Illuminate\Support\Str; //test 
 
 
 class FormationPresentielSeeder extends Seeder
