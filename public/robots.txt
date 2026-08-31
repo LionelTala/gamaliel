@@ -10,4 +10,4 @@ Disallow: /logout
 Disallow: /password/
 
 # Lien absolu vers le Sitemap XML
-Sitemap: https://cabinformatique.com/sitemap.xml
+Sitemap: https://institutgamaliel.com/sitemap.xml
