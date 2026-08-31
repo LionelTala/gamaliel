@@ -34,11 +34,14 @@ use App\Http\Controllers\Public\ActiviteController as PublicActiviteController;
 use App\Http\Controllers\Public\BibliothequeController;
 use App\Http\Controllers\Student\VideoStreamController;
 use App\Http\Controllers\Admin\VideoStreamController as AdminVideoStreamController;
+use App\Http\Controllers\Public\ContactController;
+use App\Http\Controllers\Admin\ContactController as AdminContactController;
 
 
 
  Route::get('/', [HomeController::class, 'index'])->name('home');
-
+Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
+Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 Route::get('/formations', [App\Http\Controllers\Public\FormationController::class, 'index'])->name('formations.public');
 Route::get('/certification', [App\Http\Controllers\Public\CertificationController::class, 'index'])->name('certification.public');
 Route::get('/preinscription', [CandidatureController::class, 'create'])->name('candidature.create');
@@ -269,7 +272,9 @@ Route::delete('/cours/lesson/{lesson}', [LessonController::class, 'destroy'])->n
 // Activer/Désactiver une leçon
 Route::post('/cours/lesson/{lesson}/toggle-active', [LessonController::class, 'toggleActive'])->name('lessons.toggle-active');
 
-
+Route::get('/contacts', [AdminContactController::class, 'index'])->name('admin.contacts.index');
+Route::patch('/contacts/{contact}/read', [AdminContactController::class, 'markAsRead'])->name('admin.contacts.read');
+Route::delete('/contacts/{contact}', [AdminContactController::class, 'destroy'])->name('admin.contacts.destroy');
 
 // // ✅ CORRECT : Doit pointer vers Admin\VideoStreamController
 //     Route::get('/cours/{cours}/stream-video', [AdminVideoStreamController::class, 'streamCours'])->name('video.stream.cours');

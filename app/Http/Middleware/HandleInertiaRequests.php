@@ -22,8 +22,9 @@ class HandleInertiaRequests extends Middleware
         $unreadTotal = 0;
 
         if ($user) {
-            $counts = Notification::where('user_id', $user->id)
-                ->whereNull('read_at')
+            // ✅ forAdmin() inclut les notifications globales (user_id = null)
+            $counts = Notification::forAdmin($user->id)
+                ->unread()
                 ->selectRaw('type, count(*) as total')
                 ->groupBy('type')
                 ->pluck('total', 'type');

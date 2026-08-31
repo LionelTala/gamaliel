@@ -31,6 +31,8 @@ interface Formation {
     lien_label: string | null;
     is_active: boolean;
     order: number;
+    pole_id?: number | null;
+    pole_nom?: string | null;
     type: 'enligne' | 'presentiel';
     // Champs spécifiques présentiel
     icon?: string;
@@ -141,6 +143,9 @@ export default function Index({ formations, currentType }: Props) {
                                             Formation
                                         </th>
                                         <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Pôle rattaché
+                                        </th>
+                                        <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                             Abrév.
                                         </th>
                                         <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -187,6 +192,15 @@ export default function Index({ formations, currentType }: Props) {
                                                         </p>
                                                     </div>
                                                 </div>
+                                            </td>
+                                            <td className="px-4 py-3">
+                                                {formation.pole_nom ? (
+                                                    <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-50 text-blue-700">
+                                                        {formation.pole_nom}
+                                                    </span>
+                                                ) : (
+                                                    <span className="text-xs text-gray-400 italic">Aucun pôle</span>
+                                                )}
                                             </td>
                                             <td className="px-4 py-3 text-gray-600 text-xs font-mono">
                                                 {formation.abbreviation}

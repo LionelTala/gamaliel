@@ -1,7 +1,7 @@
 import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../../wayfinder'
 /**
 * @see \App\Http\Controllers\Admin\FormationController::index
- * @see app/Http/Controllers/Admin/FormationController.php:17
+ * @see app/Http/Controllers/Admin/FormationController.php:19
  * @route '/admin/formations'
  */
 export const index = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -16,7 +16,7 @@ index.definition = {
 
 /**
 * @see \App\Http\Controllers\Admin\FormationController::index
- * @see app/Http/Controllers/Admin/FormationController.php:17
+ * @see app/Http/Controllers/Admin/FormationController.php:19
  * @route '/admin/formations'
  */
 index.url = (options?: RouteQueryOptions) => {
@@ -25,7 +25,7 @@ index.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\Admin\FormationController::index
- * @see app/Http/Controllers/Admin/FormationController.php:17
+ * @see app/Http/Controllers/Admin/FormationController.php:19
  * @route '/admin/formations'
  */
 index.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -34,7 +34,7 @@ index.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 })
 /**
 * @see \App\Http\Controllers\Admin\FormationController::index
- * @see app/Http/Controllers/Admin/FormationController.php:17
+ * @see app/Http/Controllers/Admin/FormationController.php:19
  * @route '/admin/formations'
  */
 index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -44,7 +44,7 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
     /**
 * @see \App\Http\Controllers\Admin\FormationController::index
- * @see app/Http/Controllers/Admin/FormationController.php:17
+ * @see app/Http/Controllers/Admin/FormationController.php:19
  * @route '/admin/formations'
  */
     const indexForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -54,7 +54,7 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
             /**
 * @see \App\Http\Controllers\Admin\FormationController::index
- * @see app/Http/Controllers/Admin/FormationController.php:17
+ * @see app/Http/Controllers/Admin/FormationController.php:19
  * @route '/admin/formations'
  */
         indexForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -63,7 +63,7 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
         })
             /**
 * @see \App\Http\Controllers\Admin\FormationController::index
- * @see app/Http/Controllers/Admin/FormationController.php:17
+ * @see app/Http/Controllers/Admin/FormationController.php:19
  * @route '/admin/formations'
  */
         indexForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -79,7 +79,7 @@ index.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     index.form = indexForm
 /**
 * @see \App\Http\Controllers\Admin\FormationController::create
- * @see app/Http/Controllers/Admin/FormationController.php:95
+ * @see app/Http/Controllers/Admin/FormationController.php:104
  * @route '/admin/formations/create'
  */
 export const create = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -94,7 +94,7 @@ create.definition = {
 
 /**
 * @see \App\Http\Controllers\Admin\FormationController::create
- * @see app/Http/Controllers/Admin/FormationController.php:95
+ * @see app/Http/Controllers/Admin/FormationController.php:104
  * @route '/admin/formations/create'
  */
 create.url = (options?: RouteQueryOptions) => {
@@ -103,7 +103,7 @@ create.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\Admin\FormationController::create
- * @see app/Http/Controllers/Admin/FormationController.php:95
+ * @see app/Http/Controllers/Admin/FormationController.php:104
  * @route '/admin/formations/create'
  */
 create.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -112,7 +112,7 @@ create.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 })
 /**
 * @see \App\Http\Controllers\Admin\FormationController::create
- * @see app/Http/Controllers/Admin/FormationController.php:95
+ * @see app/Http/Controllers/Admin/FormationController.php:104
  * @route '/admin/formations/create'
  */
 create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -122,7 +122,7 @@ create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
     /**
 * @see \App\Http\Controllers\Admin\FormationController::create
- * @see app/Http/Controllers/Admin/FormationController.php:95
+ * @see app/Http/Controllers/Admin/FormationController.php:104
  * @route '/admin/formations/create'
  */
     const createForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -132,7 +132,7 @@ create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
             /**
 * @see \App\Http\Controllers\Admin\FormationController::create
- * @see app/Http/Controllers/Admin/FormationController.php:95
+ * @see app/Http/Controllers/Admin/FormationController.php:104
  * @route '/admin/formations/create'
  */
         createForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -141,7 +141,7 @@ create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
         })
             /**
 * @see \App\Http\Controllers\Admin\FormationController::create
- * @see app/Http/Controllers/Admin/FormationController.php:95
+ * @see app/Http/Controllers/Admin/FormationController.php:104
  * @route '/admin/formations/create'
  */
         createForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -157,7 +157,7 @@ create.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     create.form = createForm
 /**
 * @see \App\Http\Controllers\Admin\FormationController::createPresentiel
- * @see app/Http/Controllers/Admin/FormationController.php:108
+ * @see app/Http/Controllers/Admin/FormationController.php:120
  * @route '/admin/formations/create-presentiel'
  */
 export const createPresentiel = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -172,7 +172,7 @@ createPresentiel.definition = {
 
 /**
 * @see \App\Http\Controllers\Admin\FormationController::createPresentiel
- * @see app/Http/Controllers/Admin/FormationController.php:108
+ * @see app/Http/Controllers/Admin/FormationController.php:120
  * @route '/admin/formations/create-presentiel'
  */
 createPresentiel.url = (options?: RouteQueryOptions) => {
@@ -181,7 +181,7 @@ createPresentiel.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\Admin\FormationController::createPresentiel
- * @see app/Http/Controllers/Admin/FormationController.php:108
+ * @see app/Http/Controllers/Admin/FormationController.php:120
  * @route '/admin/formations/create-presentiel'
  */
 createPresentiel.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -190,7 +190,7 @@ createPresentiel.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => 
 })
 /**
 * @see \App\Http\Controllers\Admin\FormationController::createPresentiel
- * @see app/Http/Controllers/Admin/FormationController.php:108
+ * @see app/Http/Controllers/Admin/FormationController.php:120
  * @route '/admin/formations/create-presentiel'
  */
 createPresentiel.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -200,7 +200,7 @@ createPresentiel.head = (options?: RouteQueryOptions): RouteDefinition<'head'> =
 
     /**
 * @see \App\Http\Controllers\Admin\FormationController::createPresentiel
- * @see app/Http/Controllers/Admin/FormationController.php:108
+ * @see app/Http/Controllers/Admin/FormationController.php:120
  * @route '/admin/formations/create-presentiel'
  */
     const createPresentielForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -210,7 +210,7 @@ createPresentiel.head = (options?: RouteQueryOptions): RouteDefinition<'head'> =
 
             /**
 * @see \App\Http\Controllers\Admin\FormationController::createPresentiel
- * @see app/Http/Controllers/Admin/FormationController.php:108
+ * @see app/Http/Controllers/Admin/FormationController.php:120
  * @route '/admin/formations/create-presentiel'
  */
         createPresentielForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -219,7 +219,7 @@ createPresentiel.head = (options?: RouteQueryOptions): RouteDefinition<'head'> =
         })
             /**
 * @see \App\Http\Controllers\Admin\FormationController::createPresentiel
- * @see app/Http/Controllers/Admin/FormationController.php:108
+ * @see app/Http/Controllers/Admin/FormationController.php:120
  * @route '/admin/formations/create-presentiel'
  */
         createPresentielForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -235,7 +235,7 @@ createPresentiel.head = (options?: RouteQueryOptions): RouteDefinition<'head'> =
     createPresentiel.form = createPresentielForm
 /**
 * @see \App\Http\Controllers\Admin\FormationController::store
- * @see app/Http/Controllers/Admin/FormationController.php:113
+ * @see app/Http/Controllers/Admin/FormationController.php:129
  * @route '/admin/formations'
  */
 export const store = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -250,7 +250,7 @@ store.definition = {
 
 /**
 * @see \App\Http\Controllers\Admin\FormationController::store
- * @see app/Http/Controllers/Admin/FormationController.php:113
+ * @see app/Http/Controllers/Admin/FormationController.php:129
  * @route '/admin/formations'
  */
 store.url = (options?: RouteQueryOptions) => {
@@ -259,7 +259,7 @@ store.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\Admin\FormationController::store
- * @see app/Http/Controllers/Admin/FormationController.php:113
+ * @see app/Http/Controllers/Admin/FormationController.php:129
  * @route '/admin/formations'
  */
 store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -269,7 +269,7 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
 
     /**
 * @see \App\Http\Controllers\Admin\FormationController::store
- * @see app/Http/Controllers/Admin/FormationController.php:113
+ * @see app/Http/Controllers/Admin/FormationController.php:129
  * @route '/admin/formations'
  */
     const storeForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -279,7 +279,7 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
 
             /**
 * @see \App\Http\Controllers\Admin\FormationController::store
- * @see app/Http/Controllers/Admin/FormationController.php:113
+ * @see app/Http/Controllers/Admin/FormationController.php:129
  * @route '/admin/formations'
  */
         storeForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -290,7 +290,7 @@ store.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     store.form = storeForm
 /**
 * @see \App\Http\Controllers\Admin\FormationController::edit
- * @see app/Http/Controllers/Admin/FormationController.php:256
+ * @see app/Http/Controllers/Admin/FormationController.php:279
  * @route '/admin/formations/{id}/edit'
  */
 export const edit = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -305,7 +305,7 @@ edit.definition = {
 
 /**
 * @see \App\Http\Controllers\Admin\FormationController::edit
- * @see app/Http/Controllers/Admin/FormationController.php:256
+ * @see app/Http/Controllers/Admin/FormationController.php:279
  * @route '/admin/formations/{id}/edit'
  */
 edit.url = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions) => {
@@ -333,7 +333,7 @@ edit.url = (args: { id: string | number } | [id: string | number ] | string | nu
 
 /**
 * @see \App\Http\Controllers\Admin\FormationController::edit
- * @see app/Http/Controllers/Admin/FormationController.php:256
+ * @see app/Http/Controllers/Admin/FormationController.php:279
  * @route '/admin/formations/{id}/edit'
  */
 edit.get = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -342,7 +342,7 @@ edit.get = (args: { id: string | number } | [id: string | number ] | string | nu
 })
 /**
 * @see \App\Http\Controllers\Admin\FormationController::edit
- * @see app/Http/Controllers/Admin/FormationController.php:256
+ * @see app/Http/Controllers/Admin/FormationController.php:279
  * @route '/admin/formations/{id}/edit'
  */
 edit.head = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -352,7 +352,7 @@ edit.head = (args: { id: string | number } | [id: string | number ] | string | n
 
     /**
 * @see \App\Http\Controllers\Admin\FormationController::edit
- * @see app/Http/Controllers/Admin/FormationController.php:256
+ * @see app/Http/Controllers/Admin/FormationController.php:279
  * @route '/admin/formations/{id}/edit'
  */
     const editForm = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -362,7 +362,7 @@ edit.head = (args: { id: string | number } | [id: string | number ] | string | n
 
             /**
 * @see \App\Http\Controllers\Admin\FormationController::edit
- * @see app/Http/Controllers/Admin/FormationController.php:256
+ * @see app/Http/Controllers/Admin/FormationController.php:279
  * @route '/admin/formations/{id}/edit'
  */
         editForm.get = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -371,7 +371,7 @@ edit.head = (args: { id: string | number } | [id: string | number ] | string | n
         })
             /**
 * @see \App\Http\Controllers\Admin\FormationController::edit
- * @see app/Http/Controllers/Admin/FormationController.php:256
+ * @see app/Http/Controllers/Admin/FormationController.php:279
  * @route '/admin/formations/{id}/edit'
  */
         editForm.head = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -387,7 +387,7 @@ edit.head = (args: { id: string | number } | [id: string | number ] | string | n
     edit.form = editForm
 /**
 * @see \App\Http\Controllers\Admin\FormationController::editPresentiel
- * @see app/Http/Controllers/Admin/FormationController.php:296
+ * @see app/Http/Controllers/Admin/FormationController.php:323
  * @route '/admin/formations/{id}/edit-presentiel'
  */
 export const editPresentiel = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -402,7 +402,7 @@ editPresentiel.definition = {
 
 /**
 * @see \App\Http\Controllers\Admin\FormationController::editPresentiel
- * @see app/Http/Controllers/Admin/FormationController.php:296
+ * @see app/Http/Controllers/Admin/FormationController.php:323
  * @route '/admin/formations/{id}/edit-presentiel'
  */
 editPresentiel.url = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions) => {
@@ -430,7 +430,7 @@ editPresentiel.url = (args: { id: string | number } | [id: string | number ] | s
 
 /**
 * @see \App\Http\Controllers\Admin\FormationController::editPresentiel
- * @see app/Http/Controllers/Admin/FormationController.php:296
+ * @see app/Http/Controllers/Admin/FormationController.php:323
  * @route '/admin/formations/{id}/edit-presentiel'
  */
 editPresentiel.get = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -439,7 +439,7 @@ editPresentiel.get = (args: { id: string | number } | [id: string | number ] | s
 })
 /**
 * @see \App\Http\Controllers\Admin\FormationController::editPresentiel
- * @see app/Http/Controllers/Admin/FormationController.php:296
+ * @see app/Http/Controllers/Admin/FormationController.php:323
  * @route '/admin/formations/{id}/edit-presentiel'
  */
 editPresentiel.head = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -449,7 +449,7 @@ editPresentiel.head = (args: { id: string | number } | [id: string | number ] | 
 
     /**
 * @see \App\Http\Controllers\Admin\FormationController::editPresentiel
- * @see app/Http/Controllers/Admin/FormationController.php:296
+ * @see app/Http/Controllers/Admin/FormationController.php:323
  * @route '/admin/formations/{id}/edit-presentiel'
  */
     const editPresentielForm = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -459,7 +459,7 @@ editPresentiel.head = (args: { id: string | number } | [id: string | number ] | 
 
             /**
 * @see \App\Http\Controllers\Admin\FormationController::editPresentiel
- * @see app/Http/Controllers/Admin/FormationController.php:296
+ * @see app/Http/Controllers/Admin/FormationController.php:323
  * @route '/admin/formations/{id}/edit-presentiel'
  */
         editPresentielForm.get = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -468,7 +468,7 @@ editPresentiel.head = (args: { id: string | number } | [id: string | number ] | 
         })
             /**
 * @see \App\Http\Controllers\Admin\FormationController::editPresentiel
- * @see app/Http/Controllers/Admin/FormationController.php:296
+ * @see app/Http/Controllers/Admin/FormationController.php:323
  * @route '/admin/formations/{id}/edit-presentiel'
  */
         editPresentielForm.head = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -484,7 +484,7 @@ editPresentiel.head = (args: { id: string | number } | [id: string | number ] | 
     editPresentiel.form = editPresentielForm
 /**
 * @see \App\Http\Controllers\Admin\FormationController::update
- * @see app/Http/Controllers/Admin/FormationController.php:324
+ * @see app/Http/Controllers/Admin/FormationController.php:355
  * @route '/admin/formations/{id}'
  */
 export const update = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -499,7 +499,7 @@ update.definition = {
 
 /**
 * @see \App\Http\Controllers\Admin\FormationController::update
- * @see app/Http/Controllers/Admin/FormationController.php:324
+ * @see app/Http/Controllers/Admin/FormationController.php:355
  * @route '/admin/formations/{id}'
  */
 update.url = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions) => {
@@ -527,7 +527,7 @@ update.url = (args: { id: string | number } | [id: string | number ] | string | 
 
 /**
 * @see \App\Http\Controllers\Admin\FormationController::update
- * @see app/Http/Controllers/Admin/FormationController.php:324
+ * @see app/Http/Controllers/Admin/FormationController.php:355
  * @route '/admin/formations/{id}'
  */
 update.post = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -536,7 +536,7 @@ update.post = (args: { id: string | number } | [id: string | number ] | string |
 })
 /**
 * @see \App\Http\Controllers\Admin\FormationController::update
- * @see app/Http/Controllers/Admin/FormationController.php:324
+ * @see app/Http/Controllers/Admin/FormationController.php:355
  * @route '/admin/formations/{id}'
  */
 update.put = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
@@ -546,7 +546,7 @@ update.put = (args: { id: string | number } | [id: string | number ] | string | 
 
     /**
 * @see \App\Http\Controllers\Admin\FormationController::update
- * @see app/Http/Controllers/Admin/FormationController.php:324
+ * @see app/Http/Controllers/Admin/FormationController.php:355
  * @route '/admin/formations/{id}'
  */
     const updateForm = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -556,7 +556,7 @@ update.put = (args: { id: string | number } | [id: string | number ] | string | 
 
             /**
 * @see \App\Http\Controllers\Admin\FormationController::update
- * @see app/Http/Controllers/Admin/FormationController.php:324
+ * @see app/Http/Controllers/Admin/FormationController.php:355
  * @route '/admin/formations/{id}'
  */
         updateForm.post = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -565,7 +565,7 @@ update.put = (args: { id: string | number } | [id: string | number ] | string | 
         })
             /**
 * @see \App\Http\Controllers\Admin\FormationController::update
- * @see app/Http/Controllers/Admin/FormationController.php:324
+ * @see app/Http/Controllers/Admin/FormationController.php:355
  * @route '/admin/formations/{id}'
  */
         updateForm.put = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -581,7 +581,7 @@ update.put = (args: { id: string | number } | [id: string | number ] | string | 
     update.form = updateForm
 /**
 * @see \App\Http\Controllers\Admin\FormationController::destroy
- * @see app/Http/Controllers/Admin/FormationController.php:474
+ * @see app/Http/Controllers/Admin/FormationController.php:516
  * @route '/admin/formations/{id}'
  */
 export const destroy = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -596,7 +596,7 @@ destroy.definition = {
 
 /**
 * @see \App\Http\Controllers\Admin\FormationController::destroy
- * @see app/Http/Controllers/Admin/FormationController.php:474
+ * @see app/Http/Controllers/Admin/FormationController.php:516
  * @route '/admin/formations/{id}'
  */
 destroy.url = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions) => {
@@ -624,7 +624,7 @@ destroy.url = (args: { id: string | number } | [id: string | number ] | string |
 
 /**
 * @see \App\Http\Controllers\Admin\FormationController::destroy
- * @see app/Http/Controllers/Admin/FormationController.php:474
+ * @see app/Http/Controllers/Admin/FormationController.php:516
  * @route '/admin/formations/{id}'
  */
 destroy.delete = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
@@ -634,7 +634,7 @@ destroy.delete = (args: { id: string | number } | [id: string | number ] | strin
 
     /**
 * @see \App\Http\Controllers\Admin\FormationController::destroy
- * @see app/Http/Controllers/Admin/FormationController.php:474
+ * @see app/Http/Controllers/Admin/FormationController.php:516
  * @route '/admin/formations/{id}'
  */
     const destroyForm = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -649,7 +649,7 @@ destroy.delete = (args: { id: string | number } | [id: string | number ] | strin
 
             /**
 * @see \App\Http\Controllers\Admin\FormationController::destroy
- * @see app/Http/Controllers/Admin/FormationController.php:474
+ * @see app/Http/Controllers/Admin/FormationController.php:516
  * @route '/admin/formations/{id}'
  */
         destroyForm.delete = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -665,7 +665,7 @@ destroy.delete = (args: { id: string | number } | [id: string | number ] | strin
     destroy.form = destroyForm
 /**
 * @see \App\Http\Controllers\Admin\FormationController::toggleActive
- * @see app/Http/Controllers/Admin/FormationController.php:530
+ * @see app/Http/Controllers/Admin/FormationController.php:572
  * @route '/admin/formations/{id}/toggle-active'
  */
 export const toggleActive = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -680,7 +680,7 @@ toggleActive.definition = {
 
 /**
 * @see \App\Http\Controllers\Admin\FormationController::toggleActive
- * @see app/Http/Controllers/Admin/FormationController.php:530
+ * @see app/Http/Controllers/Admin/FormationController.php:572
  * @route '/admin/formations/{id}/toggle-active'
  */
 toggleActive.url = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions) => {
@@ -708,7 +708,7 @@ toggleActive.url = (args: { id: string | number } | [id: string | number ] | str
 
 /**
 * @see \App\Http\Controllers\Admin\FormationController::toggleActive
- * @see app/Http/Controllers/Admin/FormationController.php:530
+ * @see app/Http/Controllers/Admin/FormationController.php:572
  * @route '/admin/formations/{id}/toggle-active'
  */
 toggleActive.post = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -718,7 +718,7 @@ toggleActive.post = (args: { id: string | number } | [id: string | number ] | st
 
     /**
 * @see \App\Http\Controllers\Admin\FormationController::toggleActive
- * @see app/Http/Controllers/Admin/FormationController.php:530
+ * @see app/Http/Controllers/Admin/FormationController.php:572
  * @route '/admin/formations/{id}/toggle-active'
  */
     const toggleActiveForm = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -728,7 +728,7 @@ toggleActive.post = (args: { id: string | number } | [id: string | number ] | st
 
             /**
 * @see \App\Http\Controllers\Admin\FormationController::toggleActive
- * @see app/Http/Controllers/Admin/FormationController.php:530
+ * @see app/Http/Controllers/Admin/FormationController.php:572
  * @route '/admin/formations/{id}/toggle-active'
  */
         toggleActiveForm.post = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({

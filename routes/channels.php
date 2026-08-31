@@ -7,6 +7,12 @@ Broadcast::channel('user.{userId}', function ($user, $userId) {
     return (int) $user->id === (int) $userId;
 });
 
+// Canal partagé par tous les admins — pour les notifications globales
+// (user_id = null en base), comme les nouveaux messages de contact.
+Broadcast::channel('admins', function ($user) {
+    return $user->isAdmin();
+});
+
 Broadcast::channel('chat.{channel}', function ($user, $channel) {
     // ✅ Admin : accès à tout
     if ($user->isAdmin()) {
@@ -35,7 +41,6 @@ Broadcast::channel('chat.{channel}', function ($user, $channel) {
         return false;
     }
 
-    // Vérifier que l'étudiant fait partie de cette discussion
     if ($discussion->vague_id && $student->vague_id === $discussion->vague_id) {
         return true;
     }

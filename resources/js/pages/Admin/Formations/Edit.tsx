@@ -1,7 +1,13 @@
+// resources/js/pages/Admin/Formations/Edit.tsx
 import { ArrowLeftIcon, PencilSquareIcon, XMarkIcon } from '@heroicons/react/24/outline';
 import { Head, Link, useForm, router } from '@inertiajs/react';
 import { useState } from 'react';
 import AdminLayout from '@/Components/Layouts/AdminLayout';
+
+interface Pole {
+    id: number;
+    nom: string;
+}
 
 interface Formation {
     id: number;
@@ -18,13 +24,15 @@ interface Formation {
     lien_label: string | null;
     is_active: boolean;
     order: number;
+    pole_id?: number | null;
 }
 
 interface Props {
     formation: Formation;
+    poles: Pole[];
 }
 
-export default function Edit({ formation }: Props) {
+export default function Edit({ formation, poles }: Props) {
     const [previewImage, setPreviewImage] = useState<string | null>(formation.image_url);
 
     const { data, setData, processing, errors } = useForm({
@@ -35,6 +43,7 @@ export default function Edit({ formation }: Props) {
         duration: formation.duration || '',
         diplome: formation.diplome || '',
         frais: formation.frais?.toString() || '0',
+        pole_id: formation.pole_id?.toString() || '',
         image: null as File | null,
         lien_externe: formation.lien_externe || '',
         lien_label: formation.lien_label || '',
@@ -78,6 +87,15 @@ export default function Edit({ formation }: Props) {
         formData.append('duration', data.duration);
         formData.append('diplome', data.diplome);
         formData.append('frais', data.frais);
+        
+        // 🛠️ CORRECTION PÔLE : Si pole_id est vide, on n'envoie rien ou une chaîne vide gérée par Laravel, 
+        // mais pour s'assurer qu'il est pris en compte, on s'assure qu'il est bien attaché.
+        if (data.pole_id) {
+            formData.append('pole_id', data.pole_id);
+        } else {
+            formData.append('pole_id', '');
+        }
+
         formData.append('lien_externe', data.lien_externe);
         formData.append('lien_label', data.lien_label);
         formData.append('is_active', data.is_active ? '1' : '0');
@@ -90,11 +108,12 @@ export default function Edit({ formation }: Props) {
         // Debug local console
         console.log('Données envoyées (Formations):', {
             ...data,
+            pole_id: data.pole_id,
             image: data.image ? 'File present' : null
         });
 
         // 3. Expédier via router.post au lieu de put
-        router.post(`/admin/formations/${formation.id}`, formData, {
+        router.post(`/admin/formations/${formation.id}?type=enligne`, formData, {
             forceFormData: true,
             headers: {
                 'Content-Type': 'multipart/form-data',
@@ -132,6 +151,27 @@ export default function Edit({ formation }: Props) {
                                     required
                                 />
                                 {errors.name && <p className="mt-1 text-sm text-red-600">{errors.name}</p>}
+                            </div>
+
+                            {/* Pôle rattaché */}
+                            <div>
+                                <label htmlFor="pole_id" className="block text-sm font-medium text-gray-700 mb-1">
+                                    Pôle rattaché
+                                </label>
+                                <select
+                                    id="pole_id"
+                                    value={data.pole_id}
+                                    onChange={(e) => setData('pole_id', e.target.value)}
+                                    className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-cab-blue focus:border-cab-blue transition-colors bg-white"
+                                >
+                                    <option value="">-- Aucun pôle --</option>
+                                    {poles.map((pole) => (
+                                        <option key={pole.id} value={pole.id}>
+                                            {pole.nom}
+                                        </option>
+                                    ))}
+                                </select>
+                                {errors.pole_id && <p className="mt-1 text-sm text-red-600">{errors.pole_id}</p>}
                             </div>
 
                             {/* Abréviation */}
@@ -189,38 +229,38 @@ export default function Edit({ formation }: Props) {
                                 {errors.image && <p className="mt-1 text-sm text-red-600">{errors.image}</p>}
                             </div>
 
-                           {/* Grille 2 colonnes */}
-<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-    <div>
-        <label htmlFor="duration" className="block text-sm font-medium text-gray-700 mb-1">
-            Durée <span className="text-red-500">*</span>
-        </label>
-        <input
-            id="duration"
-            type="text"
-            value={data.duration}
-            onChange={(e) => setData('duration', e.target.value)}
-            className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-cab-blue focus:border-cab-blue transition-colors"
-            required
-        />
-        {errors.duration && <p className="mt-1 text-sm text-red-600">{errors.duration}</p>}
-    </div> {/* ✅ Fermeture propre du bloc duration */}
+                            {/* Grille 2 colonnes */}
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label htmlFor="duration" className="block text-sm font-medium text-gray-700 mb-1">
+                                        Durée <span className="text-red-500">*</span>
+                                    </label>
+                                    <input
+                                        id="duration"
+                                        type="text"
+                                        value={data.duration}
+                                        onChange={(e) => setData('duration', e.target.value)}
+                                        className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-cab-blue focus:border-cab-blue transition-colors"
+                                        required
+                                    />
+                                    {errors.duration && <p className="mt-1 text-sm text-red-600">{errors.duration}</p>}
+                                </div>
 
-    <div>
-        <label htmlFor="diplome" className="block text-sm font-medium text-gray-700 mb-1">
-            Diplôme obtenu <span className="text-red-500">*</span>
-        </label>
-        <input
-            id="diplome"
-            type="text"
-            value={data.diplome}
-            onChange={(e) => setData('diplome', e.target.value)}
-            className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-cab-blue focus:border-cab-blue transition-colors"
-            required
-        />
-        {errors.diplome && <p className="mt-1 text-sm text-red-600">{errors.diplome}</p>}
-    </div>
-</div>
+                                <div>
+                                    <label htmlFor="diplome" className="block text-sm font-medium text-gray-700 mb-1">
+                                        Diplôme obtenu <span className="text-red-500">*</span>
+                                    </label>
+                                    <input
+                                        id="diplome"
+                                        type="text"
+                                        value={data.diplome}
+                                        onChange={(e) => setData('diplome', e.target.value)}
+                                        className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-cab-blue focus:border-cab-blue transition-colors"
+                                        required
+                                    />
+                                    {errors.diplome && <p className="mt-1 text-sm text-red-600">{errors.diplome}</p>}
+                                </div>
+                            </div>
 
                             {/* Frais */}
                             <div>

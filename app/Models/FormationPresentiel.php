@@ -28,6 +28,8 @@ class FormationPresentiel extends Model
         'couleur',
         'is_active',
         'ordre',
+        'pole_id',
+        'niveau_requis'
     ];
 
     protected $casts = [

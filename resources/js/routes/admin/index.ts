@@ -18,6 +18,7 @@ import tranches from './tranches'
 import paiements from './paiements'
 import preInscriptions from './pre-inscriptions'
 import lessons from './lessons'
+import admin from './admin'
 import video from './video'
 /**
 * @see \App\Http\Controllers\Admin\DashboardController::dashboard
@@ -97,7 +98,7 @@ dashboard.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
         })
     
     dashboard.form = dashboardForm
-const admin = {
+const adminNamespace = {
     stats: Object.assign(stats, stats),
 dashboard: Object.assign(dashboard, dashboard),
 users: Object.assign(users, users),
@@ -118,7 +119,8 @@ tranches: Object.assign(tranches, tranches),
 paiements: Object.assign(paiements, paiements),
 preInscriptions: Object.assign(preInscriptions, preInscriptions),
 lessons: Object.assign(lessons, lessons),
+admin: Object.assign(admin, admin),
 video: Object.assign(video, video),
 }
 
-export default admin
+export default adminNamespace

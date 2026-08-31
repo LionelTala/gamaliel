@@ -43,6 +43,19 @@ interface MenuGroup {
     badgeCount?: number;
 }
 
+const COLORS = {
+    navy: '#153B62',
+    navyDeep: '#0D2844',
+    navyMuted: 'rgba(21,59,98,0.7)',
+    navyFaint: 'rgba(21,59,98,0.5)',
+    navyBorder: 'rgba(21,59,98,0.1)',
+    navySoftBg: 'rgba(21,59,98,0.05)',
+    green: '#6FA30E',
+    red: '#E13A4B',
+    paper: '#FAFAF8',
+    white: '#FFFFFF',
+};
+
 const AdminLayout = ({ children, title = 'Tableau de bord' }: AdminLayoutProps) => {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
     const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
@@ -53,10 +66,10 @@ const AdminLayout = ({ children, title = 'Tableau de bord' }: AdminLayoutProps) 
     const candidatureCount = props.unreadCountsByType?.['candidature'] ?? 0;
     const evaluationCount = props.unreadCountsByType?.['evaluation'] ?? 0;
     const contactCount = props.unreadCountsByType?.['contact'] ?? 0;
+    const preInscriptionCount = props.unreadCountsByType?.['pre_inscription'] ?? 0;
 
     const canManageUsers = user?.role === 'super_admin' || user?.role === 'admin_centre';
 
-    // Structure des groupes de menus
     const menuGroups: MenuGroup[] = [
         {
             title: 'Gestion du Site',
@@ -66,16 +79,15 @@ const AdminLayout = ({ children, title = 'Tableau de bord' }: AdminLayoutProps) 
                 { label: 'Statistiques visites', href: '/admin/stats-visites', icon: <EyeIcon className="w-4 h-4" /> },
                 { label: 'Galerie', href: '/admin/galerie', icon: <PhotoIcon className="w-4 h-4" /> },
                 { label: 'Activités', href: '/admin/activites', icon: <CalendarIcon className="w-4 h-4" /> },
-                // Messages du formulaire de contact — prêt pour le jour où la page /contact sera en ligne
                 { label: 'Messages de contact', href: '/admin/contacts', icon: <ChatBubbleLeftRightIcon className="w-4 h-4" />, badge: contactCount },
             ],
         },
         {
             title: 'Inscriptions',
             icon: <ClipboardDocumentListIcon className="w-5 h-5" />,
-            badgeCount: candidatureCount,
+            badgeCount: candidatureCount + preInscriptionCount, 
             items: [
-                { label: 'Pré-inscriptions', href: '/admin/pre-inscriptions', icon: <ClipboardDocumentListIcon className="w-4 h-4" /> },
+                { label: 'Pré-inscriptions', href: '/admin/pre-inscriptions', icon: <ClipboardDocumentListIcon className="w-4 h-4" />, badge: preInscriptionCount },
                 { label: 'Candidatures', href: '/admin/candidatures', icon: <ClipboardDocumentListIcon className="w-4 h-4" />, badge: candidatureCount },
             ],
         },
@@ -113,13 +125,11 @@ const AdminLayout = ({ children, title = 'Tableau de bord' }: AdminLayoutProps) 
             }
         });
         setOpenGroups((prev) => ({ ...prev, ...activeState }));
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [url]);
 
     const toggleGroup = (title: string) => {
-        setOpenGroups((prev) => ({
-            ...prev,
-            [title]: !prev[title],
-        }));
+        setOpenGroups((prev) => ({ ...prev, [title]: !prev[title] }));
     };
 
     const getUserInitials = (user: typeof props.auth.user) => {
@@ -138,22 +148,22 @@ const AdminLayout = ({ children, title = 'Tableau de bord' }: AdminLayoutProps) 
     };
 
     return (
-        <div className="min-h-screen bg-gamaliel-paper">
+        <div className="min-h-screen" style={{ backgroundColor: COLORS.paper }}>
             <ToastContainer />
 
             {/* Navbar Admin */}
-            <nav className="fixed top-0 left-0 right-0 z-40 bg-white border-b border-gamaliel-navy/10">
+            <nav
+                className="fixed top-0 left-0 right-0 z-40 border-b"
+                style={{ backgroundColor: COLORS.white, borderColor: COLORS.navyBorder }}
+            >
                 <div className="flex items-center justify-between px-4 py-3">
                     <div className="flex items-center gap-3">
                         <button
                             onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-                            className="lg:hidden p-2 rounded-lg hover:bg-gamaliel-navy/5"
+                            className="lg:hidden p-2 rounded-lg transition-colors"
+                            style={{ color: COLORS.navyMuted }}
                         >
-                            {isSidebarOpen ? (
-                                <XMarkIcon className="w-6 h-6 text-gamaliel-navy/70" />
-                            ) : (
-                                <Bars3Icon className="w-6 h-6 text-gamaliel-navy/70" />
-                            )}
+                            {isSidebarOpen ? <XMarkIcon className="w-6 h-6" /> : <Bars3Icon className="w-6 h-6" />}
                         </button>
 
                         <Link href="/admin/dashboard" className="flex items-center gap-2">
@@ -162,8 +172,8 @@ const AdminLayout = ({ children, title = 'Tableau de bord' }: AdminLayoutProps) 
                                 alt="Institut Gamaliel"
                                 className="h-8 w-8 rounded-lg object-cover"
                             />
-                            <span className="text-lg font-bold text-gamaliel-navy-deep hidden sm:block">
-                                Gamaliel <span className="text-gamaliel-orange">Admin</span>
+                            <span className="text-lg font-bold hidden sm:block" style={{ color: COLORS.navyDeep }}>
+                                Gamaliel <span style={{ color: COLORS.green }}>Admin</span>
                             </span>
                         </Link>
                     </div>
@@ -174,23 +184,32 @@ const AdminLayout = ({ children, title = 'Tableau de bord' }: AdminLayoutProps) 
                         <div className="relative">
                             <button
                                 onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}
-                                className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gamaliel-navy/5 transition-colors"
+                                className="flex items-center gap-2 px-3 py-2 rounded-lg transition-colors"
                             >
-                                <div className="w-8 h-8 rounded-full bg-gamaliel-navy-deep text-white flex items-center justify-center text-sm font-semibold">
+                                <div
+                                    className="w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold"
+                                    style={{ backgroundColor: COLORS.navyDeep, color: COLORS.white }}
+                                >
                                     {getUserInitials(user)}
                                 </div>
-                                <span className="text-sm font-medium text-gamaliel-navy/80 hidden sm:block">
+                                <span className="text-sm font-medium hidden sm:block" style={{ color: COLORS.navyMuted }}>
                                     {user?.name || 'Utilisateur'}
                                 </span>
-                                <ChevronDownIcon className="w-4 h-4 text-gamaliel-navy/40" />
+                                <ChevronDownIcon className="w-4 h-4" style={{ color: COLORS.navyFaint }} />
                             </button>
 
                             {isUserMenuOpen && user && (
-                                <div className="absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-lg border border-gamaliel-navy/10 py-1 z-50">
-                                    <div className="px-4 py-2 border-b border-gamaliel-navy/10">
-                                        <p className="text-sm font-medium text-gamaliel-navy-deep">{user.name}</p>
-                                        <p className="text-xs text-gamaliel-navy/50">{user.email}</p>
-                                        <span className="inline-block mt-1 px-2 py-0.5 bg-gamaliel-navy/10 text-gamaliel-navy rounded-full text-xs font-medium">
+                                <div
+                                    className="absolute right-0 mt-2 w-48 rounded-xl shadow-lg border py-1 z-50"
+                                    style={{ backgroundColor: COLORS.white, borderColor: COLORS.navyBorder }}
+                                >
+                                    <div className="px-4 py-2 border-b" style={{ borderColor: COLORS.navyBorder }}>
+                                        <p className="text-sm font-medium" style={{ color: COLORS.navyDeep }}>{user.name}</p>
+                                        <p className="text-xs" style={{ color: COLORS.navyFaint }}>{user.email}</p>
+                                        <span
+                                            className="inline-block mt-1 px-2 py-0.5 rounded-full text-xs font-medium"
+                                            style={{ backgroundColor: COLORS.navySoftBg, color: COLORS.navy }}
+                                        >
                                             {getRoleLabel(user.role)}
                                         </span>
                                     </div>
@@ -198,7 +217,8 @@ const AdminLayout = ({ children, title = 'Tableau de bord' }: AdminLayoutProps) 
                                         href="/logout"
                                         method="post"
                                         as="button"
-                                        className="flex items-center gap-2 w-full px-4 py-2 text-sm text-gamaliel-red hover:bg-gamaliel-red/10 transition-colors"
+                                        className="flex items-center gap-2 w-full px-4 py-2 text-sm transition-colors"
+                                        style={{ color: COLORS.red }}
                                     >
                                         <ArrowLeftOnRectangleIcon className="w-4 h-4" />
                                         Déconnexion
@@ -212,49 +232,40 @@ const AdminLayout = ({ children, title = 'Tableau de bord' }: AdminLayoutProps) 
 
             {/* Sidebar */}
             <aside
-                className={`
-                    fixed top-16 left-0 bottom-0 z-30 w-64 bg-white border-r border-gamaliel-navy/10
-                    transition-transform duration-300 ease-in-out overflow-hidden
-                    ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'}
-                    lg:translate-x-0
-                `}
+                className={`fixed top-16 left-0 bottom-0 z-30 w-64 border-r transition-transform duration-300 ease-in-out overflow-hidden ${
+                    isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
+                } lg:translate-x-0`}
+                style={{ backgroundColor: COLORS.white, borderColor: COLORS.navyBorder }}
             >
                 <nav className="h-full overflow-y-auto p-4 space-y-1.5 pb-24">
-                    {/* Lien Direct : Tableau de bord */}
                     <Link
                         href="/admin/dashboard"
-                        className={`
-                            flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm font-medium
-                            transition-colors duration-200
-                            ${url === '/admin/dashboard'
-                                ? 'bg-gamaliel-navy-deep text-white'
-                                : 'text-gamaliel-navy/70 hover:bg-gamaliel-navy/5 hover:text-gamaliel-navy-deep'
-                            }
-                        `}
+                        className="flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm font-medium transition-colors duration-200"
+                        style={
+                            url === '/admin/dashboard'
+                                ? { backgroundColor: COLORS.navyDeep, color: COLORS.white }
+                                : { color: COLORS.navyMuted }
+                        }
                     >
                         <HomeIcon className="w-5 h-5" />
                         <span className="flex-1">Tableau de bord</span>
                     </Link>
 
-                    {/* Lien Direct : Utilisateurs (si droits suffisants) */}
                     {canManageUsers && (
                         <Link
                             href="/admin/users"
-                            className={`
-                                flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm font-medium
-                                transition-colors duration-200
-                                ${url.startsWith('/admin/users')
-                                    ? 'bg-gamaliel-navy-deep text-white'
-                                    : 'text-gamaliel-navy/70 hover:bg-gamaliel-navy/5 hover:text-gamaliel-navy-deep'
-                                }
-                            `}
+                            className="flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm font-medium transition-colors duration-200"
+                            style={
+                                url.startsWith('/admin/users')
+                                    ? { backgroundColor: COLORS.navyDeep, color: COLORS.white }
+                                    : { color: COLORS.navyMuted }
+                            }
                         >
                             <UserGroupIcon className="w-5 h-5" />
                             <span className="flex-1">Utilisateurs</span>
                         </Link>
                     )}
 
-                    {/* Menus Déroulants (Groupes) */}
                     {menuGroups.map((group) => {
                         const isOpen = !!openGroups[group.title];
                         const hasActiveChild = group.items.some(
@@ -266,14 +277,12 @@ const AdminLayout = ({ children, title = 'Tableau de bord' }: AdminLayoutProps) 
                                 <button
                                     type="button"
                                     onClick={() => toggleGroup(group.title)}
-                                    className={`
-                                        flex items-center justify-between w-full px-4 py-2.5 rounded-xl text-sm font-medium
-                                        transition-colors duration-200
-                                        ${hasActiveChild
-                                            ? 'text-gamaliel-navy-deep font-semibold bg-gamaliel-navy/5'
-                                            : 'text-gamaliel-navy/70 hover:bg-gamaliel-navy/5'
-                                        }
-                                    `}
+                                    className="flex items-center justify-between w-full px-4 py-2.5 rounded-xl text-sm font-medium transition-colors duration-200"
+                                    style={
+                                        hasActiveChild
+                                            ? { color: COLORS.navyDeep, fontWeight: 600, backgroundColor: COLORS.navySoftBg }
+                                            : { color: COLORS.navyMuted }
+                                    }
                                 >
                                     <div className="flex items-center gap-3">
                                         {group.icon}
@@ -282,23 +291,22 @@ const AdminLayout = ({ children, title = 'Tableau de bord' }: AdminLayoutProps) 
                                     <div className="flex items-center gap-2">
                                         {!isOpen && !!group.badgeCount && group.badgeCount > 0 && (
                                             <span
-                                                className="text-xs font-bold rounded-full px-2 py-0.5 text-white"
-                                                style={{ background: 'linear-gradient(135deg, #FD7D0F, #E13A4B)' }}
+                                                className="text-xs font-bold rounded-full px-2 py-0.5"
+                                                style={{ backgroundColor: COLORS.green, color: COLORS.white }}
                                             >
                                                 {group.badgeCount > 9 ? '9+' : group.badgeCount}
                                             </span>
                                         )}
+                                        
                                         <ChevronDownIcon
-                                            className={`w-4 h-4 text-gamaliel-navy/40 transition-transform duration-200 ${
-                                                isOpen ? 'rotate-180' : ''
-                                            }`}
+                                            className={`w-4 h-4 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
+                                            style={{ color: COLORS.navyFaint }}
                                         />
                                     </div>
                                 </button>
 
-                                {/* Sous-liens */}
                                 {isOpen && (
-                                    <div className="pl-6 space-y-1 border-l-2 border-gamaliel-navy/10 ml-4">
+                                    <div className="pl-6 space-y-1 border-l-2 ml-4" style={{ borderColor: COLORS.navyBorder }}>
                                         {group.items.map((item) => {
                                             const isActive = url === item.href || url.startsWith(item.href + '/');
 
@@ -306,24 +314,23 @@ const AdminLayout = ({ children, title = 'Tableau de bord' }: AdminLayoutProps) 
                                                 <Link
                                                     key={item.href}
                                                     href={item.href}
-                                                    className={`
-                                                        flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium
-                                                        transition-colors duration-200
-                                                        ${isActive
-                                                            ? 'bg-gamaliel-navy-deep text-white'
-                                                            : 'text-gamaliel-navy/60 hover:bg-gamaliel-navy/5 hover:text-gamaliel-navy-deep'
-                                                        }
-                                                    `}
+                                                    className="flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-200"
+                                                    style={
+                                                        isActive
+                                                            ? { backgroundColor: COLORS.navyDeep, color: COLORS.white }
+                                                            : { color: COLORS.navyFaint }
+                                                    }
                                                 >
                                                     {item.icon}
                                                     <span className="flex-1">{item.label}</span>
+                                                    
                                                     {!!item.badge && item.badge > 0 && (
                                                         <span
                                                             className="text-xs font-bold rounded-full px-2 py-0.5"
                                                             style={
                                                                 isActive
-                                                                    ? { backgroundColor: '#fff', color: '#153B62' }
-                                                                    : { background: 'linear-gradient(135deg, #FD7D0F, #E13A4B)', color: '#fff' }
+                                                                    ? { backgroundColor: COLORS.white, color: COLORS.navy }
+                                                                    : { backgroundColor: COLORS.green, color: COLORS.white }
                                                             }
                                                         >
                                                             {item.badge > 9 ? '9+' : item.badge}
@@ -338,29 +345,26 @@ const AdminLayout = ({ children, title = 'Tableau de bord' }: AdminLayoutProps) 
                         );
                     })}
 
-                    {/* Lien Direct : Mon Profil */}
                     <Link
                         href="/profil"
-                        className={`
-                            flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm font-medium
-                            transition-colors duration-200
-                            ${url.startsWith('/profil')
-                                ? 'bg-gamaliel-navy-deep text-white'
-                                : 'text-gamaliel-navy/70 hover:bg-gamaliel-navy/5 hover:text-gamaliel-navy-deep'
-                            }
-                        `}
+                        className="flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm font-medium transition-colors duration-200"
+                        style={
+                            url.startsWith('/profil')
+                                ? { backgroundColor: COLORS.navyDeep, color: COLORS.white }
+                                : { color: COLORS.navyMuted }
+                        }
                     >
                         <UserIcon className="w-5 h-5" />
                         <span className="flex-1">Mon Profil</span>
                     </Link>
 
-                    {/* Déconnexion */}
-                    <div className="pt-4 mt-4 border-t border-gamaliel-navy/10">
+                    <div className="pt-4 mt-4 border-t" style={{ borderColor: COLORS.navyBorder }}>
                         <Link
                             href="/logout"
                             method="post"
                             as="button"
-                            className="flex items-center gap-3 w-full px-4 py-2.5 rounded-xl text-sm font-medium text-gamaliel-red hover:bg-gamaliel-red/10 transition-colors"
+                            className="flex items-center gap-3 w-full px-4 py-2.5 rounded-xl text-sm font-medium transition-colors"
+                            style={{ color: COLORS.red }}
                         >
                             <ArrowLeftOnRectangleIcon className="w-5 h-5" />
                             Déconnexion
@@ -371,7 +375,8 @@ const AdminLayout = ({ children, title = 'Tableau de bord' }: AdminLayoutProps) 
 
             {isSidebarOpen && (
                 <div
-                    className="fixed inset-0 z-20 bg-gamaliel-navy-deep/50 lg:hidden"
+                    className="fixed inset-0 z-20 lg:hidden"
+                    style={{ backgroundColor: 'rgba(13,40,68,0.5)' }}
                     onClick={() => setIsSidebarOpen(false)}
                 />
             )}
@@ -379,8 +384,8 @@ const AdminLayout = ({ children, title = 'Tableau de bord' }: AdminLayoutProps) 
             <main className="lg:ml-64 pt-16">
                 <div className="p-4 md:p-6">
                     <div className="mb-6">
-                        <h1 className="text-2xl font-bold text-gamaliel-navy-deep">{title}</h1>
-                        <p className="text-sm text-gamaliel-navy/50">Bienvenue sur votre espace d'administration</p>
+                        <h1 className="text-2xl font-bold" style={{ color: COLORS.navyDeep }}>{title}</h1>
+                        <p className="text-sm" style={{ color: COLORS.navyFaint }}>Bienvenue sur votre espace d'administration</p>
                     </div>
                     {children}
                 </div>

@@ -1,4 +1,5 @@
 import HomeController from './HomeController'
+import ContactController from './ContactController'
 import FormationController from './FormationController'
 import CertificationController from './CertificationController'
 import CandidatureController from './CandidatureController'
@@ -8,6 +9,7 @@ import BibliothequeController from './BibliothequeController'
 import PreInscriptionController from './PreInscriptionController'
 const Public = {
     HomeController: Object.assign(HomeController, HomeController),
+ContactController: Object.assign(ContactController, ContactController),
 FormationController: Object.assign(FormationController, FormationController),
 CertificationController: Object.assign(CertificationController, CertificationController),
 CandidatureController: Object.assign(CandidatureController, CandidatureController),

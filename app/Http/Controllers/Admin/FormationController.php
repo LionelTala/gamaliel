@@ -5,10 +5,12 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Formation;
 use App\Models\FormationPresentiel;
+use App\Models\Pole;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 use Inertia\Inertia;
 
@@ -21,7 +23,8 @@ class FormationController extends Controller
             $formations = collect();
 
             if ($type === 'enligne') {
-                $formations = Formation::orderBy('order')
+                $formations = Formation::with('pole')
+                    ->orderBy('order')
                     ->orderBy('name')
                     ->get()
                     ->map(function ($formation) {
@@ -42,11 +45,14 @@ class FormationController extends Controller
                             'lien_label' => $formation->lien_label,
                             'is_active' => $formation->is_active,
                             'order' => $formation->order,
+                            'pole_id' => $formation->pole_id,
+                            'pole_nom' => $formation->pole ? $formation->pole->nom : null,
                             'type' => 'enligne',
                         ];
                     });
             } else {
-                $formations = FormationPresentiel::orderBy('ordre')
+                $formations = FormationPresentiel::with('pole')
+                    ->orderBy('ordre')
                     ->orderBy('title')
                     ->get()
                     ->map(function ($formation) {
@@ -56,6 +62,7 @@ class FormationController extends Controller
                             'abbreviation' => $formation->abbreviation,
                             'slug' => $formation->slug,
                             'description' => $formation->description,
+                            'niveau_requis' => $formation->niveau_requis,
                             'debouches' => $formation->debouches,
                             'duration' => $formation->duration,
                             'diplome' => $formation->diplome,
@@ -67,6 +74,8 @@ class FormationController extends Controller
                             'lien_label' => null,
                             'is_active' => $formation->is_active,
                             'order' => $formation->ordre,
+                            'pole_id' => $formation->pole_id,
+                            'pole_nom' => $formation->pole ? $formation->pole->nom : null,
                             'type' => 'presentiel',
                             'icon' => $formation->icon,
                             'tags' => $formation->tags,
@@ -100,14 +109,21 @@ class FormationController extends Controller
             return redirect()->route('admin.formations.create-presentiel');
         }
 
+        $poles = Pole::orderBy('ordre')->get();
+
         return Inertia::render('Admin/Formations/Create', [
             'type' => 'enligne',
+            'poles' => $poles,
         ]);
     }
 
     public function createPresentiel()
     {
-        return Inertia::render('Admin/Formations/CreatePresentiel');
+        $poles = Pole::orderBy('ordre')->get();
+
+        return Inertia::render('Admin/Formations/CreatePresentiel', [
+            'poles' => $poles,
+        ]);
     }
 
     public function store(Request $request)
@@ -143,6 +159,7 @@ class FormationController extends Controller
             'duration' => 'required|string|max:255',
             'diplome' => 'required|string|max:255',
             'frais' => 'required|numeric|min:0',
+            'pole_id' => 'nullable|exists:poles,id',
             'image' => 'nullable|image|max:2048',
             'lien_externe' => 'nullable|url|max:255',
             'lien_label' => 'nullable|string|max:255',
@@ -165,6 +182,7 @@ class FormationController extends Controller
                 'duration' => $validated['duration'],
                 'diplome' => $validated['diplome'],
                 'frais' => $validated['frais'],
+                'pole_id' => $validated['pole_id'] ?? null,
                 'image' => $imagePath,
                 'lien_externe' => $validated['lien_externe'] ?? null,
                 'lien_label' => $validated['lien_label'] ?? null,
@@ -183,75 +201,80 @@ class FormationController extends Controller
             ->with('success', "✅ Formation en ligne '{$formation->name}' créée avec succès !");
     }
 
-   private function storePresentiel(Request $request)
-{
-    // ✅ Décoder les champs JSON avant la validation
-    $data = $request->all();
+    private function storePresentiel(Request $request)
+    {
+        $data = $request->all();
 
-    if ($request->has('tags') && is_string($request->tags)) {
-        $data['tags'] = json_decode($request->tags, true) ?? [];
-    }
-    if ($request->has('debouches') && is_string($request->debouches)) {
-        $data['debouches'] = json_decode($request->debouches, true) ?? [];
-    }
-    if ($request->has('programme') && is_string($request->programme)) {
-        $data['programme'] = json_decode($request->programme, true) ?? [];
-    }
-
-    $validated = validator($data, [
-        'title' => 'required|string|max:255|unique:formations_presentiel,title',
-        'abbreviation' => 'required|string|max:10|unique:formations_presentiel,abbreviation',
-        'description' => 'required|string',
-        'duration' => 'required|string|max:255',
-        'diplome' => 'required|string|max:255',
-        'price' => 'required|numeric|min:0',
-        'image' => 'nullable|image|max:2048',
-        'icon' => 'nullable|string|max:50',
-        'tags' => 'nullable|array',
-        'tags.*' => 'string',
-        'debouches' => 'nullable|array',
-        'debouches.*' => 'string',
-        'programme' => 'nullable|array',
-        'programme.*' => 'string',
-        'couleur' => 'nullable|in:blue,red',
-        'is_active' => 'boolean',
-        'ordre' => 'integer|min:0',
-    ])->validate();
-
-    $formation = DB::transaction(function () use ($request, $validated) {
-        $imagePath = null;
-        if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('formations_presentiel', 'public');
-            $imagePath = basename($imagePath);
+        if ($request->has('tags') && is_string($request->tags)) {
+            $data['tags'] = json_decode($request->tags, true) ?? [];
+        }
+        if ($request->has('debouches') && is_string($request->debouches)) {
+            $data['debouches'] = json_decode($request->debouches, true) ?? [];
+        }
+        if ($request->has('programme') && is_string($request->programme)) {
+            $data['programme'] = json_decode($request->programme, true) ?? [];
         }
 
-        return FormationPresentiel::create([
-            'title' => $validated['title'],
-            'abbreviation' => $validated['abbreviation'],
-            'description' => $validated['description'],
-            'duration' => $validated['duration'],
-            'diplome' => $validated['diplome'],
-            'price' => $validated['price'],
-            'image' => $imagePath,
-            'icon' => $validated['icon'] ?? null,
-            'tags' => $validated['tags'] ?? ['Cours du jour', 'Cours du soir'],
-            'debouches' => $validated['debouches'] ?? [],
-            'programme' => $validated['programme'] ?? [],
-            'couleur' => $validated['couleur'] ?? 'blue',
-            'is_active' => $validated['is_active'] ?? true,
-            'ordre' => $validated['ordre'] ?? 0,
+        $validated = validator($data, [
+            'title' => 'required|string|max:255|unique:formations_presentiel,title',
+            'abbreviation' => 'required|string|max:10|unique:formations_presentiel,abbreviation',
+            'description' => 'required|string',
+            'niveau_requis' => 'nullable|string|max:255',
+            'duration' => 'required|string|max:255',
+            'diplome' => 'required|string|max:255',
+            'price' => 'required|numeric|min:0',
+            'pole_id' => 'nullable|exists:poles,id',
+            'image' => 'nullable|image|max:2048',
+            'icon' => 'nullable|string|max:50',
+            'tags' => 'nullable|array',
+            'tags.*' => 'string',
+            'debouches' => 'nullable|array',
+            'debouches.*' => 'string',
+            'programme' => 'nullable|array',
+            'programme.*' => 'string',
+            'couleur' => 'nullable|in:blue,red',
+            'is_active' => 'boolean',
+            'ordre' => 'integer|min:0',
+        ])->validate();
+
+        $formation = DB::transaction(function () use ($request, $validated) {
+            $imagePath = null;
+            if ($request->hasFile('image')) {
+                $file = $request->file('image');
+                $filename = time() . '_' . Str::slug($validated['title']) . '.' . $file->getClientOriginalExtension();
+                $file->move(public_path('assets/images/formations_presentiel'), $filename);
+                $imagePath = $filename;
+            }
+
+            return FormationPresentiel::create([
+                'title' => $validated['title'],
+                'abbreviation' => $validated['abbreviation'],
+                'description' => $validated['description'],
+                'niveau_requis' => $validated['niveau_requis'] ?? null,
+                'duration' => $validated['duration'],
+                'diplome' => $validated['diplome'],
+                'price' => $validated['price'],
+                'pole_id' => $validated['pole_id'] ?? null,
+                'image' => $imagePath,
+                'icon' => $validated['icon'] ?? null,
+                'tags' => $validated['tags'] ?? ['Cours du jour', 'Cours du soir'],
+                'debouches' => $validated['debouches'] ?? [],
+                'programme' => $validated['programme'] ?? [],
+                'couleur' => $validated['couleur'] ?? 'blue',
+                'is_active' => $validated['is_active'] ?? true,
+                'ordre' => $validated['ordre'] ?? 0,
+            ]);
+        });
+
+        Log::info('Formation présentiel créée', [
+            'formation_id' => $formation->id,
+            'title' => $formation->title,
+            'created_by' => auth()->id(),
         ]);
-    });
 
-    Log::info('Formation présentiel créée', [
-        'formation_id' => $formation->id,
-        'title' => $formation->title,
-        'created_by' => auth()->id(),
-    ]);
-
-    return redirect()->route('admin.formations.index', ['type' => 'presentiel'])
-        ->with('success', "✅ Formation présentiel '{$formation->title}' créée avec succès !");
-}
+        return redirect()->route('admin.formations.index', ['type' => 'presentiel'])
+            ->with('success', "✅ Formation présentiel '{$formation->title}' créée avec succès !");
+    }
 
     public function edit(Request $request, $id)
     {
@@ -260,6 +283,8 @@ class FormationController extends Controller
         try {
             if ($type === 'enligne') {
                 $formation = Formation::findOrFail($id);
+                $poles = Pole::orderBy('ordre')->get();
+
                 return Inertia::render('Admin/Formations/Edit', [
                     'formation' => [
                         'id' => $formation->id,
@@ -276,9 +301,11 @@ class FormationController extends Controller
                         'lien_label' => $formation->lien_label,
                         'is_active' => $formation->is_active,
                         'order' => $formation->order,
+                        'pole_id' => $formation->pole_id,
                         'type' => 'enligne',
                     ],
                     'type' => 'enligne',
+                    'poles' => $poles,
                 ]);
             } else {
                 return $this->editPresentiel($id);
@@ -296,6 +323,7 @@ class FormationController extends Controller
     public function editPresentiel($id)
     {
         $formation = FormationPresentiel::findOrFail($id);
+        $poles = Pole::orderBy('ordre')->get();
 
         return Inertia::render('Admin/Formations/EditPresentiel', [
             'formation' => [
@@ -303,6 +331,7 @@ class FormationController extends Controller
                 'title' => $formation->title,
                 'abbreviation' => $formation->abbreviation,
                 'description' => $formation->description,
+                'niveau_requis' => $formation->niveau_requis,
                 'duration' => $formation->duration,
                 'diplome' => $formation->diplome,
                 'price' => $formation->price,
@@ -316,8 +345,10 @@ class FormationController extends Controller
                 'couleur' => $formation->couleur,
                 'is_active' => $formation->is_active,
                 'ordre' => $formation->ordre,
+                'pole_id' => $formation->pole_id,
             ],
             'type' => 'presentiel',
+            'poles' => $poles,
         ]);
     }
 
@@ -357,6 +388,7 @@ class FormationController extends Controller
             'duration' => 'required|string|max:255',
             'diplome' => 'required|string|max:255',
             'frais' => 'required|numeric|min:0',
+            'pole_id' => 'nullable|exists:poles,id',
             'image' => 'nullable|image|max:2048',
             'lien_externe' => 'nullable|url|max:255',
             'lien_label' => 'nullable|string|max:255',
@@ -381,6 +413,7 @@ class FormationController extends Controller
                 'duration' => $validated['duration'],
                 'diplome' => $validated['diplome'],
                 'frais' => $validated['frais'],
+                'pole_id' => $validated['pole_id'] ?? null,
                 'lien_externe' => $validated['lien_externe'] ?? null,
                 'lien_label' => $validated['lien_label'] ?? null,
                 'is_active' => $validated['is_active'] ?? true,
@@ -399,77 +432,86 @@ class FormationController extends Controller
     }
 
     private function updatePresentiel(Request $request, $id)
-{
-    $formation = FormationPresentiel::findOrFail($id);
+    {
+        $formation = FormationPresentiel::findOrFail($id);
 
-    // ✅ Décoder les champs JSON avant la validation
-    $data = $request->all();
+        $data = $request->all();
 
-    if ($request->has('tags') && is_string($request->tags)) {
-        $data['tags'] = json_decode($request->tags, true) ?? [];
-    }
-    if ($request->has('debouches') && is_string($request->debouches)) {
-        $data['debouches'] = json_decode($request->debouches, true) ?? [];
-    }
-    if ($request->has('programme') && is_string($request->programme)) {
-        $data['programme'] = json_decode($request->programme, true) ?? [];
-    }
-
-    $validated = validator($data, [
-        'title' => 'required|string|max:255|unique:formations_presentiel,title,' . $id,
-        'abbreviation' => 'required|string|max:10|unique:formations_presentiel,abbreviation,' . $id,
-        'description' => 'required|string',
-        'duration' => 'required|string|max:255',
-        'diplome' => 'required|string|max:255',
-        'price' => 'required|numeric|min:0',
-        'image' => 'nullable|image|max:2048',
-        'icon' => 'nullable|string|max:50',
-        'tags' => 'nullable|array',
-        'tags.*' => 'string',
-        'debouches' => 'nullable|array',
-        'debouches.*' => 'string',
-        'programme' => 'nullable|array',
-        'programme.*' => 'string',
-        'couleur' => 'nullable|in:blue,red',
-        'is_active' => 'boolean',
-        'ordre' => 'integer|min:0',
-    ])->validate();
-
-    DB::transaction(function () use ($request, $formation, $validated) {
-        if ($request->hasFile('image')) {
-            if ($formation->image) {
-                Storage::disk('public')->delete('formations_presentiel/' . $formation->image);
-            }
-            $imagePath = $request->file('image')->store('formations_presentiel', 'public');
-            $formation->image = basename($imagePath);
+        if ($request->has('tags') && is_string($request->tags)) {
+            $data['tags'] = json_decode($request->tags, true) ?? [];
+        }
+        if ($request->has('debouches') && is_string($request->debouches)) {
+            $data['debouches'] = json_decode($request->debouches, true) ?? [];
+        }
+        if ($request->has('programme') && is_string($request->programme)) {
+            $data['programme'] = json_decode($request->programme, true) ?? [];
         }
 
-        $formation->update([
-            'title' => $validated['title'],
-            'abbreviation' => $validated['abbreviation'],
-            'description' => $validated['description'],
-            'duration' => $validated['duration'],
-            'diplome' => $validated['diplome'],
-            'price' => $validated['price'],
-            'icon' => $validated['icon'] ?? null,
-            'tags' => $validated['tags'] ?? ['Cours du jour', 'Cours du soir'],
-            'debouches' => $validated['debouches'] ?? [],
-            'programme' => $validated['programme'] ?? [],
-            'couleur' => $validated['couleur'] ?? 'blue',
-            'is_active' => $validated['is_active'] ?? true,
-            'ordre' => $validated['ordre'] ?? 0,
+        $validated = validator($data, [
+            'title' => 'required|string|max:255|unique:formations_presentiel,title,' . $id,
+            'abbreviation' => 'required|string|max:10|unique:formations_presentiel,abbreviation,' . $id,
+            'description' => 'required|string',
+            'niveau_requis' => 'nullable|string|max:255',
+            'duration' => 'required|string|max:255',
+            'diplome' => 'required|string|max:255',
+            'price' => 'required|numeric|min:0',
+            'pole_id' => 'nullable|exists:poles,id',
+            'image' => 'nullable|image|max:2048',
+            'icon' => 'nullable|string|max:50',
+            'tags' => 'nullable|array',
+            'tags.*' => 'string',
+            'debouches' => 'nullable|array',
+            'debouches.*' => 'string',
+            'programme' => 'nullable|array',
+            'programme.*' => 'string',
+            'couleur' => 'nullable|in:blue,red',
+            'is_active' => 'boolean',
+            'ordre' => 'integer|min:0',
+        ])->validate();
+
+        DB::transaction(function () use ($request, $formation, $validated) {
+            $imagePath = $formation->image;
+
+            if ($request->hasFile('image')) {
+                if ($formation->image && file_exists(public_path($formation->image))) {
+                    @unlink(public_path($formation->image));
+                }
+
+                $file = $request->file('image');
+                $filename = time() . '_' . Str::slug($validated['title']) . '.' . $file->getClientOriginalExtension();
+                $file->move(public_path('assets/images/formations_presentiel'), $filename);
+                $imagePath = $filename;
+            }
+
+            $formation->update([
+                'title' => $validated['title'],
+                'abbreviation' => $validated['abbreviation'],
+                'description' => $validated['description'],
+                'niveau_requis' => $validated['niveau_requis'] ?? null,
+                'duration' => $validated['duration'],
+                'diplome' => $validated['diplome'],
+                'price' => $validated['price'],
+                'pole_id' => $validated['pole_id'] ?? null,
+                'image' => $imagePath,
+                'icon' => $validated['icon'] ?? null,
+                'tags' => $validated['tags'] ?? ['Cours du jour', 'Cours du soir'],
+                'debouches' => $validated['debouches'] ?? [],
+                'programme' => $validated['programme'] ?? [],
+                'couleur' => $validated['couleur'] ?? 'blue',
+                'is_active' => $validated['is_active'] ?? true,
+                'ordre' => $validated['ordre'] ?? 0,
+            ]);
+        });
+
+        Log::info('Formation présentiel mise à jour', [
+            'formation_id' => $formation->id,
+            'title' => $formation->title,
+            'updated_by' => auth()->id(),
         ]);
-    });
 
-    Log::info('Formation présentiel mise à jour', [
-        'formation_id' => $formation->id,
-        'title' => $formation->title,
-        'updated_by' => auth()->id(),
-    ]);
-
-    return redirect()->route('admin.formations.index', ['type' => 'presentiel'])
-        ->with('success', "✅ Formation présentiel '{$formation->title}' mise à jour avec succès !");
-}
+        return redirect()->route('admin.formations.index', ['type' => 'presentiel'])
+            ->with('success', "✅ Formation présentiel '{$formation->title}' mise à jour avec succès !");
+    }
 
     public function destroy(Request $request, $id)
     {
@@ -500,8 +542,8 @@ class FormationController extends Controller
                 $name = $formation->title;
 
                 DB::transaction(function () use ($formation) {
-                    if ($formation->image) {
-                        Storage::disk('public')->delete('formations_presentiel/' . $formation->image);
+                    if ($formation->image && file_exists(public_path($formation->image))) {
+                        @unlink(public_path($formation->image));
                     }
                     $formation->delete();
                 });

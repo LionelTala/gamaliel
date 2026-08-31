@@ -25,6 +25,9 @@ class Formation extends Model
         'lien_paiement_total',
         'is_active',
         'order',
+        'pole_id',
+        'tags',
+        'niveau_requis',
     ];
 
     protected $casts = [

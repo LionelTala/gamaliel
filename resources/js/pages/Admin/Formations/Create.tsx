@@ -1,13 +1,19 @@
 // resources/js/pages/Admin/Formations/Create.tsx
 import { ArrowLeftIcon, PlusIcon, XMarkIcon } from '@heroicons/react/24/outline';
-
 import { Head, Link, useForm } from '@inertiajs/react';
 import { useState } from 'react';
-
 import AdminLayout from '@/Components/Layouts/AdminLayout';
 
+interface Pole {
+    id: number;
+    nom: string;
+}
 
-export default function Create() {
+interface Props {
+    poles: Pole[];
+}
+
+export default function Create({ poles }: Props) {
     const [previewImage, setPreviewImage] = useState<string | null>(null);
 
     const { data, setData, post, processing, errors } = useForm({
@@ -18,6 +24,7 @@ export default function Create() {
         duration: '',
         diplome: '',
         frais: '',
+        pole_id: '',
         image: null as File | null,
         lien_externe: '',
         lien_label: '',
@@ -44,7 +51,7 @@ export default function Create() {
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        post('/admin/formations', {
+        post('/admin/formations?type=enligne', {
             forceFormData: true,
         });
     };
@@ -81,6 +88,27 @@ export default function Create() {
                                     required
                                 />
                                 {errors.name && <p className="mt-1 text-sm text-red-600">{errors.name}</p>}
+                            </div>
+
+                            {/* Pôle rattaché */}
+                            <div>
+                                <label htmlFor="pole_id" className="block text-sm font-medium text-gray-700 mb-1">
+                                    Pôle rattaché
+                                </label>
+                                <select
+                                    id="pole_id"
+                                    value={data.pole_id}
+                                    onChange={(e) => setData('pole_id', e.target.value)}
+                                    className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-cab-blue focus:border-cab-blue transition-colors bg-white"
+                                >
+                                    <option value="">-- Aucun pôle --</option>
+                                    {poles.map((pole) => (
+                                        <option key={pole.id} value={pole.id}>
+                                            {pole.nom}
+                                        </option>
+                                    ))}
+                                </select>
+                                {errors.pole_id && <p className="mt-1 text-sm text-red-600">{errors.pole_id}</p>}
                             </div>
 
                             {/* Abréviation */}

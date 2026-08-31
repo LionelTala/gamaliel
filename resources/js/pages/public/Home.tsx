@@ -237,7 +237,7 @@ export default function Home({ activites, poles }: HomeProps) {
                                 <h1 className="font-display font-bold text-[2.6rem] leading-[1.08] sm:text-6xl lg:text-[3.4rem] mt-7 tracking-tight">
                                     Construisez votre avenir
                                     <br />
-                                    <span className="text-gamaliel-green">professionnel à Douala</span>
+                                    <span className="text-gamaliel-green">professionnel Avec L'institut Gamaliel</span>
                                 </h1>
 
                                 <p className="mt-6 text-lg text-white/70 max-w-lg leading-relaxed">
@@ -256,12 +256,12 @@ export default function Home({ activites, poles }: HomeProps) {
                                         Découvrir nos formations
                                         <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
                                     </Link>
-                                    <Link
-                                        href="/#activites"
+                                    <a
+                                        href="#activites"
                                         className="inline-flex items-center gap-2 px-7 py-4 rounded-full font-semibold text-white/90 border border-white/20 hover:bg-white/10 hover:border-white/40 transition-all duration-300"
                                     >
                                         Voir nos événements
-                                    </Link>
+                                    </a>
                                 </div>
 
                                 <div className="flex flex-wrap items-center gap-x-6 gap-y-2 mt-10 pt-8 border-t border-white/10 text-sm text-white/60">
@@ -300,7 +300,8 @@ export default function Home({ activites, poles }: HomeProps) {
                                     </div>
                                     <div>
                                         <p className="text-sm font-bold leading-tight">Institut agréé</p>
-                                        <p className="text-xs text-gamaliel-navy/60">Arrêté N°94 &amp; N°247 MINEFOP</p>
+                                        <p className="text-xs text-gamaliel-navy/60">Arrêté N°000174/MINEFOP/SG/</p>
+                                        <p className="text-xs text-gamaliel-navy/60">DFOP/SDGSF/CSACD/CBAC</p>
                                     </div>
                                 </div>
                             </div>
@@ -363,7 +364,8 @@ export default function Home({ activites, poles }: HomeProps) {
                                 return (
                                     <article
                                         key={pole.id}
-                                        className="group bg-white rounded-[1.75rem] overflow-hidden border border-gamaliel-navy/5 h-full hover:-translate-y-1 hover:shadow-xl transition-transform duration-300 flex flex-col"
+                                        onClick={() => openPoleModal(pole)}
+                                        className="group bg-white rounded-[1.75rem] overflow-hidden border border-gamaliel-navy/5 h-full hover:-translate-y-1 hover:shadow-xl transition-transform duration-300 flex flex-col cursor-pointer"
                                     >
                                         <div className="relative h-32 overflow-hidden">
                                             {pole.image ? (
@@ -395,8 +397,12 @@ export default function Home({ activites, poles }: HomeProps) {
                                                 {pole.description_courte}
                                             </p>
                                             <button
-                                                onClick={() => openPoleModal(pole)}
-                                                className="inline-flex items-center gap-1 text-xs font-semibold transition-colors"
+                                                type="button"
+                                                onClick={(e) => {
+                                                    e.stopPropagation();
+                                                    openPoleModal(pole);
+                                                }}
+                                                className="inline-flex items-center gap-1 text-xs font-semibold transition-colors focus:outline-none"
                                                 style={{ color: pole.couleur }}
                                             >
                                                 Détails

@@ -20,9 +20,13 @@ class NotificationCreated implements ShouldBroadcast
 
     public function broadcastOn(): array
     {
-        return [
-            new PrivateChannel("user.{$this->notification->user_id}"),
-        ];
+        // Notification globale (user_id = null, ex: contact) -> canal partagé "admins"
+        // Notification individuelle -> canal privé de l'utilisateur ciblé
+        if ($this->notification->user_id === null) {
+            return [new PrivateChannel('admins')];
+        }
+
+        return [new PrivateChannel("user.{$this->notification->user_id}")];
     }
 
     public function broadcastAs(): string

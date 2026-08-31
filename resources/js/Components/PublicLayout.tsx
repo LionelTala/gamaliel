@@ -30,7 +30,7 @@ const navLinks = [
     { label: 'Accueil', href: '/', icon: <HomeIcon className="w-[18px] h-[18px]" /> },
     { label: 'Formations', href: '/formations', icon: <AcademicCapIcon className="w-[18px] h-[18px]" /> },
     { label: 'Galerie', href: '/galerie', icon: <PhotoIcon className="w-[18px] h-[18px]" /> },
-    // { label: 'Contact', href: '/contact', icon: <ChatBubbleLeftRightIcon className="w-[18px] h-[18px]" /> },
+   { label: 'Contact', href: '/contact', icon: <ChatBubbleLeftRightIcon className="w-[18px] h-[18px]" /> },
 ];
 
 const PublicLayout = ({ children }: Props) => {
@@ -71,7 +71,7 @@ const PublicLayout = ({ children }: Props) => {
                         </span>
                         <span className="flex items-center gap-1.5">
                             <ShieldCheckIcon className="w-3.5 h-3.5 text-gamaliel-green" />
-                            Agréé MINEFOP — Arrêté N°94 / N°247
+                           Arrêté N°000174/MINEFOP/SG/DFOP/SDGSF/CSACD/CBAC
                         </span>
                     </div>
                     <a href="tel:+237696084048" className="flex items-center gap-1.5 hover:text-white transition-colors">
@@ -291,6 +291,14 @@ const PublicLayout = ({ children }: Props) => {
                                     </a>
                                 </li>
                                 <li>
+                                    <a href="https://web.facebook.com/intitutgamaliel" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors flex items-center gap-2">
+                                        <svg className="w-4 h-4 text-gamaliel-green shrink-0" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 7.98 9.5V15.5H7.38V12h2.6V9.79c0-2.57 1.54-3.99 3.87-3.99 1.11 0 2.27.2 2.27.2v2.5h-1.28c-1.27 0-1.66.79-1.66 1.6V12h2.83l-.45 3.5h-2.38v6.02C18.56 20.87 22 16.84 22 12z"/>
+                                        </svg>
+                                        Facebook
+                                    </a>
+                                </li>
+                                <li>
                                     <a href="mailto:info@institutgamaliel.com" className="hover:text-white transition-colors flex items-center gap-2">
                                         <EnvelopeIcon className="w-4 h-4 text-gamaliel-green shrink-0" /> info@institutgamaliel.com
                                     </a>
@@ -307,49 +315,63 @@ const PublicLayout = ({ children }: Props) => {
                             <h4 className="text-white font-display font-semibold mb-4 text-sm tracking-wide">
                                 Horaires
                             </h4>
-                            <p className="text-sm text-white/60">Lundi — Samedi</p>
-                            <p className="text-sm text-white font-semibold">06h00 – 22h00</p>
+                            <p className="text-sm text-white/60">Lundi — Vendredi</p>
+                            <p className="text-sm text-white font-semibold">08h00 – 17h00</p>
+                            <p className="text-sm text-white/60">Samedi - jours feriés</p>
+
+                            <p className="text-sm text-white font-semibold">09h00 – 14h00</p>
 
                             <div className="mt-6">
                                 <h4 className="text-white font-display font-semibold mb-3 text-sm tracking-wide">
                                     Suivez-nous
-                                </h4>
-                                <div className="flex gap-2.5">
-                                    
-                                    <a    href="https://www.instagram.com/institutgamaliel/"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center text-white/70 hover:bg-gamaliel-green-deep hover:text-white transition-colors"
-                                        aria-label="Instagram"
-                                    >
-                                        <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                                            <path d="M12 2.16c3.2 0 3.58.01 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.15 3.23-1.66 4.77-4.92 4.92-1.27.06-1.64.07-4.85.07s-3.58-.01-4.85-.07c-3.26-.15-4.77-1.7-4.92-4.92-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85C2.34 3.9 3.86 2.35 7.12 2.2 8.4 2.17 8.77 2.16 12 2.16zM12 0C8.74 0 8.33.01 7.05.07c-4.35.2-6.78 2.62-6.98 6.98C.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.2 4.36 2.62 6.78 6.98 6.98C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c4.35-.2 6.78-2.62 6.98-6.98.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.2-4.35-2.62-6.78-6.98-6.98C15.67.01 15.26 0 12 0zm0 5.84A6.16 6.16 0 1 0 18.16 12 6.16 6.16 0 0 0 12 5.84zM12 16a4 4 0 1 1 4-4 4 4 0 0 1-4 4zm6.41-10.85a1.44 1.44 0 1 0 1.44 1.44 1.44 1.44 0 0 0-1.44-1.44z"/>
-                                        </svg>
-                                    </a>
-                                    
-                                    <a    href="https://wa.me/237696084048"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center text-white/70 hover:bg-gamaliel-green hover:text-gamaliel-navy-deep transition-colors"
-                                        aria-label="WhatsApp"
-                                    >
-                                        <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                                            <path d="M17.6 6.32A8.86 8.86 0 0 0 12.05 4a8.94 8.94 0 0 0-7.63 13.49L3 21l3.65-1.36a8.9 8.9 0 0 0 4.34 1.13h.01c4.94 0 9.09-4.15 9.09-9.09 0-2.42-1.06-4.7-2.49-5.36zM12.05 19.1a7.5 7.5 0 0 1-3.83-1.06l-.27-.16-2.66 1 .95-2.6-.18-.28a7.4 7.4 0 0 1-1.14-3.97 7.5 7.5 0 1 1 7.13 7.07z"/>
-                                        </svg>
-                                    </a>
-                                    
-                                    <a    href="https://cm.linkedin.com/jobs/view/manager-de-communaut%C3%A9-at-institut-de-formation-professionnelle-gamaliel-4106520802"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center text-white/70 hover:bg-gamaliel-blue hover:text-white transition-colors"
-                                        aria-label="LinkedIn"
-                                    >
-                                        <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                                            <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45z"/>
-                                        </svg>
-                                    </a>
+                               </h4>
+                                    <div className="flex gap-2.5">
+                                        
+                                        <a    href="https://www.instagram.com/institutgamaliel/"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center text-white/70 hover:bg-gamaliel-green-deep hover:text-white transition-colors"
+                                            aria-label="Instagram"
+                                        >
+                                            <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                                <path d="M12 2.16c3.2 0 3.58.01 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.15 3.23-1.66 4.77-4.92 4.92-1.27.06-1.64.07-4.85.07s-3.58-.01-4.85-.07c-3.26-.15-4.77-1.7-4.92-4.92-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85C2.34 3.9 3.86 2.35 7.12 2.2 8.4 2.17 8.77 2.16 12 2.16zM12 0C8.74 0 8.33.01 7.05.07c-4.35.2-6.78 2.62-6.98 6.98C.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.2 4.36 2.62 6.78 6.98 6.98C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c4.35-.2 6.78-2.62 6.98-6.98.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.2-4.35-2.62-6.78-6.98-6.98C15.67.01 15.26 0 12 0zm0 5.84A6.16 6.16 0 1 0 18.16 12 6.16 6.16 0 0 0 12 5.84zM12 16a4 4 0 1 1 4-4 4 4 0 0 1-4 4zm6.41-10.85a1.44 1.44 0 1 0 1.44 1.44 1.44 1.44 0 0 0-1.44-1.44z"/>
+                                            </svg>
+                                        </a>
+
+                                        <a    href="https://web.facebook.com/intitutgamaliel"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center text-white/70 hover:bg-gamaliel-blue hover:text-white transition-colors"
+                                            aria-label="Facebook"
+                                        >
+                                            <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                                <path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 7.98 9.5V15.5H7.38V12h2.6V9.79c0-2.57 1.54-3.99 3.87-3.99 1.11 0 2.27.2 2.27.2v2.5h-1.28c-1.27 0-1.66.79-1.66 1.6V12h2.83l-.45 3.5h-2.38v6.02C18.56 20.87 22 16.84 22 12z"/>
+                                            </svg>
+                                        </a>
+                                        
+                                        <a    href="https://wa.me/237696084048"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center text-white/70 hover:bg-gamaliel-green hover:text-gamaliel-navy-deep transition-colors"
+                                            aria-label="WhatsApp"
+                                        >
+                                            <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                                <path d="M17.6 6.32A8.86 8.86 0 0 0 12.05 4a8.94 8.94 0 0 0-7.63 13.49L3 21l3.65-1.36a8.9 8.9 0 0 0 4.34 1.13h.01c4.94 0 9.09-4.15 9.09-9.09 0-2.42-1.06-4.7-2.49-5.36zM12.05 19.1a7.5 7.5 0 0 1-3.83-1.06l-.27-.16-2.66 1 .95-2.6-.18-.28a7.4 7.4 0 0 1-1.14-3.97 7.5 7.5 0 1 1 7.13 7.07z"/>
+                                            </svg>
+                                        </a>
+                                        
+                                        <a    href="https://cm.linkedin.com/jobs/view/manager-de-communaut%C3%A9-at-institut-de-formation-professionnelle-gamaliel-4106520802"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center text-white/70 hover:bg-gamaliel-blue hover:text-white transition-colors"
+                                            aria-label="LinkedIn"
+                                        >
+                                            <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                                <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45z"/>
+                                            </svg>
+                                        </a>
+                                    </div>
                                 </div>
-                            </div>
                         </div>
                     </div>
 

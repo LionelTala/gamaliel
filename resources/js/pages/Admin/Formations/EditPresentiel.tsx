@@ -2,7 +2,12 @@
 import { useState } from 'react';
 import { Head, Link, router } from '@inertiajs/react';
 import AdminLayout from '@/Components/Layouts/AdminLayout';
-import { ArrowLeftIcon, PencilSquareIcon, XMarkIcon, PhotoIcon } from '@heroicons/react/24/outline';
+import { ArrowLeftIcon, XMarkIcon, PhotoIcon } from '@heroicons/react/24/outline';
+
+interface Pole {
+    id: number;
+    nom: string;
+}
 
 interface FormationPresentiel {
     id: number;
@@ -21,13 +26,16 @@ interface FormationPresentiel {
     couleur: 'blue' | 'red';
     is_active: boolean;
     order: number;
+    pole_id: number | null;
+    niveau_requis: string | null;
 }
 
 interface Props {
     formation: FormationPresentiel;
+    poles: Pole[];
 }
 
-export default function EditPresentiel({ formation }: Props) {
+export default function EditPresentiel({ formation, poles }: Props) {
     const [previewImage, setPreviewImage] = useState<string | null>(formation.image_url);
     const [processing, setProcessing] = useState(false);
     const [errors, setErrors] = useState<Record<string, string>>({});
@@ -43,6 +51,10 @@ export default function EditPresentiel({ formation }: Props) {
     const [isActive, setIsActive] = useState(formation.is_active);
     const [ordre, setOrdre] = useState(formation.order || 0);
     const [couleur, setCouleur] = useState<'blue' | 'red'>(formation.couleur || 'blue');
+    
+    // Nouveaux champs ajoutés
+    const [poleId, setPoleId] = useState<string>(formation.pole_id ? formation.pole_id.toString() : '');
+    const [niveauRequis, setNiveauRequis] = useState(formation.niveau_requis || '');
 
     const [tags, setTags] = useState<string[]>(formation.tags || []);
     const [debouches, setDebouches] = useState<string[]>(formation.debouches || []);
@@ -96,7 +108,19 @@ export default function EditPresentiel({ formation }: Props) {
         formData.append('duration', duration);
         formData.append('diplome', diplome);
         formData.append('price', price);
-        if (icon) formData.append('icon', icon);
+        
+        if (icon) {
+            formData.append('icon', icon);
+        } else {
+            formData.append('icon', '');
+        }
+
+        // Ajout des nouvelles variables
+        if (poleId) {
+            formData.append('pole_id', poleId);
+        }
+        formData.append('niveau_requis', niveauRequis);
+
         formData.append('tags', JSON.stringify(tags));
         formData.append('debouches', JSON.stringify(debouches));
         formData.append('programme', JSON.stringify(programme));
@@ -108,11 +132,13 @@ export default function EditPresentiel({ formation }: Props) {
             formData.append('image', image);
         }
 
-        router.post(`/admin/formations/${formation.id}`, formData, {
+        router.post(`/admin/formations/${formation.id}?type=presentiel`, formData, {
             forceFormData: true,
-            headers: {
-                'Content-Type': 'multipart/form-data',
+            onError: (errs) => {
+                setErrors(errs);
+                setProcessing(false);
             },
+            onFinish: () => setProcessing(false),
         });
     };
 
@@ -132,6 +158,26 @@ export default function EditPresentiel({ formation }: Props) {
 
                     <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
                         <form onSubmit={handleSubmit} className="space-y-5" encType="multipart/form-data">
+                            {/* Pôle rattaché */}
+                            <div>
+                                <label className="block text-sm font-medium text-gray-700 mb-1">
+                                    Pôle de formation
+                                </label>
+                                <select
+                                    value={poleId}
+                                    onChange={(e) => setPoleId(e.target.value)}
+                                    className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-cab-blue focus:border-cab-blue transition-colors bg-white"
+                                >
+                                    <option value="">-- Aucun pôle --</option>
+                                    {poles && poles.map((pole) => (
+                                        <option key={pole.id} value={pole.id}>
+                                            {pole.nom}
+                                        </option>
+                                    ))}
+                                </select>
+                                {errors.pole_id && <p className="mt-1 text-sm text-red-600">{errors.pole_id}</p>}
+                            </div>
+
                             {/* Titre */}
                             <div>
                                 <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -161,6 +207,21 @@ export default function EditPresentiel({ formation }: Props) {
                                     required
                                 />
                                 {errors.abbreviation && <p className="mt-1 text-sm text-red-600">{errors.abbreviation}</p>}
+                            </div>
+
+                            {/* Niveau requis */}
+                            <div>
+                                <label className="block text-sm font-medium text-gray-700 mb-1">
+                                    Niveau requis
+                                </label>
+                                <input
+                                    type="text"
+                                    value={niveauRequis}
+                                    onChange={(e) => setNiveauRequis(e.target.value)}
+                                    placeholder="Ex: BAC, BEPC, Sans niveau..."
+                                    className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-cab-blue focus:border-cab-blue transition-colors"
+                                />
+                                {errors.niveau_requis && <p className="mt-1 text-sm text-red-600">{errors.niveau_requis}</p>}
                             </div>
 
                             {/* Image */}
@@ -288,7 +349,7 @@ export default function EditPresentiel({ formation }: Props) {
                                         value={newTag}
                                         onChange={(e) => setNewTag(e.target.value)}
                                         className="flex-1 px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-cab-blue focus:border-cab-blue transition-colors"
-                                        onKeyDown={(e) => e.key === 'Enter' && addItem(tags, setTags, newTag, setNewTag)}
+                                        onKeyDown={(e) => e.key === 'Enter' && (e.preventDefault(), addItem(tags, setTags, newTag, setNewTag))}
                                     />
                                     <button
                                         type="button"
@@ -325,7 +386,7 @@ export default function EditPresentiel({ formation }: Props) {
                                         value={newDebouche}
                                         onChange={(e) => setNewDebouche(e.target.value)}
                                         className="flex-1 px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-cab-blue focus:border-cab-blue transition-colors"
-                                        onKeyDown={(e) => e.key === 'Enter' && addItem(debouches, setDebouches, newDebouche, setNewDebouche)}
+                                        onKeyDown={(e) => e.key === 'Enter' && (e.preventDefault(), addItem(debouches, setDebouches, newDebouche, setNewDebouche))}
                                     />
                                     <button
                                         type="button"
@@ -362,7 +423,7 @@ export default function EditPresentiel({ formation }: Props) {
                                         value={newProgramme}
                                         onChange={(e) => setNewProgramme(e.target.value)}
                                         className="flex-1 px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-cab-blue focus:border-cab-blue transition-colors"
-                                        onKeyDown={(e) => e.key === 'Enter' && addItem(programme, setProgramme, newProgramme, setNewProgramme)}
+                                        onKeyDown={(e) => e.key === 'Enter' && (e.preventDefault(), addItem(programme, setProgramme, newProgramme, setNewProgramme))}
                                     />
                                     <button
                                         type="button"

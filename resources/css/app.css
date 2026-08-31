@@ -14,6 +14,9 @@
 
     /* Couleurs Gamaliel — extraites du logo officiel */
     --color-gamaliel-green:      #9FE515; /* chapeau */
+        --color-cab-blue: #6FA30E;
+    --color-cab-red: #D21F2F;
+    --color-cab-dark:  #FD7D0F;
     --color-gamaliel-green-deep: #6FA30E;
     --color-gamaliel-blue:       #165DF3; /* check */
     --color-gamaliel-blue-deep:  #0E44B8;
